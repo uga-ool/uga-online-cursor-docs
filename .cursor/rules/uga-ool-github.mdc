@@ -1,0 +1,24 @@
+---
+description: UGA Online (OOL) GitHub org practices for uga-ool repositories
+alwaysApply: false
+globs: "**/*.{md,ts,tsx,yml,yaml,json}"
+---
+
+# UGA OOL GitHub (`uga-ool`)
+
+Org repository list: **https://github.com/orgs/uga-ool/repositories**
+
+## Repos and ownership
+
+- Prefer **existing** `uga-ool` repos and patterns (Brightspace agents, Lit components, Kaltura tooling, React templates) before adding new dependencies or duplicate scaffolding.
+- New apps that embed in **eLC** should align with **OOL** deployment expectations: course files, LTI, or documented AWS/API gateways per each repo’s README.
+
+## Secrets and config
+
+- **Never** commit API keys, OAuth client secrets, Kaltura admin secrets, or LLM keys. Use `.env` / `.env.local` (gitignored), CI secrets, or institutional secret stores.
+- When copying from **DEVELOPER-GUIDE** or **AGENT-GUIDE** examples, strip real URLs and keys; use placeholders in issues and docs.
+
+## Collaboration
+
+- Use small, reviewable PRs; link eLC test plans or courses when behavior is LMS-specific.
+- Keep **CHANGELOG** / release notes when shipping assets instructors rely on (bundles, zip layouts, Manage Files paths).

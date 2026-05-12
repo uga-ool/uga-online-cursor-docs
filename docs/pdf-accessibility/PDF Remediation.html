@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Remediation</title>
+    <!-- Agent id for dev import. Used by loader. -->
+    <meta name="app-agent" content="pdf-remediation" />
+    <!-- Set ONLY when this HTML is in a course but assets live in Shared. Must end with trailing slash. Use APP_SHARED_BASE env at build time. -->
+    <meta name="app-shared-base" content="/shared/ugaonline/apps/pdf-remediation/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Merriweather+Sans:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://design.online.uga.edu/css/base.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://design.online.uga.edu/js/scripts.js" defer></script>
+    <script>
+      const ensureSlash = (s) => (s && !s.endsWith('/') ? s + '/' : s);
+
+      const ENTRY_CANDIDATES = ['assets/main.js'];
+      const CSS_CANDIDATES = ['assets/style.css'];
+
+      const agent = (document.querySelector('meta[name="app-agent"]')?.content || '').trim();
+      const hereBase = ensureSlash(location.pathname.replace(/[^/]*$/, ''));
+      const sharedBase = ensureSlash(
+        (document.querySelector('meta[name="app-shared-base"]')?.content || '').trim()
+      );
+
+      function tryLoadFrom(base) {
+        return new Promise((resolve, reject) => {
+          const absBase = new URL(base, document.baseURI).toString();
+
+          let tried = 0;
+          const tryNextScript = () => {
+            if (tried >= ENTRY_CANDIDATES.length) {
+              reject(new Error('No entry found at ' + absBase));
+              return;
+            }
+            const entry = ENTRY_CANDIDATES[tried++];
+            const s = document.createElement('script');
+            s.type = 'module';
+            s.src = new URL(entry, absBase).toString();
+            s.onload = () => {
+              const baseEl = document.createElement('base');
+              baseEl.href = base;
+              document.head.prepend(baseEl);
+
+              for (const cssName of CSS_CANDIDATES) {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = new URL(cssName, absBase).toString();
+                link.onerror = () => link.remove();
+                document.head.appendChild(link);
+              }
+
+              window.__APP_ASSET_BASE__ = base;
+              resolve();
+            };
+            s.onerror = () => {
+              s.remove();
+              tryNextScript();
+            };
+            document.body.appendChild(s);
+          };
+
+          tryNextScript();
+        });
+      }
+
+      (async () => {
+        const isLocalDev = /^localhost$|^127\.0\.0\.1$/.test(location.hostname);
+        if (isLocalDev && agent) {
+          try {
+            await import('/src/agents/' + agent + '/entry.tsx');
+            return;
+          } catch {}
+        }
+
+        const bases = sharedBase ? [sharedBase] : [hereBase];
+
+        let lastErr;
+        for (const b of bases) {
+          try {
+            await tryLoadFrom(b);
+            return;
+          } catch (e) {
+            lastErr = e;
+          }
+        }
+        console.error(lastErr || 'Failed to load app.');
+        document.getElementById('root').textContent =
+          'Could not locate assets. Put assets/ next to this file or set the app-shared-base meta to your Shared folder.';
+      })();
+    </script>
+  </body>
+</html>

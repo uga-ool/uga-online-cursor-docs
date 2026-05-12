@@ -1,0 +1,27 @@
+---
+description: New course-file React apps from the UGA OOL Brightspace React template (Vite + TypeScript)
+globs: "**/src/**/*.{tsx,ts}"
+alwaysApply: false
+---
+
+# UGA Brightspace React template (course files)
+
+Upstream template: **https://github.com/uga-ool/UGA-Brightspace-React-Template**
+
+Use it when scaffolding **static** React apps deployed to **Brightspace Manage Files / course files** (not a generic Node server host).
+
+## Conventions
+
+- **Vite** + **TypeScript**; build output under **`dist/`** with paths suitable for relative hosting in eLC.
+- **CourseContext** (or equivalent) for **OU**, **XSRF**, **WhoAmI**, and **role** — do not hard-code org units in source.
+- Environment: **`VITE_API_BASE_URL`** (typically `/d2l/api`), **`VITE_LP_VERSION`**, **`VITE_LE_VERSION`** — align versions with your eLC instance and Valence docs.
+- Use **`import.meta.env.DEV`** to branch local demos vs embedded eLC behavior.
+
+## UGA Online Design System
+
+- For HTML shells or static wrappers, load **base.css** and **scripts.js** from **https://design.online.uga.edu/** per [installation](https://design.online.uga.edu/getting-started/installation/) (and Google Fonts as documented there).
+- Keep styling consistent with OOL patterns: prefer design-system classes over one-off inline styles when building new UI.
+
+## This monorepo
+
+- **`templates/`** may mirror or extend the public template; when they diverge, prefer the **README** in the app or template you are editing and note differences in PR descriptions.

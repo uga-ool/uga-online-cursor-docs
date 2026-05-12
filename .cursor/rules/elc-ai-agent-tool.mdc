@@ -1,0 +1,26 @@
+---
+description: Custom AI Agent widgets embedded in eLC (Brightspace) using the UGA agent framework
+globs: "**/frontend/src/agents/**"
+alwaysApply: false
+---
+
+# eLC custom AI Agent tool
+
+Agents run **inside Brightspace (eLC)** as embedded tools: workflow-driven flows, Valence-backed tools, and optional **LLM proxy** via a backend.
+
+## Framework contract
+
+- In agent plugin code, import **only** from `@uga-brightspace/framework` (never deep-import `frontend/src/core/*`). Builds enforce this.
+- Follow **AGENT-GUIDE.md** in the Brightspace agent framework repo: `config.ts` exports (workflow + `defineAgentPlugin`), `entry.tsx` / `entry.html`, `components/MainView.tsx`, `prompts/`, `data/tools.json`.
+- Use **`template-fidelity`** (or the repo’s canonical template agent) as the structural reference when adding a new agent.
+
+## eLC / LMS behavior
+
+- Features that call Brightspace APIs require a real **eLC session** (OU, XSRF); local Vite dev is often **UI-only** unless mocks are provided.
+- Honor **`VITE_LLM_MODE`** (`proxy` vs `direct`) and **`VITE_BACKEND_URL`** / **`VITE_BACKEND_STREAM_URL`** from the project’s **DEVELOPER-GUIDE.md**.
+- Server-side LLM keys stay on the **backend** (`LLM_*` env vars); never embed provider keys in client bundles for production.
+
+## State and content
+
+- Persist agent state through the framework’s **Brightspace course file** state layer unless the product explicitly uses another store.
+- When defining tools or prompts, keep outputs structured (schemas, JSON) so workflows remain maintainable in eLC.

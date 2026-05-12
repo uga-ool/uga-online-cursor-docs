@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Remediation — Guide for Instructional Designers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Merriweather+Sans:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://design.online.uga.edu/css/base.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js" crossorigin="anonymous"></script>
+  <style>
+    /*
+      Color tokens — UGA Online Design System
+      https://design.online.uga.edu/documentation/colors/
+      Shell (fonts, skip link, scripts) follows:
+      https://design.online.uga.edu/getting-started/installation/
+    */
+    :root {
+      --ds-arch-black: #000000;
+      --ds-bulldog-red: #ba0c2f;
+      --ds-white: #ffffff;
+      --ds-olympic: #004e60;
+      --ds-lake-herrick: #00a3ad;
+      --ds-light-gray: #f2f2f2;
+      --ds-gray: #dedede;
+      --ds-dark-gray: #666666;
+      --ds-sanford: #554f47;
+      --ds-odyssey-75: #f1f5fa;
+      --ds-odyssey-50: #e4ecf5;
+      --ds-creamery-50: #ebe9e2;
+      --ds-herty-field: #594a25;
+      --panel-border: #c8d8eb;
+      --demo-border: var(--ds-gray);
+      --text-body: var(--ds-arch-black);
+    }
+    body {
+      margin: 0;
+      background: var(--ds-white);
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+    .page-wrap {
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    uga-code:not(:defined) {
+      display: block;
+      min-height: 10rem;
+      visibility: hidden;
+    }
+    .hero {
+      border-bottom: 3px solid var(--ds-bulldog-red);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .hero h1.cmp-heading-2 {
+      margin: 0 0 0.5rem;
+    }
+    .hero .tag {
+      display: inline-block;
+      font-size: 0.8125rem;
+      background: var(--ds-odyssey-50);
+      color: var(--ds-olympic);
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--panel-border);
+    }
+    .toc {
+      border: 1px solid var(--demo-border);
+      padding: 1rem 1.25rem;
+      margin: 2rem 0;
+    }
+    nav.toc .cmp-heading-6 {
+      margin-top: 0;
+    }
+    .toc ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    .toc a {
+      color: var(--ds-olympic);
+      text-decoration-thickness: 1px;
+    }
+    .toc a:hover {
+      color: var(--ds-bulldog-red);
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    section h3.cmp-heading-6 {
+      margin-top: 1.5rem;
+      color: var(--ds-sanford);
+    }
+    ol.steps {
+      padding-left: 1.2rem;
+    }
+    ol.steps li {
+      margin-bottom: 0.85rem;
+    }
+    table.doc-types {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+    table.doc-types th,
+    table.doc-types td {
+      border: 1px solid var(--demo-border);
+      padding: 0.5rem 0.65rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    table.doc-types th {
+      font-weight: 600;
+    }
+    table.doc-types tr:nth-child(even) td {
+      background: var(--ds-light-gray);
+    }
+    .note {
+      padding: 0.75rem 1rem;
+      background: var(--ds-odyssey-75);
+      margin: 1rem 0;
+      font-size: 0.9375rem;
+      border: 1px solid var(--panel-border);
+      border-left: 4px solid var(--ds-olympic);
+    }
+    .warn {
+      background: var(--ds-creamery-50);
+      border: 1px solid var(--ds-gray);
+      border-left: 4px solid var(--ds-bulldog-red);
+    }
+    /* Demo mock UI */
+    .demo-shell {
+      border: 1px solid var(--demo-border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    .demo-header {
+      background: var(--ds-olympic);
+      color: var(--ds-white);
+      padding: 0.65rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .demo-header .cmp-heading-5 {
+      color: var(--ds-white);
+      margin: 0;
+    }
+    .demo-body .mock-title.cmp-heading-3 {
+      margin-top: 0;
+    }
+    .demo-body {
+      padding: 1rem;
+      background: var(--ds-white);
+    }
+    .demo-body h3.mock-title {
+      margin: 0 0 0.75rem;
+    }
+    .demo-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ds-sanford);
+      margin-bottom: 0.25rem;
+    }
+    .demo-select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid var(--ds-gray);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    .demo-row {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border: 1px solid var(--ds-gray);
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+      align-items: flex-start;
+    }
+    .demo-row.highlight {
+      background: var(--ds-odyssey-75);
+      border-color: var(--panel-border);
+    }
+    .demo-row input[type="checkbox"] {
+      margin-top: 0.2rem;
+    }
+    .demo-row-content {
+      flex: 1;
+    }
+    .demo-title-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      margin-bottom: 0.35rem;
+    }
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+    .badge-muted {
+      background: var(--ds-light-gray);
+      color: var(--ds-sanford);
+    }
+    .badge-info {
+      background: var(--ds-odyssey-50);
+      color: var(--ds-olympic);
+    }
+    .badge-warn {
+      background: var(--ds-creamery-50);
+      color: var(--ds-herty-field);
+    }
+    .demo-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0.75rem 0 1rem;
+    }
+    .demo-actions button[disabled] {
+      cursor: default;
+      opacity: 1;
+    }
+    .callout-arrow {
+      position: relative;
+    }
+    .callout-tag {
+      font-size: 0.75rem;
+      color: var(--ds-olympic);
+      font-weight: 700;
+      margin-top: 0.35rem;
+    }
+    details.demo-scenario {
+      border: 1px solid var(--demo-border);
+      padding: 0.5rem 1rem;
+      margin: 0.75rem 0;
+      background: var(--ds-white);
+    }
+    details.demo-scenario summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--ds-olympic);
+    }
+    details.demo-scenario summary:hover {
+      color: var(--ds-bulldog-red);
+    }
+    footer.meta {
+      font-size: 0.8125rem;
+      color: var(--ds-dark-gray);
+      border-top: 2px solid var(--ds-gray);
+      padding-top: 1rem;
+      margin-top: 2rem;
+    }
+    code {
+      font-size: 0.88em;
+      background: var(--ds-light-gray);
+      padding: 0.1em 0.35em;
+      border-radius: 2px;
+      border: 1px solid var(--ds-gray);
+      color: var(--ds-arch-black);
+    }
+    .embed-code-block {
+      margin-top: 0.75rem;
+    }
+    .embed-code-block uga-code .cmp-code {
+      max-width: 100%;
+    }
+    .embed-hint {
+      font-size: 0.875rem;
+      color: var(--ds-dark-gray);
+      margin: 0.35rem 0 0.75rem;
+    }
+    section h2.cmp-heading-3 {
+      border-bottom: 2px solid var(--ds-gray);
+      padding-bottom: 0.35rem;
+    }
+    footer.meta a {
+      color: var(--ds-olympic);
+      text-decoration-thickness: 1px;
+    }
+    footer.meta a:hover {
+      color: var(--ds-bulldog-red);
+    }
+    footer.meta p:last-child {
+      margin-bottom: 0;
+    }
+    .demo-actions .demo-btn-spaced {
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body class="util-background-white">
+  <a class="cmp-skip-to-content" href="#main-content">Skip to main content</a>
+  <main id="main-content" tabindex="-1">
+  <div class="page-wrap obj-reading-width util-margin-vert-lg">
+    <header class="hero">
+      <span class="tag">Instructional design · Brightspace</span>
+      <h1 class="cmp-heading-2">PDF Remediation tool</h1>
+      <p class="cmp-paragraph util-margin-bottom-md">
+        The U.S. Department of Justice’s <strong>ADA Title II</strong> regulations require state and local governments to
+        ensure that <strong>websites, mobile apps, and digital content</strong> meet <strong>WCAG 2.1 Level AA</strong>.
+        Course readings and handouts published as PDFs are part of that digital ecosystem, and they are often harder for
+        people using assistive technology to use than well-structured web pages. <strong>PDF Remediation</strong> helps by
+        rebuilding selected PDFs as <strong>accessible HTML</strong> in Brightspace—structured text, headings, lists where
+        appropriate, and <strong>alt text</strong> for figures—so you can offer a more accessible experience aligned with
+        those expectations. Final conformance still benefits from your review, especially for complex tables and layout.
+      </p>
+      <p class="cmp-paragraph">
+        This guide explains how to use the tool: workflow, embed code, document types, and statuses. It is written for
+        instructional designers who run the tool inside a course.
+      </p>
+    </header>
+
+    <nav class="toc util-background-odyssey__75" aria-label="On this page">
+      <h2 class="cmp-heading-6">On this page</h2>
+      <ul>
+        <li><a href="#what">What the tool does</a></li>
+        <li><a href="#prereq">Before you start</a></li>
+        <li><a href="#course-html">The <code>PDF Remediation.html</code> file</a></li>
+        <li><a href="#course-html-full">Full HTML template (copy-paste)</a></li>
+        <li><a href="#embed">Add PDF Remediation to your course</a></li>
+        <li><a href="#workflow">Workflow (step by step)</a></li>
+        <li><a href="#demo">Interactive UI demo (static mock)</a></li>
+        <li><a href="#doc-types">Document types</a></li>
+        <li><a href="#status">Statuses, deploy, and reset</a></li>
+      </ul>
+    </nav>
+
+    <section id="what">
+      <h2 class="cmp-heading-3">What the tool does</h2>
+      <p class="cmp-paragraph">
+        In the Title II / WCAG 2.1 AA context, moving high-value PDFs to <strong>semantic HTML</strong> is a practical way
+        to improve <strong>perceivability, operability, and understandability</strong> compared to leaving the only copy as
+        a flat PDF. The agent <strong>discovers PDF files</strong> already placed in your course Content (organized by module).
+        For each PDF you choose, it can:
+      </p>
+      <ul>
+        <li><strong>Assess</strong> the file quickly (page count and rough time/cost estimates)—no AI call for this step.</li>
+        <li><strong>Remediate</strong> by transcribing each page, preserving figures, building structured HTML, and generating alt text for images.</li>
+        <li><strong>Deploy</strong> a new Brightspace topic titled <em>“(Original title) (Accessible HTML)”</em> in the same module, pointing at the generated HTML in course files.</li>
+        <li>
+          When the PDF included <strong>images, charts, or other figures</strong>, those visuals appear in the deployed HTML. <strong>Instructor-level roles</strong>
+          can open that accessible topic in the course and use the built-in <strong>Crop</strong> tool on each figure to trim extra margins, template chrome, or
+          unwanted background so learners see the part of the image that matters. Crops are saved as a <strong>separate image file</strong> next to the original
+          extraction—the first version is not overwritten. While editing, you can usually switch between <strong>original and cropped</strong> previews; after a crop is
+          saved, students typically see the <strong>cropped</strong> version by default.
+        </li>
+        <li>Let you <strong>download a Word (.docx)</strong> version after remediation for editing or offline review.</li>
+      </ul>
+      <p class="cmp-paragraph">
+        Your original PDF topics are <strong>not removed</strong> automatically. Students can still open the PDF until you hide or replace it in Content if you choose.
+      </p>
+    </section>
+
+    <section id="prereq">
+      <h2 class="cmp-heading-3">Before you start</h2>
+      <ul>
+        <li>
+          Add <a href="#course-html"><strong><code>PDF Remediation.html</code></strong></a> to your course.
+        </li>
+        <li>PDFs must live in the course <strong>Content</strong> structure so the tool can list them by module.</li>
+        <li>Large documents take longer; remediation runs <strong>one PDF at a time</strong> in a queue.</li>
+      </ul>
+    </section>
+
+    <section id="embed">
+      <h3 class="cmp-heading-6" id="course-html-full">Full HTML template (copy-paste)</h3>
+      
+      <div class="embed-code-block" aria-label="Full PDF Remediation HTML template">
+        <uga-code language="markup" filename="PDF%20Remediation.html"></uga-code>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h2 class="cmp-heading-3">Workflow (step by step)</h2>
+      <ol class="steps">
+        <li>
+          <strong>Open PDF Remediation</strong> from the Content topic where you placed
+        <a href="#course-html"><code>PDF Remediation.html</code></a> (see
+          <a href="#embed">Add PDF Remediation to your course</a>).
+        </li>
+        <li>
+          Choose the <strong>module</strong> from the dropdown to focus on PDFs in that unit.
+        </li>
+        <li>
+          Use <strong>Select All Unremediated or check individual PDFs.</strong> Clear selection anytime.
+        </li>
+        <li>
+          For PDFs not yet remediated: click <strong>Assess Selected</strong>. You’ll see page counts (and estimates). Per PDF, set
+          <strong>Document type</strong>, optional <strong>Custom instructions</strong>, and checkboxes for <strong>Remediate</strong> and <strong>Deploy after</strong>.
+        </li>
+        <li>
+          Click <strong>Start Remediation</strong> for the queued PDFs. Watch the progress screen until each run completes.
+        </li>
+        <li>
+          After completion, use <strong>View Report</strong> for details. If you did not deploy during the run, use <strong>Deploy</strong> when you are ready to publish the HTML topic.
+        </li>
+        <li>
+          If the source PDF had important <strong>images or figures</strong>, open the new <strong>(Accessible HTML)</strong> topic in Content. Use <strong>Crop</strong> on any figure that still shows extra slide background or margins, then save—so the preserved image is framed the way you want for the class.
+        </li>
+        <li>
+          Optional: <strong>Download Word</strong> to edit in Microsoft Word; you may re-upload or adjust content manually if needed.
+        </li>
+        <li>
+          For PDFs already remediated: <strong>Recompile HTML</strong> re-runs the pipeline (e.g., after prompt tweaks). <strong>Reset Selected</strong> removes deployed topics and optionally deletes generated course files—use with care (see below).
+        </li>
+      </ol>
+    </section>
+
+    <section id="demo">
+      <h2 class="cmp-heading-3">Interactive UI demo (static mock)</h2>
+      <p class="cmp-paragraph">
+        The box below is a <strong>non-functional layout mock</strong> of the real Brightspace UI. Click the scenario to rehearse the order of actions with your team.
+      </p>
+
+      <div class="demo-shell" aria-label="Mock PDF Remediation interface">
+        <div class="demo-header">
+          <span class="cmp-heading-5">PDF Remediation</span>
+          <button type="button" class="cmp-button cmp-button--white cmp-button--narrow" disabled>Settings</button>
+        </div>
+        <div class="demo-body">
+          <h3 class="mock-title cmp-heading-3">PDF Remediation</h3>
+          <div class="demo-label">Module</div>
+          <select class="demo-select cmp-input" disabled aria-hidden="true">
+            <option>Module 3: Example unit</option>
+          </select>
+
+          <div class="demo-actions">
+            <button type="button" class="cmp-button cmp-button--narrow" disabled>Select All Unremediated</button>
+            <button type="button" class="cmp-button cmp-button--narrow" disabled>Select All Remediated</button>
+            <button type="button" class="cmp-button cmp-button--narrow" disabled>Clear Selection</button>
+          </div>
+
+          <div class="demo-row highlight callout-arrow">
+            <input type="checkbox" checked disabled />
+            <div class="demo-row-content">
+              <div class="demo-title-line">
+                <strong>Week-4-Reading.pdf</strong>
+                <span class="badge badge-muted">Not Remediated</span>
+              </div>
+              <small class="util-color-dark-gray">12 pages</small>
+              <div class="callout-tag">After Assess: set document type, Remediate, Deploy after → Start Remediation</div>
+            </div>
+          </div>
+
+          <div class="demo-row">
+            <input type="checkbox" disabled />
+            <div class="demo-row-content">
+              <div class="demo-title-line">
+                <strong>Syllabus-Fall.pdf</strong>
+                <span class="badge badge-info">Remediated</span>
+                <span class="badge badge-info">Deployed</span>
+              </div>
+              <div class="demo-actions demo-btn-spaced">
+                <button type="button" class="cmp-button cmp-button--sm" disabled>View Report</button>
+                <button type="button" class="cmp-button cmp-button--sm" disabled>Download Word</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-row">
+            <input type="checkbox" disabled />
+            <div class="demo-row-content">
+              <div class="demo-title-line">
+                <strong>Slides-Deck.pdf</strong>
+                <span class="badge badge-warn">In Process</span>
+              </div>
+              <small class="util-color-dark-gray">Shown while the tool is working</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="demo-scenario">
+        <summary>Scenario A — First-time remediation for a reading</summary>
+        <ol>
+          <li>Select the module that contains the reading PDF.</li>
+          <li>Check the PDF → <strong>Assess Selected</strong>.</li>
+          <li>Choose document type <strong>General / Article</strong> (or a closer match).</li>
+          <li>Leave <strong>Deploy after</strong> unchecked if you want to review HTML before publishing; otherwise check it.</li>
+          <li><strong>Start Remediation</strong> → when done, open the new “(Accessible HTML)” topic or deploy manually.</li>
+        </ol>
+      </details>
+      <details class="demo-scenario">
+        <summary>Scenario B — Instructor slide deck exported as PDF</summary>
+        <ol>
+          <li>Assess as usual, then set document type to <strong>Slide Deck</strong> so bullets and slide structure are preserved.</li>
+          <li>Add custom instructions only if something special must be emphasized (e.g., “Do not transcribe university logo watermark”).</li>
+          <li>Run remediation; verify headings and lists in the HTML topic before hiding the old PDF if desired.</li>
+        </ol>
+      </details>
+      <details class="demo-scenario">
+        <summary>Scenario C — Undo a mistaken deploy</summary>
+        <ol>
+          <li>Select remediated PDFs → <strong>Reset Selected</strong>.</li>
+          <li><strong>Remove from Content</strong> — removes only the deployed HTML topic; generated files stay in course files.</li>
+          <li><strong>Remove Everything</strong> — also deletes generated course files for those documents. Use when you need a clean slate.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="doc-types">
+      <h2 class="cmp-heading-3">Document types (pick the best match)</h2>
+      <p class="cmp-paragraph">
+        The document type tells the AI how to interpret layout. Hover options in the real app for short descriptions.
+      </p>
+      <table class="doc-types">
+        <thead>
+          <tr>
+            <th scope="col" class="util-background-olympic util-color-white">Type</th>
+            <th scope="col" class="util-background-olympic util-color-white">Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>General / Article</strong></td>
+            <td>Articles, reports, essays, text-heavy PDFs.</td>
+          </tr>
+          <tr>
+            <td><strong>Slide Deck</strong></td>
+            <td>Exported presentation slides—preserves titles, bullets, speaker notes when visible.</td>
+          </tr>
+          <tr>
+            <td><strong>Annual Report / Magazine</strong></td>
+            <td>Rich layouts: sidebars, callouts, infographics as figures.</td>
+          </tr>
+          <tr>
+            <td><strong>Brochure / Flyer</strong></td>
+            <td>Marketing-style multi-column layouts, CTAs, contact blocks.</td>
+          </tr>
+          <tr>
+            <td><strong>Checklist / Worksheet</strong></td>
+            <td>Forms, blanks, checkboxes, numbered questions.</td>
+          </tr>
+          <tr>
+            <td><strong>Scanned Document</strong></td>
+            <td>Book scans, photocopies—handles gutters and partial adjacent pages more carefully.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <strong>Custom instructions (optional).</strong> One or two sentences can steer emphasis (e.g., “Preserve all data tables verbatim” or “Skip decorative cover art”).
+      </div>
+    </section>
+
+    <section id="status">
+      <h2 class="cmp-heading-3">Statuses, deploy, and reset</h2>
+      <h3 class="cmp-heading-6">Status badges</h3>
+      <ul>
+        <li><strong>Not Remediated</strong> — no successful run yet (or reset removed the report).</li>
+        <li><strong>In Process</strong> — remediation is running for that PDF.</li>
+        <li><strong>Remediated</strong> — HTML (and supporting files) was generated; you can view the report, deploy if needed, or export Word.</li>
+        <li><strong>Deployed</strong> — an accessible HTML topic exists in the module for that output.</li>
+      </ul>
+      <h3 class="cmp-heading-6">Deploy</h3>
+      <p class="cmp-paragraph">
+        Deploy creates a <strong>new</strong> content topic; it does not overwrite the PDF topic. Titles append <code>(Accessible HTML)</code> so students can tell versions apart.
+      </p>
+      <h3 class="cmp-heading-6">Reset options</h3>
+      <ul>
+        <li><strong>Remove from Content</strong> — unpublishes the generated HTML topic from the module. Course files remain (you can deploy again).</li>
+        <li><strong>Remove Everything</strong> — removes the HTML topic <em>and</em> deletes generated files for that document from course files. Use when you need to discard outputs entirely.</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2 class="cmp-heading-3">Questions?</h2>
+      <p class="cmp-paragraph">
+        If you have questions, reach out to James Castle at <a href="mailto:jcastle@uga.edu">jcastle@uga.edu</a>
+        or Todd Hollett at <a href="mailto:tlh@uga.edu">tlh@uga.edu</a>.
+      </p>
+    </section>
+
+  </div>
+  </main>
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+  <script src="https://design.online.uga.edu/js/scripts.js"></script>
+  <script type="module" src="js/uga-components.js"></script>
+</body>
+</html>

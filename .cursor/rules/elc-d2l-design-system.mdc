@@ -1,0 +1,29 @@
+---
+description: eLC (UGA D2L Brightspace) + UGA Online Design System for course-file HTML and React shells
+globs: "**/*.{tsx,jsx,html,css}"
+alwaysApply: false
+---
+
+# eLC and UGA Online Design System
+
+**eLC** is UGA’s name for **D2L Brightspace**. Treat Valence paths, session cookies, and Manage Files / Content hosting constraints as first-class.
+
+## Design system (CDN)
+
+Official docs: [Installation](https://design.online.uga.edu/getting-started/installation/).
+
+- **CSS (latest):** `https://design.online.uga.edu/css/base.css`
+- **JS:** `https://design.online.uga.edu/js/scripts.js` (before closing `</body>`)
+- **Fonts:** load Merriweather, Merriweather Sans, and Oswald from Google Fonts as documented on the installation page (design system expects them).
+- **Production:** prefer **versioned** URLs (e.g. `https://design.online.uga.edu/v1.5.3/css/base.css` and matching `.../js/scripts.js`) so LMS pages do not change unexpectedly when the CDN updates.
+
+## HTML / entry templates
+
+- Include a **skip link** and wrap primary content in **`<main id="main-content">`** when using full-page patterns from the design system.
+- Use documented layout utilities where appropriate (e.g. `obj-reading-width` from the minimal template on the installation page).
+- For **course-file** React apps, ensure the **built** `index.html` still loads design-system links correctly (absolute CDN URLs are fine).
+
+## Brightspace integration
+
+- Respect **`VITE_API_BASE_URL`**, **`VITE_LP_VERSION`**, and **`VITE_LE_VERSION`** (and any app-specific `VITE_*` from the project README).
+- Do not assume shadow DOM for OOL course-file tools unless the project already does; match existing patterns in the repo.
