@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cursor 101 — UGA Online</title>
+<title>UGA Online — Cursor &amp; Team Docs Starter Guide</title>
 <style>
   :root {
     --red: #BA0C2F; --black: #1a1a1a; --gray: #f4f4f4; --mid-gray: #e0e0e0;
@@ -14,1004 +14,511 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; color: var(--text); background: #fff; line-height: 1.7; }
   .doc-header { background: var(--red); color: #fff; position: relative; overflow: hidden; }
-  .header-content { padding: 48px 60px 40px; position: relative; z-index: 2; }
+  .header-content { padding: 48px 60px 40px; position: relative; z-index: 2; max-width: 900px; }
   .uga-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 4px 12px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; font-weight: 600; }
-  .doc-header h1 { font-size: 42px; font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
-  .doc-header .subtitle { font-size: 18px; opacity: 0.9; }
-  .header-meta { margin-top: 24px; display: flex; gap: 32px; font-size: 13px; opacity: 0.8; }
+  .doc-header h1 { font-size: 38px; font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+  .doc-header .subtitle { font-size: 17px; opacity: 0.92; max-width: 720px; }
+  .header-meta { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; opacity: 0.85; }
   .header-bg-shape { position: absolute; right: -60px; top: -60px; width: 400px; height: 400px; border-radius: 50%; background: rgba(255,255,255,0.06); z-index: 1; }
-  .header-bg-shape2 { position: absolute; right: 120px; bottom: -80px; width: 250px; height: 250px; border-radius: 50%; background: rgba(255,255,255,0.04); z-index: 1; }
-  .toc { background: var(--gray); border-left: 5px solid var(--red); padding: 28px 36px; margin: 40px 60px; border-radius: 0 8px 8px 0; }
+  .toc { background: var(--gray); border-left: 5px solid var(--red); padding: 28px 36px; margin: 40px 60px; border-radius: 0 8px 8px 0; max-width: 900px; }
   .toc h3 { color: var(--red); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
-  .toc ol { padding-left: 20px; column-count: 2; column-gap: 40px; }
-  .toc li { margin-bottom: 6px; font-weight: 500; break-inside: avoid; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 8px; font-weight: 500; }
   .toc a { color: var(--blue); text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
-  .section { padding: 48px 60px; border-bottom: 1px solid var(--mid-gray); }
-  .section:last-child { border-bottom: none; }
+  .toc .part { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 14px; margin-bottom: 4px; list-style: none; margin-left: -20px; font-weight: 700; }
+  .section { padding: 48px 60px; border-bottom: 1px solid var(--mid-gray); max-width: 960px; }
+  .section-wide { max-width: none; }
   .section-number { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--red); color: #fff; border-radius: 50%; font-weight: 800; font-size: 16px; margin-bottom: 12px; }
   .section h2 { font-size: 26px; color: var(--black); margin-bottom: 8px; font-weight: 800; }
   .section-intro { font-size: 16px; color: #555; margin-bottom: 28px; max-width: 780px; }
   h3.sub { font-size: 18px; color: var(--red); margin: 28px 0 12px; font-weight: 700; }
-  p.body-text { margin-bottom: 14px; }
-  .callout { border-radius: 8px; padding: 18px 22px; margin: 22px 0; display: flex; gap: 14px; align-items: flex-start; }
-  .callout-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  p.body-text { margin-bottom: 14px; max-width: 780px; }
+  .callout { border-radius: 8px; padding: 18px 22px; margin: 22px 0; display: flex; gap: 14px; align-items: flex-start; max-width: 820px; }
+  .callout-icon { font-size: 22px; flex-shrink: 0; }
   .callout-body strong { display: block; margin-bottom: 4px; font-size: 14px; }
   .callout.tip { background: var(--light-blue); border-left: 4px solid var(--blue); }
   .callout.warn { background: var(--light-orange); border-left: 4px solid var(--orange); }
   .callout.note { background: var(--light-green); border-left: 4px solid var(--green); }
   .callout.info { background: #f9f0ff; border-left: 4px solid #6b3fa0; }
-  .callout.vscode { background: #e8f0fb; border-left: 4px solid #0078d4; }
-  .steps { list-style: none; margin: 20px 0; }
+  .steps { list-style: none; margin: 20px 0; max-width: 820px; }
   .steps li { display: flex; gap: 16px; margin-bottom: 18px; align-items: flex-start; }
   .step-num { flex-shrink: 0; width: 30px; height: 30px; background: var(--red); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; margin-top: 2px; }
   .step-body { flex: 1; }
   .step-body strong { display: block; font-size: 15px; margin-bottom: 3px; }
-  table.shortcuts { width: 100%; border-collapse: collapse; margin: 18px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  table.shortcuts thead tr { background: var(--red); color: #fff; }
-  table.shortcuts th { padding: 12px 16px; text-align: left; font-size: 13px; letter-spacing: 0.5px; }
-  table.shortcuts td { padding: 11px 16px; border-bottom: 1px solid var(--mid-gray); font-size: 14px; }
-  table.shortcuts tr:nth-child(even) td { background: var(--gray); }
-  table.shortcuts tr:last-child td { border-bottom: none; }
+  table.data { width: 100%; border-collapse: collapse; margin: 18px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); font-size: 14px; }
+  table.data thead tr { background: var(--red); color: #fff; }
+  table.data th { padding: 12px 16px; text-align: left; font-size: 13px; }
+  table.data td { padding: 11px 16px; border-bottom: 1px solid var(--mid-gray); vertical-align: top; }
+  table.data tr:nth-child(even) td { background: var(--gray); }
+  table.data tr:last-child td { border-bottom: none; }
+  table.data code { font-size: 12px; }
   kbd { background: #2c2c2c; color: #f0f0f0; border-radius: 4px; padding: 2px 8px; font-family: 'Courier New', monospace; font-size: 12px; white-space: nowrap; }
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin: 24px 0; }
-  .feature-card { border: 1px solid var(--border); border-radius: 10px; padding: 22px 20px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-  .card-icon { font-size: 28px; margin-bottom: 10px; }
-  .feature-card h4 { font-size: 15px; color: var(--red); margin-bottom: 6px; font-weight: 700; }
-  .feature-card p { font-size: 13px; color: #555; line-height: 1.5; }
-  .diagram-wrap { background: var(--gray); border-radius: 12px; padding: 28px 20px; margin: 24px 0; text-align: center; }
-  .diagram-title { font-size: 13px; font-weight: 700; color: #777; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
-  .code-block { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 18px 22px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; margin: 14px 0; overflow-x: auto; }
+  .code-block { background: #1e1e2e; color: #cdd6f4; border-radius: 8px; padding: 18px 22px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; margin: 14px 0; overflow-x: auto; max-width: 820px; }
   .code-block .cm { color: #6c7086; }
   .code-block .hi { color: #a6e3a1; }
-  .prompt-example { border: 2px dashed var(--border); border-radius: 8px; padding: 16px 20px; margin: 14px 0; background: #fafafa; position: relative; }
-  .prompt-label { position: absolute; top: -11px; left: 14px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 2px 10px; border-radius: 3px; }
-  .prompt-example p { font-style: italic; color: #333; font-size: 14px; }
-  .compare-table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-  .compare-table th { background: var(--black); color: #fff; padding: 13px 18px; font-size: 14px; }
-  .compare-table th:first-child { text-align: left; background: #333; }
-  .compare-table td { padding: 12px 18px; border-bottom: 1px solid var(--mid-gray); font-size: 14px; text-align: center; }
-  .compare-table td:first-child { text-align: left; font-weight: 600; }
-  .compare-table tr:nth-child(even) td { background: var(--gray); }
-  .check { color: #1a7a44; } .cross { color: #ba0c2f; }
-  .mode-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 24px 0; }
-  .mode-card { border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-  .mode-header { padding: 16px 18px; color: #fff; }
-  .mode-header h4 { font-size: 16px; margin-bottom: 4px; }
-  .mode-header .sc { font-size: 12px; opacity: 0.8; }
-  .mode-body { padding: 16px 18px; background: #fff; border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; }
-  .mode-body p { font-size: 13px; color: #444; line-height: 1.5; margin-bottom: 10px; }
-  .mode-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; }
-  .plan-box { border: 2px solid var(--red); border-radius: 12px; overflow: hidden; margin: 24px 0; }
-  .plan-header { background: var(--red); color: #fff; padding: 20px 28px; }
-  .plan-header h4 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
-  .plan-header .price { font-size: 15px; opacity: 0.9; }
-  .plan-features { display: grid; grid-template-columns: 1fr 1fr; }
-  .plan-col { padding: 24px 28px; }
-  .plan-col:first-child { border-right: 1px solid var(--mid-gray); }
-  .plan-col h5 { font-size: 13px; color: var(--red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; font-weight: 700; }
-  .plan-col ul { list-style: none; }
-  .plan-col li { padding: 5px 0; font-size: 14px; display: flex; gap: 8px; align-items: flex-start; }
-  .plan-col li::before { content: "✔"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .token-table { width: 100%; border-collapse: collapse; margin: 18px 0; }
-  .token-table th { background: #2c2c2c; color: #fff; padding: 11px 16px; text-align: left; font-size: 13px; }
-  .token-table td { padding: 11px 16px; border-bottom: 1px solid var(--mid-gray); font-size: 14px; vertical-align: top; }
-  .token-table tr:nth-child(even) td { background: var(--gray); }
-  .badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; letter-spacing: 0.5px; }
-  .badge.save { background: #e8f5ee; color: var(--green); }
-  .badge.cost { background: #fdeaea; color: var(--red); }
-  .doc-footer { background: var(--black); color: rgba(255,255,255,0.7); text-align: center; padding: 28px 40px; font-size: 13px; }
-  .doc-footer strong { color: #fff; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 24px 0; }
+  .feature-card { border: 1px solid var(--border); border-radius: 10px; padding: 20px 18px; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .feature-card h4 { font-size: 14px; color: var(--red); margin-bottom: 6px; font-weight: 700; }
+  .feature-card p { font-size: 13px; color: #555; line-height: 1.5; }
+  .feature-card a { color: var(--blue); font-size: 13px; }
+  .diagram-wrap { background: var(--gray); border-radius: 12px; padding: 28px 20px; margin: 24px 0; text-align: center; }
+  .diagram-title { font-size: 13px; font-weight: 700; color: #777; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+  .mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+  .mode-card { border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); border: 1px solid var(--border); }
+  .mode-header { padding: 14px 16px; color: #fff; }
+  .mode-header h4 { font-size: 15px; }
+  .mode-body { padding: 14px 16px; background: #fff; font-size: 13px; color: #444; line-height: 1.5; }
+  .flow-horizontal { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 20px 0; max-width: 820px; }
+  .flow-box { background: var(--gray); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 13px; font-weight: 600; }
+  .flow-arrow { color: var(--red); font-weight: 700; }
+  .doc-footer { background: var(--black); color: rgba(255,255,255,0.7); text-align: center; padding: 28px 40px; font-size: 13px; margin-top: 0; }
+  .doc-footer a { color: rgba(255,255,255,0.9); }
   @media (max-width: 700px) {
-    .section { padding: 32px 24px; } .header-content { padding: 32px 24px; }
-    .toc { margin: 24px; } .toc ol { column-count: 1; }
-    .mode-grid { grid-template-columns: 1fr; }
-    .plan-features { grid-template-columns: 1fr; }
-    .plan-col:first-child { border-right: none; border-bottom: 1px solid var(--mid-gray); }
+    .section, .toc { padding: 28px 24px; margin-left: 0; margin-right: 0; }
+    .header-content { padding: 32px 24px; }
+    .doc-header h1 { font-size: 28px; }
   }
 </style>
 </head>
 <body>
 
 <header class="doc-header">
-  <div class="header-bg-shape"></div><div class="header-bg-shape2"></div>
+  <div class="header-bg-shape"></div>
+  <div class="header-bg-shape" style="right:120px;bottom:-80px;width:250px;height:250px;top:auto"></div>
   <div class="header-content">
-    <div class="uga-badge">UGA Online · Instructional Design &amp; Q&amp;A · Analytics</div>
-    <h1>Cursor 101</h1>
-    <div class="subtitle">Your VS Code experience, supercharged — a transition guide for the UGA Online team</div>
+    <div class="uga-badge">UGA Online · uga-online-cursor-docs</div>
+    <h1>Cursor &amp; Team Docs Starter Guide</h1>
+    <p class="subtitle">For teammates new to <strong>VS Code</strong>, <strong>Cursor</strong>, and <strong>GitHub</strong> — how to use this repository, work safely on OOL code, and get help from AI without breaking upstream templates.</p>
     <div class="header-meta">
-      <span>📅 May 2026</span><span>⏱ 20-min read</span>
-      <span>🎯 VS Code users</span><span>✅ Teams plan</span>
+      <span>Updated May 2026</span>
+      <span>Repo: <strong>uga-ool/uga-online-cursor-docs</strong></span>
+      <span>~35 min read</span>
     </div>
   </div>
 </header>
 
 <nav class="toc">
-  <h3>📋 Table of Contents</h3>
+  <h3>Table of contents</h3>
   <ol>
-    <li><a href="#vscode">From VS Code to Cursor — What Changes?</a></li>
-    <li><a href="#migrate">Bringing Your Projects Over</a></li>
-    <li><a href="#interface">The Interface at a Glance</a></li>
-    <li><a href="#agent-modes">Agent Modes — All 5 Options Explained</a></li>
-    <li><a href="#ai-chat">AI Chat &amp; the @ Reference System</a></li>
-    <li><a href="#tokens">Models, Credits, Context &amp; Usage</a></li>
-    <li><a href="#teams">Cursor Teams — Your Plan &amp; Collaboration</a></li>
-    <li><a href="#use-cases">Use Cases for ID &amp; Q&amp;A Teams</a></li>
-    <li><a href="#shortcuts">Essential Shortcuts</a></li>
-    <li><a href="#tips">Tips, Tricks &amp; Gotchas</a></li>
+    <li class="part">Part A — Team repo &amp; GitHub</li>
+    <li><a href="#start">What is uga-online-cursor-docs?</a></li>
+    <li><a href="#github-basics">GitHub basics (plain language)</a></li>
+    <li><a href="#setup">One-time setup on your computer</a></li>
+    <li><a href="#repo-map">What’s in this repository</a></li>
+    <li><a href="#cursor-config">Rules, skills &amp; commands (.cursor/)</a></li>
+    <li><a href="#daily-workflow">Daily workflow for OOL developers</a></li>
+    <li><a href="#prs">Pull requests &amp; code review</a></li>
+    <li class="part">Part B — Cursor editor</li>
+    <li><a href="#vscode">VS Code vs Cursor</a></li>
+    <li><a href="#modes">Agent modes (Ask, Agent, Plan…)</a></li>
+    <li><a href="#ai-chat">@ references in chat</a></li>
+    <li><a href="#security">Security &amp; FERPA</a></li>
+    <li><a href="#shortcuts">Shortcuts &amp; tips</a></li>
+    <li><a href="#topic-docs">Find technical documentation</a></li>
   </ol>
 </nav>
 
-<!-- SECTION 1 -->
-<section class="section" id="vscode">
+<!-- PART A -->
+
+<section class="section" id="start">
   <div class="section-number">1</div>
-  <h2>From VS Code to Cursor — What Changes?</h2>
-  <p class="section-intro">Cursor is built as a fork of VS Code. If you've been working in VS Code, you are already 90% of the way there. This section covers exactly what's the same, what's new, and what's genuinely better.</p>
+  <h2>What is uga-online-cursor-docs?</h2>
+  <p class="section-intro">This repository is the <strong>shared home</strong> for UGA Online (OOL) team documentation and Cursor AI configuration. It does not replace the code repos where apps actually live — it sits beside them and tells you (and Cursor) how to work.</p>
 
-  <div class="callout vscode">
-    <div class="callout-icon">🔵</div>
-    <div class="callout-body">
-      <strong>The One-Line Summary</strong>
-      Cursor is VS Code with a deeply integrated AI co-pilot that understands your entire project — not just the file you have open. Your muscle memory, extensions, themes, and keybindings all carry over automatically.
-    </div>
-  </div>
-
-  <h3 class="sub">What Stays Exactly the Same</h3>
   <div class="card-grid">
     <div class="feature-card">
-      <div class="card-icon">⌨️</div><h4>All Your Keybindings</h4>
-      <p>Every VS Code shortcut works identically in Cursor. Ctrl+P, Ctrl+Shift+P, Ctrl+Z — no relearning required.</p>
+      <h4>Documentation hub</h4>
+      <p>Markdown guides for eLC, React course-file apps, AI agents, Lit components, video/Kaltura, deploy checklists — organized by <strong>job</strong>, not by mirroring every repo.</p>
     </div>
     <div class="feature-card">
-      <div class="card-icon">🧩</div><h4>Your Extensions</h4>
-      <p>Cursor supports the full VS Code Marketplace. Every extension you rely on installs and runs as normal.</p>
+      <h4>Cursor team brain</h4>
+      <p><code>.cursor/rules/</code>, <code>.cursor/skills/</code>, and <code>.cursor/commands/</code> apply when this repo (or a multi-root workspace that includes it) is open in Cursor.</p>
     </div>
     <div class="feature-card">
-      <div class="card-icon">🎨</div><h4>Themes &amp; Settings</h4>
-      <p>Your color themes, font choices, and editor preferences transfer directly. Import your VS Code profile in one click during first setup.</p>
-    </div>
-    <div class="feature-card">
-      <div class="card-icon">📁</div><h4>File Explorer &amp; Layout</h4>
-      <p>The sidebar, panel layout, and activity bar are identical. Everything is in exactly the same place.</p>
+      <h4>Not application code</h4>
+      <p>You generally <strong>do not</strong> deploy this repo to Brightspace. You edit app code in repos like <code>UGA-Brightspace-React-Apps</code> or <code>uga-lit-components</code>.</p>
     </div>
   </div>
 
-  <h3 class="sub">What's New in Cursor</h3>
-  <table class="compare-table">
-    <thead><tr><th>Feature</th><th>VS Code (with Copilot)</th><th>Cursor ✨</th></tr></thead>
-    <tbody>
-      <tr><td>AI autocomplete</td><td>✔ Single-line suggestions</td><td class="check">✔ Multi-line, context-aware</td></tr>
-      <tr><td>AI understands whole codebase/project</td><td class="cross">✘ Partial (open files only)</td><td class="check">✔ Full project indexing</td></tr>
-      <tr><td>Multi-file AI editing</td><td class="cross">✘ Limited 2025 addition</td><td class="check">✔ Native Agent Mode</td></tr>
-      <tr><td>AI can run terminal commands</td><td class="cross">✘</td><td class="check">✔ In Agent Mode</td></tr>
-      <tr><td>Inline diff review</td><td class="cross">✘</td><td class="check">✔ Accept / reject each change</td></tr>
-      <tr><td>Choice of AI model</td><td class="cross">✘ GitHub models only</td><td class="check">✔ Claude, GPT, Gemini &amp; more</td></tr>
-      <tr><td>Shared team AI rules</td><td class="cross">✘</td><td class="check">✔ Teams plan feature</td></tr>
-      <tr><td>Background (cloud) agents</td><td class="cross">✘</td><td class="check">✔ Available on Teams plan</td></tr>
-    </tbody>
-  </table>
-
-  <div class="callout note">
+  <div class="callout tip">
     <div class="callout-icon">💡</div>
     <div class="callout-body">
-      <strong>The Key Mental Shift</strong>
-      In VS Code, AI helps you write one line or function at a time. In Cursor, AI understands your entire project and can plan, edit, and execute across multiple files. Think of it as moving from "AI autocomplete" to "AI collaborator."
+      <strong>Who should clone this?</strong>
+      Anyone on the OOL dev/ID team using Cursor on <code>uga-ool</code> GitHub repos. Clone it once next to your other project folders, open it in Cursor, and pull updates when the team adds new rules or docs.
     </div>
+  </div>
+
+  <div class="flow-horizontal">
+    <span class="flow-box">uga-online-cursor-docs</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-box">docs + .cursor config</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-box">UGA-Brightspace-React-Apps, lit-components, …</span>
+    <span class="flow-arrow">→</span>
+    <span class="flow-box">eLC / production</span>
   </div>
 </section>
 
-<!-- SECTION 2 -->
-<section class="section" id="migrate">
+<section class="section" id="github-basics">
   <div class="section-number">2</div>
-  <h2>Bringing Your Projects Over from VS Code</h2>
-  <p class="section-intro">Moving your existing work into Cursor is seamless — there is nothing to convert or export. Your project folders are identical in both editors.</p>
+  <h2>GitHub basics (plain language)</h2>
+  <p class="section-intro">If GitHub is new to you, these terms appear everywhere in our workflow. You do not need to memorize Git commands on day one — the Cursor agent can help — but you should understand the ideas.</p>
 
-  <h3 class="sub">Step 1 — Import Your VS Code Settings (First Launch)</h3>
-  <p class="body-text">When you first open Cursor, it offers to import your VS Code configuration automatically. This brings over your extensions, themes, keybindings, and preferences in one click.</p>
+  <table class="data">
+    <thead><tr><th>Term</th><th>What it means for OOL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Repository (repo)</strong></td><td>A project folder on GitHub. OOL code lives under the <a href="https://github.com/orgs/uga-ool/repositories" target="_blank" rel="noopener">uga-ool organization</a>.</td></tr>
+      <tr><td><strong>Clone</strong></td><td>Copy a repo from GitHub to your computer so you can edit files. You do this once per repo (or when you get a new machine).</td></tr>
+      <tr><td><strong><code>main</code> branch</strong></td><td>The primary, shared version of the project. Do not commit directly to <code>main</code> for team code — use a branch and pull request.</td></tr>
+      <tr><td><strong>Branch</strong></td><td>Your own line of work (e.g. <code>feature/quiz-export</code>). Safe place to experiment until review.</td></tr>
+      <tr><td><strong>Commit</strong></td><td>A saved snapshot of your changes with a message describing <em>why</em>.</td></tr>
+      <tr><td><strong>Push</strong></td><td>Upload your commits from your computer to GitHub.</td></tr>
+      <tr><td><strong>Pull request (PR)</strong></td><td>Asking the team to merge your branch into <code>main</code>. Reviewers comment on GitHub before merge.</td></tr>
+      <tr><td><strong>Pull / git pull</strong></td><td>Download the latest changes from GitHub to your computer (do this often on <code>main</code> before starting new work).</td></tr>
+    </tbody>
+  </table>
 
-  <div class="diagram-wrap">
-    <div class="diagram-title">📊 VS Code → Cursor Migration Flow</div>
-    <svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;width:100%;">
-      <defs><marker id="a1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#BA0C2F"/></marker></defs>
-      <rect x="10" y="50" width="150" height="80" rx="8" fill="#0078d4"/>
-      <text x="85" y="82" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" font-family="Arial">Open Cursor</text>
-      <text x="85" y="99" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">First launch prompts</text>
-      <text x="85" y="114" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">VS Code import</text>
-      <line x1="160" y1="90" x2="185" y2="90" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a1)"/>
-      <rect x="187" y="50" width="155" height="80" rx="8" fill="#1a4e8a"/>
-      <text x="264" y="82" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" font-family="Arial">Click "Import</text>
-      <text x="264" y="97" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" font-family="Arial">from VS Code"</text>
-      <text x="264" y="114" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="11" font-family="Arial">Extensions, themes, keys</text>
-      <line x1="342" y1="90" x2="367" y2="90" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a1)"/>
-      <rect x="369" y="50" width="155" height="80" rx="8" fill="#1a7a44"/>
-      <text x="446" y="82" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" font-family="Arial">File → Open Folder</text>
-      <text x="446" y="99" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">Select your existing</text>
-      <text x="446" y="114" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">project folder</text>
-      <line x1="524" y1="90" x2="549" y2="90" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a1)"/>
-      <rect x="551" y="50" width="160" height="80" rx="8" fill="#1a1a1a"/>
-      <text x="631" y="79" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13" font-family="Arial">🎉 Done.</text>
-      <text x="631" y="97" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="Arial">All files in Explorer —</text>
-      <text x="631" y="112" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="Arial">completely unchanged.</text>
-    </svg>
-  </div>
-
-  <h3 class="sub">Step 2 — Open Your Existing Projects</h3>
+  <h3 class="sub">Typical flow (what you will do)</h3>
   <ol class="steps">
-    <li><div class="step-num">1</div><div class="step-body"><strong>Just open the same folder</strong> Go to <strong>File → Open Folder</strong> and select your existing project directory. Nothing in the folder changes — Cursor reads it exactly as VS Code did.</div></li>
-    <li><div class="step-num">2</div><div class="step-body"><strong>Cursor indexes your project automatically</strong> On first open, Cursor semantically indexes your files in the background, giving the AI full project awareness. A small indicator appears in the status bar; takes 1–2 minutes for large folders.</div></li>
-    <li><div class="step-num">3</div><div class="step-body"><strong>Add a <code>.cursorignore</code> file for large projects (optional)</strong> Works like <code>.gitignore</code> — tells Cursor which files to exclude from AI indexing (large data exports, generated output). Keeps context clean and fast.</div></li>
-    <li><div class="step-num">4</div><div class="step-body"><strong>Add team AI rules to the project folder</strong> Create a <code>.cursor/rules/</code> folder and add Markdown files with your team's content standards. Commit this to version control so everyone gets the same AI behavior automatically.</div></li>
+    <li><div class="step-num">1</div><div class="step-body"><strong>Clone</strong> the app repo (and this docs repo) to a folder on your Mac/PC.</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong>Create a branch</strong> from <code>main</code> for your task.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong>Edit files</strong> in Cursor; review AI diffs before accepting.</div></li>
+    <li><div class="step-num">4</div><div class="step-body"><strong>Commit &amp; push</strong> your branch to GitHub.</div></li>
+    <li><div class="step-num">5</div><div class="step-body"><strong>Open a PR</strong> on github.com; request review; address comments; merge when approved.</div></li>
   </ol>
 
-  <div class="callout tip">
-    <div class="callout-icon">💡</div>
-    <div class="callout-body">
-      <strong>Pro Tip: Keep VS Code Around During Transition</strong>
-      Both editors use the same files, so you can switch back and forth with no conflicts. Most team members find they stop opening VS Code within 1–2 weeks naturally.
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3 -->
-<section class="section" id="interface">
-  <div class="section-number">3</div>
-  <h2>The Interface at a Glance</h2>
-  <p class="section-intro">If you know VS Code, you know Cursor's layout. The only new elements are the AI Chat panel and the mode selector at the bottom of the chat — everything else is identical.</p>
-
-  <div class="diagram-wrap">
-    <div class="diagram-title">🖥️ Cursor UI — New vs. VS Code</div>
-    <svg viewBox="0 0 700 390" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;width:100%;">
-      <rect x="10" y="10" width="680" height="370" rx="10" fill="#1e1e2e" stroke="#444" stroke-width="1.5"/>
-      <rect x="10" y="10" width="680" height="32" rx="10" fill="#2a2a3e"/>
-      <rect x="10" y="30" width="680" height="12" fill="#2a2a3e"/>
-      <circle cx="34" cy="26" r="6" fill="#ff5f57"/><circle cx="54" cy="26" r="6" fill="#febc2e"/><circle cx="74" cy="26" r="6" fill="#28c840"/>
-      <text x="350" y="30" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="11" font-family="Arial">Cursor — uga-course-2026</text>
-      <!-- Activity bar -->
-      <rect x="10" y="42" width="46" height="338" fill="#1a1a2e"/>
-      <rect x="22" y="56" width="22" height="22" rx="4" fill="#BA0C2F"/>
-      <text x="33" y="71" text-anchor="middle" fill="#fff" font-size="11">📁</text>
-      <text x="33" y="102" text-anchor="middle" fill="#aaa" font-size="14">🔍</text>
-      <text x="33" y="134" text-anchor="middle" fill="#aaa" font-size="14">⑂</text>
-      <!-- Sidebar -->
-      <rect x="56" y="42" width="155" height="338" fill="#1e1e30"/>
-      <text x="66" y="62" fill="#888" font-size="10" font-family="Arial" letter-spacing="1">EXPLORER</text>
-      <text x="66" y="82" fill="#cdd6f4" font-size="12" font-family="Arial">📂 uga-course</text>
-      <text x="76" y="97" fill="#a6adc8" font-size="11" font-family="Arial">📄 module1.html</text>
-      <text x="76" y="112" fill="#BA0C2F" font-size="11" font-family="Arial" font-weight="bold">📄 module2.html</text>
-      <text x="76" y="127" fill="#a6adc8" font-size="11" font-family="Arial">📄 rubric.csv</text>
-      <text x="76" y="142" fill="#a6adc8" font-size="11" font-family="Arial">📁 .cursor/rules/</text>
-      <rect x="60" y="295" width="147" height="36" rx="4" fill="rgba(0,120,212,0.15)"/>
-      <text x="133" y="311" text-anchor="middle" fill="#5599ff" font-size="9" font-family="Arial" font-weight="bold">🔵 SAME AS VS CODE</text>
-      <text x="133" y="324" text-anchor="middle" fill="#5599ff" font-size="9" font-family="Arial">Extensions work here</text>
-      <!-- Editor -->
-      <rect x="211" y="42" width="325" height="280" fill="#1e1e2e"/>
-      <rect x="211" y="42" width="325" height="26" fill="#181825"/>
-      <rect x="211" y="42" width="120" height="26" fill="#1e1e2e"/>
-      <text x="271" y="59" text-anchor="middle" fill="#cdd6f4" font-size="11" font-family="Arial">module2.html</text>
-      <text x="380" y="59" text-anchor="middle" fill="#6c7086" font-size="11" font-family="Arial">rubric.csv</text>
-      <text x="221" y="85" fill="#6c7086" font-size="10" font-family="Courier New">1</text>
-      <text x="240" y="85" fill="#cba6f7" font-size="10" font-family="Courier New">&lt;html&gt;</text>
-      <text x="221" y="99" fill="#6c7086" font-size="10" font-family="Courier New">2</text>
-      <text x="240" y="99" fill="#a6e3a1" font-size="10" font-family="Courier New">  &lt;title&gt;Module 2&lt;/title&gt;</text>
-      <!-- Diff lines — NEW -->
-      <rect x="211" y="108" width="4" height="30" fill="#1a7a44"/>
-      <rect x="215" y="108" width="321" height="15" fill="rgba(26,122,68,0.2)"/>
-      <text x="221" y="119" fill="#6c7086" font-size="10" font-family="Courier New">3</text>
-      <text x="240" y="119" fill="#a6e3a1" font-size="10" font-family="Courier New">  &lt;!-- AI suggestion --&gt;</text>
-      <rect x="211" y="123" width="4" height="15" fill="#BA0C2F"/>
-      <rect x="215" y="123" width="321" height="15" fill="rgba(186,12,47,0.12)"/>
-      <text x="221" y="134" fill="#6c7086" font-size="10" font-family="Courier New">4</text>
-      <text x="240" y="134" fill="#f38ba8" font-size="10" font-family="Courier New">  &lt;!-- old removed --&gt;</text>
-      <text x="221" y="149" fill="#6c7086" font-size="10" font-family="Courier New">5</text>
-      <text x="240" y="149" fill="#89b4fa" font-size="10" font-family="Courier New">  &lt;h1&gt;Learning Objectives&lt;/h1&gt;</text>
-      <!-- New badge diff -->
-      <rect x="468" y="110" width="60" height="18" rx="3" fill="#BA0C2F"/>
-      <text x="498" y="123" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial" font-weight="bold">✨ NEW</text>
-      <!-- Mode selector -->
-      <rect x="211" y="322" width="325" height="24" fill="#11111b"/>
-      <rect x="215" y="325" width="70" height="18" rx="4" fill="#BA0C2F"/>
-      <text x="250" y="337" text-anchor="middle" fill="#fff" font-size="10" font-family="Arial" font-weight="bold">Agent</text>
-      <rect x="289" y="325" width="50" height="18" rx="4" fill="#2a2a3e"/>
-      <text x="314" y="337" text-anchor="middle" fill="#aaa" font-size="10" font-family="Arial">Ask</text>
-      <rect x="343" y="325" width="62" height="18" rx="4" fill="#2a2a3e"/>
-      <text x="374" y="337" text-anchor="middle" fill="#aaa" font-size="10" font-family="Arial">Manual</text>
-      <rect x="478" y="326" width="54" height="16" rx="3" fill="#BA0C2F"/>
-      <text x="505" y="337" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial" font-weight="bold">✨ NEW</text>
-      <!-- Status bar -->
-      <rect x="211" y="346" width="325" height="20" fill="#BA0C2F"/>
-      <text x="220" y="359" fill="#fff" font-size="9" font-family="Arial">HTML  UTF-8  Claude Sonnet 4.5  Teams</text>
-      <!-- AI Chat panel -->
-      <rect x="536" y="42" width="154" height="338" fill="#181825"/>
-      <rect x="536" y="42" width="154" height="28" fill="#11111b"/>
-      <text x="613" y="60" text-anchor="middle" fill="#cdd6f4" font-size="11" font-family="Arial" font-weight="bold">💬 AI CHAT</text>
-      <rect x="544" y="78" width="130" height="38" rx="6" fill="#2a2a3e"/>
-      <text x="609" y="94" text-anchor="middle" fill="#cdd6f4" font-size="9" font-family="Arial">@module2.html check</text>
-      <text x="609" y="106" text-anchor="middle" fill="#cdd6f4" font-size="9" font-family="Arial">accessibility issues</text>
-      <rect x="544" y="124" width="130" height="50" rx="6" fill="#BA0C2F" opacity="0.85"/>
-      <text x="609" y="140" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">Found 3 issues:</text>
-      <text x="609" y="152" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">missing alt on line 24,</text>
-      <text x="609" y="164" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial">low contrast heading…</text>
-      <rect x="544" y="330" width="130" height="24" rx="4" fill="#2a2a3e" stroke="#444" stroke-width="1"/>
-      <text x="557" y="346" fill="#6c7086" font-size="9" font-family="Arial">Ask AI… (⌘L / Ctrl+L)</text>
-      <rect x="619" y="178" width="54" height="18" rx="3" fill="#6b3fa0"/>
-      <text x="646" y="190" text-anchor="middle" fill="#fff" font-size="9" font-family="Arial" font-weight="bold">✨ NEW</text>
-      <!-- Terminal -->
-      <rect x="56" y="322" width="155" height="58" fill="#11111b"/>
-      <text x="66" y="338" fill="#888" font-size="9" font-family="Arial">TERMINAL — 🔵 SAME</text>
-      <text x="66" y="354" fill="#a6e3a1" font-size="9" font-family="Courier New">$ 42 files indexed</text>
-    </svg>
-  </div>
-
-  <div class="card-grid">
-    <div class="feature-card" style="border-color:#0078d4">
-      <div class="card-icon">🔵</div><h4 style="color:#0078d4">Same as VS Code</h4>
-      <p>Activity Bar, Sidebar, Explorer, Editor Tabs, Terminal — all identical. Your VS Code habits work here from day one.</p>
-    </div>
-    <div class="feature-card" style="border-color:var(--red)">
-      <div class="card-icon">✨</div><h4>New: AI Chat Panel</h4>
-      <p>Open with <kbd>⌘L</kbd> / <kbd>Ctrl+L</kbd>. The AI knows all files in your open folder — not just the active one.</p>
-    </div>
-    <div class="feature-card" style="border-color:var(--red)">
-      <div class="card-icon">✨</div><h4>New: Mode Selector</h4>
-      <p>At the bottom of the chat: Agent, Ask, and Manual modes. Cycle with <kbd>Ctrl+.</kbd>. See Section 4 for full details.</p>
-    </div>
-    <div class="feature-card" style="border-color:var(--red)">
-      <div class="card-icon">✨</div><h4>New: Inline Diff View</h4>
-      <p>AI edits appear in-place: green = added, red = removed. Accept or reject before anything saves.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 4 -->
-<section class="section" id="agent-modes">
-  <div class="section-number">4</div>
-  <h2>Agent Modes — All Five Options</h2>
-  <p class="section-intro">When you open the chat panel (<kbd>⌘I</kbd> / <kbd>Ctrl+I</kbd>) and click the mode dropdown, you'll see five options. Agent is the default. Each mode gives you a different level of AI autonomy and control.</p>
-
-  <div class="diagram-wrap" style="text-align:left;padding:20px 28px;">
-    <div class="diagram-title" style="text-align:center">📸 The Mode Dropdown (what you see in Cursor)</div>
-    <div style="display:inline-block;background:#1e1e2e;border-radius:10px;padding:8px 0;min-width:260px;box-shadow:0 4px 20px rgba(0,0,0,0.4);">
-      <div style="padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #2a2a3e;">
-        <span style="color:#fff;font-size:14px;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;">∞ Agent</span>
-        <span style="color:#aaa;font-size:12px;font-family:'Segoe UI',Arial,sans-serif;">⌘I &nbsp;&nbsp; ✓</span>
-      </div>
-      <div style="padding:10px 20px;display:flex;align-items:center;gap:10px;">
-        <span style="font-size:14px;">≔</span>
-        <span style="color:#cdd6f4;font-size:14px;font-family:'Segoe UI',Arial,sans-serif;">Plan</span>
-      </div>
-      <div style="padding:10px 20px;display:flex;align-items:center;gap:10px;">
-        <span style="font-size:14px;color:#cdd6f4;">🐛</span>
-        <span style="color:#cdd6f4;font-size:14px;font-family:'Segoe UI',Arial,sans-serif;">Debug</span>
-      </div>
-      <div style="padding:10px 20px;display:flex;align-items:center;gap:10px;">
-        <span style="font-size:14px;color:#cdd6f4;">◎</span>
-        <span style="color:#cdd6f4;font-size:14px;font-family:'Segoe UI',Arial,sans-serif;">Multitask</span>
-      </div>
-      <div style="padding:10px 20px;display:flex;align-items:center;gap:10px;border-top:1px solid #2a2a3e;">
-        <span style="font-size:14px;color:#cdd6f4;">💬</span>
-        <span style="color:#cdd6f4;font-size:14px;font-family:'Segoe UI',Arial,sans-serif;">Ask</span>
-      </div>
-      <div style="padding:8px 20px;background:#2a2a3e;border-radius:0 0 10px 10px;">
-        <span style="color:#aaa;font-size:12px;font-family:'Segoe UI',Arial,sans-serif;">∞ Agent ∨ &nbsp; Auto ∨</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- 5-mode grid: 2 columns for readability -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0;">
-
-    <!-- AGENT -->
-    <div class="mode-card" style="grid-column:1/2">
-      <div class="mode-header" style="background:#BA0C2F">
-        <h4>∞ Agent <small style="font-size:11px;opacity:0.8">(Default · ⌘I)</small></h4>
-        <div class="sc">Open with ⌘I / Ctrl+I</div>
-      </div>
-      <div class="mode-body">
-        <p><strong>What it does:</strong> Fully autonomous. Reads your project, plans a multi-step approach, edits multiple files, runs terminal commands, and iterates until the task is done.</p>
-        <p><strong>Best for:</strong> Multi-file tasks, QA sweeps, generating or restructuring content at scale. This is your workhorse mode.</p>
-        <p><strong>Think of it as:</strong> Sending a capable colleague off to work on a well-defined task. Review their output before treating it as final.</p>
-        <span class="mode-tag" style="background:#fdeaea;color:#BA0C2F">⚡ Autonomous · Always review output</span>
-      </div>
-    </div>
-
-    <!-- PLAN -->
-    <div class="mode-card" style="grid-column:2/3">
-      <div class="mode-header" style="background:#1a4e8a">
-        <h4>≔ Plan</h4>
-        <div class="sc">Select from mode dropdown</div>
-      </div>
-      <div class="mode-body">
-        <p><strong>What it does:</strong> Agent researches your project, asks clarifying questions, and generates a reviewable Markdown plan before writing any code or making any edits.</p>
-        <p><strong>Best for:</strong> Any large or risky task where you want to approve the approach before execution. The plan file is editable — remove steps, adjust scope, then say "go ahead."</p>
-        <p><strong>Think of it as:</strong> Agent Mode with a mandatory checkpoint before anything changes.</p>
-        <span class="mode-tag" style="background:#e8f0fb;color:#1a4e8a">📋 Plan first · Then approve</span>
-      </div>
-    </div>
-
-    <!-- DEBUG -->
-    <div class="mode-card" style="grid-column:1/2">
-      <div class="mode-header" style="background:#1a7a44">
-        <h4>🐛 Debug</h4>
-        <div class="sc">Select from mode dropdown</div>
-      </div>
-      <div class="mode-body">
-        <p><strong>What it does:</strong> Instruments your project with runtime logs, helps reproduce problems, and tracks down the root cause of bugs across stacks and languages.</p>
-        <p><strong>Best for:</strong> Tracking down why a script, data pipeline, or web page isn't behaving as expected. Works by observing actual runtime behavior, not just reading code.</p>
-        <p><strong>Think of it as:</strong> A debugging partner that instruments your code and interprets the results.</p>
-        <span class="mode-tag" style="background:#e8f5ee;color:#1a7a44">🔬 Runtime diagnostics</span>
-      </div>
-    </div>
-
-    <!-- MULTITASK -->
-    <div class="mode-card" style="grid-column:2/3">
-      <div class="mode-header" style="background:#6b3fa0">
-        <h4>◎ Multitask</h4>
-        <div class="sc">Select from mode dropdown</div>
-      </div>
-      <div class="mode-body">
-        <p><strong>What it does:</strong> Runs multiple agent tasks in parallel, each in its own isolated workspace. Useful when you have several independent tasks that don't affect each other.</p>
-        <p><strong>Best for:</strong> Processing several modules simultaneously, running parallel QA checks on independent files, or splitting a large batch job into concurrent streams.</p>
-        <p><strong>Think of it as:</strong> Assigning the same job to several agents at once and comparing results.</p>
-        <span class="mode-tag" style="background:#f9f0ff;color:#6b3fa0">⚡ Parallel execution</span>
-      </div>
-    </div>
-
-    <!-- ASK -->
-    <div class="mode-card" style="grid-column:1/-1">
-      <div class="mode-header" style="background:#444">
-        <h4>💬 Ask</h4>
-        <div class="sc">Select from mode dropdown &nbsp;|&nbsp; Read-only</div>
-      </div>
-      <div class="mode-body" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-        <div>
-          <p><strong>What it does:</strong> Read-only AI conversation. Ask questions, get explanations, explore options. The AI never edits any files in this mode — it can only read and respond.</p>
-          <p><strong>Best for:</strong> Understanding a file, planning a task, getting feedback before committing to a change.</p>
-        </div>
-        <div>
-          <p><strong>Think of it as:</strong> A smart colleague you can ask anything — without worrying they'll accidentally change something.</p>
-          <p><strong>Pro tip:</strong> Use Ask first to scope and plan, then switch to Agent to execute. This combination produces the best results.</p>
-        </div>
-      </div>
-      <span class="mode-tag" style="background:#f4f4f4;color:#444;margin-top:10px;display:inline-block">🔒 Read-only · Safe to explore · Great starting point</span>
-    </div>
-
-  </div>
-
-  <div class="diagram-wrap">
-    <div class="diagram-title">📊 Which Mode Should I Use?</div>
-    <svg viewBox="0 0 700 370" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;width:100%;">
-      <defs>
-        <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#555"/></marker>
-        <marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a4e8a"/></marker>
-        <marker id="a4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#BA0C2F"/></marker>
-        <marker id="a5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a1a1a"/></marker>
-      </defs>
-      <ellipse cx="350" cy="28" rx="130" ry="22" fill="#333"/>
-      <text x="350" y="33" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Arial">I have a task to do</text>
-      <line x1="350" y1="50" x2="350" y2="80" stroke="#555" stroke-width="2" marker-end="url(#a2)"/>
-      <polygon points="350,82 495,120 350,158 205,120" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/>
-      <text x="350" y="115" text-anchor="middle" fill="#222" font-size="12" font-weight="bold" font-family="Arial">Do I know exactly</text>
-      <text x="350" y="130" text-anchor="middle" fill="#222" font-size="12" font-weight="bold" font-family="Arial">what to change?</text>
-      <line x1="495" y1="120" x2="580" y2="120" stroke="#1a1a1a" stroke-width="2" marker-end="url(#a5)"/>
-      <text x="536" y="112" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Arial" font-weight="bold">Yes</text>
-      <rect x="582" y="100" width="108" height="40" rx="8" fill="#1a1a1a"/>
-      <text x="636" y="125" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Arial">✏️ Manual</text>
-      <line x1="350" y1="158" x2="350" y2="188" stroke="#555" stroke-width="2" marker-end="url(#a2)"/>
-      <text x="335" y="175" fill="#555" font-size="11" font-family="Arial" font-weight="bold">No</text>
-      <polygon points="350,190 495,228 350,266 205,228" fill="#f4f4f4" stroke="#555" stroke-width="1.5"/>
-      <text x="350" y="222" text-anchor="middle" fill="#222" font-size="12" font-weight="bold" font-family="Arial">Do I want to explore</text>
-      <text x="350" y="238" text-anchor="middle" fill="#222" font-size="12" font-weight="bold" font-family="Arial">options first?</text>
-      <line x1="205" y1="228" x2="120" y2="228" stroke="#1a4e8a" stroke-width="2" marker-end="url(#a3)"/>
-      <text x="164" y="220" text-anchor="middle" fill="#1a4e8a" font-size="11" font-family="Arial" font-weight="bold">Yes</text>
-      <rect x="20" y="208" width="100" height="40" rx="8" fill="#1a4e8a"/>
-      <text x="70" y="233" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Arial">💬 Ask</text>
-      <line x1="350" y1="266" x2="350" y2="305" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a4)"/>
-      <text x="365" y="288" fill="#BA0C2F" font-size="11" font-family="Arial" font-weight="bold">No — just do it</text>
-      <rect x="240" y="307" width="220" height="50" rx="8" fill="#BA0C2F"/>
-      <text x="350" y="328" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Arial">🚀 Agent</text>
-      <text x="350" y="345" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">Review output when done</text>
-      <line x1="70" y1="248" x2="70" y2="335" stroke="#1a4e8a" stroke-width="1.5" stroke-dasharray="5,3"/>
-      <line x1="70" y1="335" x2="240" y2="335" stroke="#1a4e8a" stroke-width="1.5" marker-end="url(#a3)"/>
-      <text x="17" y="300" fill="#1a4e8a" font-size="10" font-family="Arial" font-style="italic" writing-mode="tb">then → Agent</text>
-    </svg>
-  </div>
-
-  <h3 class="sub">The Power Workflow: Ask → Plan → Agent → Manual Inline Edit</h3>
   <div class="callout note">
-    <div class="callout-icon">🔁</div>
+    <div class="callout-icon">🌐</div>
     <div class="callout-body">
-      <strong>Recommended Pattern for Most Tasks</strong>
-      <ol style="padding-left:20px;margin-top:8px;line-height:2">
-        <li><strong>Ask mode first</strong> — Scope the task. "What are the accessibility gaps in this module?" Review the AI's analysis without risking any changes.</li>
-        <li><strong>Plan mode for complex work</strong> — For large tasks, switch to Plan. Review and edit the Markdown plan before anything executes.</li>
-        <li><strong>Agent mode to execute</strong> — "Now go ahead and fix those issues across all five modules." Review the diff output when it finishes.</li>
-        <li><strong>Inline edit to polish</strong> — Select any sentence or paragraph, press <kbd>⌘K</kbd> / <kbd>Ctrl+K</kbd>, and make a precise final tweak.</li>
-      </ol>
+      <strong>GitHub in the browser vs terminal</strong>
+      You can create PRs and review entirely on <a href="https://github.com" target="_blank" rel="noopener">github.com</a>. Optional: install <a href="https://cli.github.com/" target="_blank" rel="noopener">GitHub CLI</a> (<code>gh</code>) for commands like <code>gh pr checkout 42</code>. Cursor’s terminal can run git for you when you ask — still review what it runs.
     </div>
-  </div>
-
-  <div class="callout tip">
-    <div class="callout-icon">✏️</div>
-    <div class="callout-body">
-      <strong>Inline Editing — the Manual Edit Shortcut</strong>
-      You don't need to open the chat panel for small targeted changes. Select any text in the editor and press <kbd>⌘K</kbd> (Mac) or <kbd>Ctrl+K</kbd> (Windows). A small inline prompt bar appears — describe your change and the AI proposes a diff right in place. No mode switching needed. This is the fastest way to rewrite a single sentence or fix a specific line.
-    </div>
-  </div>
-
-  <h3 class="sub">Using Plan Mode in Agent</h3>
-  <p class="body-text">In Agent Mode, ask for a reviewable plan before any changes are made. This is especially valuable for large or complex tasks:</p>
-  <div class="code-block">
-<span class="cm"># Instead of "Go fix all the modules", try:</span>
-
-<span class="hi">"Before making any changes, create a plan for how you would audit
-all 5 course modules for Bloom's Taxonomy alignment. List the
-steps and what you'll check in each file. Wait for my approval."</span>
-
-<span class="cm"># Agent creates a Markdown plan file you can edit directly.
-# Remove steps you don't need, then say: "Looks good — go ahead."</span>
   </div>
 </section>
 
-<!-- SECTION 5 -->
-<section class="section" id="ai-chat">
-  <div class="section-number">5</div>
-  <h2>AI Chat &amp; the @ Reference System</h2>
-  <p class="section-intro">The <kbd>@</kbd> symbol is your most important tool in Cursor. It tells the AI exactly what context to look at, which keeps responses focused and reduces unnecessary token use.</p>
+<section class="section" id="setup">
+  <div class="section-number">3</div>
+  <h2>One-time setup on your computer</h2>
+  <p class="section-intro">Follow these steps once. Your team lead can confirm org access and which repos you need.</p>
 
-  <h3 class="sub">@ References — What You Can Point To</h3>
-  <table class="shortcuts">
-    <thead><tr><th>@ Command</th><th>What It Does</th><th>Example Use</th></tr></thead>
+  <h3 class="sub">1. Install tools</h3>
+  <ul class="steps">
+    <li><div class="step-num">A</div><div class="step-body"><strong><a href="https://cursor.com" target="_blank" rel="noopener">Cursor</a></strong> — Download and sign in. On first launch, choose <strong>Import from VS Code</strong> if you already use VS Code (extensions and settings carry over).</div></li>
+    <li><div class="step-num">B</div><div class="step-body"><strong>Git</strong> — macOS often has it; Windows: install <a href="https://git-scm.com/" target="_blank" rel="noopener">Git for Windows</a>. Verify: open Terminal and run <code>git --version</code>.</div></li>
+    <li><div class="step-num">C</div><div class="step-body"><strong>GitHub access</strong> — Your UGA/GitHub account must be in the <code>uga-ool</code> org. Use HTTPS or SSH to clone (your lead can help with SSH keys).</div></li>
+    <li><div class="step-num">D</div><div class="step-body"><strong>Node.js</strong> (for React apps) — Install LTS from <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> if you will run <code>npm install</code> / <code>npm run build</code>.</div></li>
+  </ul>
+
+  <h3 class="sub">2. Folder layout (recommended)</h3>
+  <p class="body-text">Keep sibling folders under one parent (many of us use <code>local_dev/</code>). Example:</p>
+  <div class="code-block">
+<span class="cm">local_dev/</span>
+  <span class="hi">uga-online-cursor-docs/</span>      <span class="cm">← this repo (rules + docs)</span>
+  <span class="hi">UGA-Brightspace-React-Apps/</span>   <span class="cm">← course-file React monorepo</span>
+  <span class="hi">UGA-Brightspace-React-Template/</span> <span class="cm">← read-only reference</span>
+  <span class="hi">uga-lit-components/</span>
+  <span class="hi">uga-online-brightspace-agent-framework/</span>
+  <span class="cm">… other repos you work on</span>
+  </div>
+
+  <h3 class="sub">3. Clone this docs repo</h3>
+  <div class="code-block">
+<span class="cm"># HTTPS example (replace with your path)</span>
+<span class="hi">cd ~/local_dev</span>
+<span class="hi">git clone https://github.com/uga-ool/uga-online-cursor-docs.git</span>
+  </div>
+
+  <h3 class="sub">4. Open in Cursor</h3>
+  <ol class="steps">
+    <li><div class="step-num">1</div><div class="step-body"><strong>File → Open Folder</strong> — Select <code>uga-online-cursor-docs</code> to read docs and pick up team rules.</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong>For app work</strong> — Either open the app repo folder alone, or use a <strong>multi-root workspace</strong> (several repos in one window). Optional examples: <code>workspaces/examples/OOL-Develop.code-workspace</code> — copy to your machine and fix paths; not required if you use your own workspace file.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong>Pull updates weekly</strong> — In the docs repo: <code>git pull</code> so new rules and guides appear for Cursor automatically.</div></li>
+  </ol>
+</section>
+
+<section class="section" id="repo-map">
+  <div class="section-number">4</div>
+  <h2>What’s in this repository</h2>
+  <p class="section-intro">Quick map. Full index: <a href="docs/INDEX.md">docs/INDEX.md</a> · Repo README: <a href="README.md">README.md</a></p>
+
+  <table class="data">
+    <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
     <tbody>
-      <tr><td><kbd>@filename</kbd></td><td>Include a specific file in AI context</td><td><em>@module1.html summarize the learning objectives</em></td></tr>
-      <tr><td><kbd>@folder</kbd></td><td>Include all files in a folder</td><td><em>@modules/ are all five consistent in tone?</em></td></tr>
-      <tr><td><kbd>@codebase</kbd></td><td>Search entire indexed project</td><td><em>@codebase where do we define accessibility standards?</em></td></tr>
-      <tr><td><kbd>@web</kbd></td><td>Search the web for current information</td><td><em>@web WCAG 2.2 guidelines for e-learning 2026</em></td></tr>
-      <tr><td><kbd>@Branch</kbd></td><td>Context from your current git changes</td><td><em>@Branch what have I changed in this session?</em></td></tr>
-      <tr><td><kbd>@cursor-rules</kbd></td><td>Reference your team's AI rules</td><td><em>@cursor-rules what are our content standards?</em></td></tr>
+      <tr><td><code>docs/INDEX.md</code></td><td><strong>Start here</strong> for technical topics (D2L APIs, deploy, agents, React apps, Lit, video, captions).</td></tr>
+      <tr><td><code>docs/cursor/</code></td><td>Cursor-specific workflows — e.g. <a href="docs/cursor/pr-and-code-review.md">PR and code review</a>.</td></tr>
+      <tr><td><code>docs/_meta/manifest.md</code></td><td>Which upstream repo each doc section came from (for maintainers refreshing content).</td></tr>
+      <tr><td><code>.cursor/rules/</code></td><td>AI rules (always-on policies + file-type conventions). Applied automatically in Cursor.</td></tr>
+      <tr><td><code>.cursor/skills/</code></td><td>Multi-step playbooks the agent can follow (scaffold app, PR help).</td></tr>
+      <tr><td><code>.cursor/commands/</code></td><td>One-click prompts in the command palette (pre-PR check, PR review, design system).</td></tr>
+      <tr><td><code>workspaces/examples/</code></td><td><strong>Optional</strong> sample multi-root workspaces — copy and adjust; not mandatory.</td></tr>
+      <tr><td><code>cursor-demo.html</code></td><td>This page — open in a browser for onboarding.</td></tr>
     </tbody>
   </table>
-
-  <h3 class="sub">Sample Prompts for Your Teams</h3>
-
-  <div class="prompt-example">
-    <div class="prompt-label">INSTRUCTIONAL DESIGN — BLOOM'S AUDIT</div>
-    <p>"@module3.html Review each learning objective and tell me which Bloom's Taxonomy level it targets. Flag any that aren't measurable. Suggest one rewrite for each flagged objective."</p>
-  </div>
-  <div class="prompt-example">
-    <div class="prompt-label">QUALITY REVIEW — HTML SWEEP</div>
-    <p>"@modules/ Scan all files for broken image tags, missing alt text, unclosed HTML tags, and inconsistent heading levels. Return a numbered list with filename and line number for each issue."</p>
-  </div>
-  <div class="prompt-example">
-    <div class="prompt-label">ANALYTICS — QUIZ DATA</div>
-    <p>"@quiz-results.csv Calculate mean score, median, and pass rate (≥70). Identify the 3 questions with the lowest average correct response rate. Format as a summary table."</p>
-  </div>
-  <div class="prompt-example">
-    <div class="prompt-label">CROSS-MODULE CONSISTENCY</div>
-    <p>"@module1.html @module2.html @module3.html Are these three modules consistent in reading level, tone, and structure? Flag the top 3 inconsistencies and suggest how to address each."</p>
-  </div>
 
   <div class="callout info">
-    <div class="callout-icon">🔒</div>
+    <div class="callout-icon">📚</div>
     <div class="callout-body">
-      <strong>Privacy Note — FERPA</strong>
-      Do not include student names, UGA IDs, or other individually identifiable student data in AI prompts. Aggregated, anonymized data (quiz averages, group pass rates) is generally fine. When in doubt, remove identifying fields from your file before opening it in Cursor.
+      <strong>Docs vs code repos</strong>
+      Long guides are <em>copied or summarized</em> here for one place to search. When you change behavior in an app repo, update code there; update <code>docs/</code> here only when the team needs shared reference material.
     </div>
   </div>
 </section>
 
-<!-- SECTION 6 -->
-<section class="section" id="tokens">
-  <div class="section-number">6</div>
-  <h2>Models, Credits &amp; Context</h2>
-  <p class="section-intro">Cursor gives you a full model menu, a credit pool, and a real-time context indicator. Understanding all three helps you work efficiently without surprises.</p>
+<section class="section" id="cursor-config">
+  <div class="section-number">5</div>
+  <h2>Rules, skills &amp; commands (<code>.cursor/</code>)</h2>
+  <p class="section-intro">These files shape how Cursor’s AI behaves for OOL work. They load when <code>uga-online-cursor-docs</code> is in your workspace (or when you open an app repo that also has its own <code>.cursor/</code> folder).</p>
 
-  <h3 class="sub">The Model Menu — What You See</h3>
-  <p class="body-text">Click <strong>Auto ∨</strong> at the bottom of the chat panel to open the model selector. You'll see exactly this:</p>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:20px 0;align-items:start;">
-    <!-- Visual replica of the model dropdown -->
-    <div class="diagram-wrap" style="text-align:left;padding:16px 20px;">
-      <div class="diagram-title" style="text-align:center">📸 Model Selector Dropdown</div>
-      <div style="display:inline-block;background:#1e1e2e;border-radius:10px;padding:0;min-width:240px;box-shadow:0 4px 20px rgba(0,0,0,0.4);width:100%;">
-        <div style="padding:10px 16px;border-bottom:1px solid #2a2a3e;">
-          <span style="color:#888;font-size:12px;font-family:'Segoe UI',Arial,sans-serif;">🔍 Search models</span>
-        </div>
-        <div style="padding:10px 16px;border-bottom:1px solid #2a2a3e;display:flex;justify-content:space-between;align-items:center;">
-          <span style="color:#fff;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;">MAX Mode</span>
-          <span style="background:#555;border-radius:12px;width:36px;height:20px;display:inline-block;"></span>
-        </div>
-        <div style="padding:9px 16px;display:flex;justify-content:space-between;align-items:center;">
-          <span style="color:#fff;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;font-weight:600;">Auto <span style="color:#888;font-weight:400;font-size:11px;">Efficiency</span></span>
-          <span style="color:#aaa;font-size:12px;">✓</span>
-        </div>
-        <div style="padding:9px 16px;">
-          <span style="color:#cdd6f4;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;">Premium <span style="color:#888;font-weight:400;font-size:11px;">Intelligence</span></span>
-        </div>
-        <div style="height:1px;background:#2a2a3e;margin:4px 0;"></div>
-        <div style="padding:9px 16px;display:flex;justify-content:space-between;">
-          <span style="color:#cdd6f4;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;">Composer 2 <span style="color:#888;font-size:11px;">Fast</span></span>
-          <span style="color:#888;font-size:11px;">🔁</span>
-        </div>
-        <div style="padding:9px 16px;display:flex;justify-content:space-between;">
-          <span style="color:#cdd6f4;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;">Composer 1.5</span>
-          <span style="color:#888;font-size:11px;">🔁</span>
-        </div>
-        <div style="padding:9px 16px;display:flex;justify-content:space-between;">
-          <span style="color:#cdd6f4;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;">Codex 5.3 <span style="color:#888;font-size:11px;">Medium</span></span>
-          <span style="color:#888;font-size:11px;">🔁</span>
-        </div>
-        <div style="padding:9px 16px;display:flex;justify-content:space-between;">
-          <span style="color:#cdd6f4;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;">Sonnet 4.6 <span style="color:#888;font-size:11px;">Medium</span></span>
-          <span style="color:#888;font-size:11px;">🔁</span>
-        </div>
-        <div style="padding:9px 16px;display:flex;justify-content:space-between;">
-          <span style="color:#cdd6f4;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;">GPT-5.5 <span style="color:#888;font-size:11px;">Medium</span></span>
-          <span style="color:#888;font-size:11px;">🔁</span>
-        </div>
-        <div style="padding:9px 16px;display:flex;justify-content:space-between;">
-          <span style="color:#cdd6f4;font-size:13px;font-family:'Segoe UI',Arial,sans-serif;">Opus 4.7 <span style="color:#888;font-size:11px;">Extra High</span></span>
-          <span style="color:#888;font-size:11px;">🔁</span>
-        </div>
-        <div style="padding:10px 16px;border-top:1px solid #2a2a3e;">
-          <span style="color:#888;font-size:12px;font-family:'Segoe UI',Arial,sans-serif;">+ Add Models</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Model explanation table -->
-    <div>
-      <table class="shortcuts" style="margin:0;">
-        <thead><tr><th>Model</th><th>Cost Tier</th><th>Best For</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Auto</strong> ✓ default</td><td style="color:#1a7a44;font-weight:700">Free / ∞</td><td>Everything — let Cursor decide. Doesn't touch your credit pool.</td></tr>
-          <tr><td><strong>Premium</strong></td><td style="color:#1a7a44;font-weight:700">Efficient</td><td>Higher intelligence when Auto feels too basic. Good daily driver.</td></tr>
-          <tr><td><strong>Composer 2</strong></td><td style="color:#1a4e8a;font-weight:700">Fast</td><td>Speed-focused tasks, quick generation.</td></tr>
-          <tr><td><strong>Composer 1.5</strong></td><td style="color:#1a4e8a;font-weight:700">Fast</td><td>Lightweight tasks, earlier Cursor model.</td></tr>
-          <tr><td><strong>Codex 5.3</strong></td><td style="color:#d45d00;font-weight:700">Medium</td><td>Code-focused tasks, scripting, data work.</td></tr>
-          <tr><td><strong>Sonnet 4.6</strong></td><td style="color:#d45d00;font-weight:700">Medium</td><td>Strong all-rounder. Good for writing, analysis, QA.</td></tr>
-          <tr><td><strong>GPT-5.5</strong></td><td style="color:#d45d00;font-weight:700">Medium</td><td>OpenAI's latest. Strong general-purpose model.</td></tr>
-          <tr><td><strong>Opus 4.7</strong></td><td style="color:#BA0C2F;font-weight:700">Extra High</td><td>Most powerful. Reserve for complex multi-step analysis only.</td></tr>
-        </tbody>
-      </table>
-      <div class="callout note" style="margin-top:14px;">
-        <div class="callout-icon">🔄</div>
-        <div class="callout-body">
-          <strong>MAX Mode</strong>
-          The toggle at the top of the model menu enables MAX Mode, which gives maximum context and capability for the selected model. It consumes significantly more credits — only enable it for genuinely large or complex tasks.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="sub">The Context Wheel — What "100% Context Used" Means</h3>
-
-  <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;margin:16px 0;align-items:start;">
-    <div class="diagram-wrap" style="padding:20px 24px;min-width:180px;text-align:center;">
-      <div class="diagram-title">In the chat input bar</div>
-      <div style="background:#1e1e2e;border-radius:8px;padding:14px 18px;display:inline-flex;align-items:center;gap:12px;">
-        <span style="color:#cdd6f4;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;background:#2a2a3e;padding:3px 8px;border-radius:4px;">100% context used</span>
-        <span style="width:22px;height:22px;border-radius:50%;border:2px solid #888;display:inline-block;"></span>
-        <span style="font-size:16px;color:#888;">🖼</span>
-        <span style="font-size:16px;color:#888;">🎤</span>
-      </div>
-      <div style="margin-top:12px;font-size:12px;color:#888;">The circle fills as context fills up</div>
-    </div>
-    <div>
-      <p class="body-text">The small circle icon in the chat input bar is a <strong>context usage indicator</strong>. It fills as you add more files, references, and conversation history to a single chat session.</p>
-      <ul style="padding-left:20px;line-height:2;font-size:14px;">
-        <li><strong>Circle mostly empty</strong> — Plenty of context remaining. You can continue adding @references and messages.</li>
-        <li><strong>Circle mostly full</strong> — Context is getting tight. AI responses may become less precise or start ignoring earlier parts of the conversation.</li>
-        <li><strong>"100% context used"</strong> — The context window is full. <strong>Start a new chat.</strong> The AI cannot reliably use more information in this session. Type <kbd>/summarize</kbd> first if you want to carry key points forward.</li>
-      </ul>
-      <div class="callout warn" style="margin-top:14px;">
-        <div class="callout-icon">⚠️</div>
-        <div class="callout-body">
-          <strong>When you see 100% context used — start a fresh chat</strong>
-          Don't keep pushing messages into a full context. The AI will silently start ignoring the oldest parts of the conversation, producing inconsistent or contradictory results. Open a new chat, include only the files you still need, and continue from there.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="sub">How Credits Work &amp; Checking Your Usage</h3>
-  <p class="body-text">Every Teams seat includes a <strong>$40 monthly credit pool</strong>. Credits are consumed based on which model you choose and how large your requests are. Auto mode is the exception — it does not draw from the credit pool.</p>
-
-  <div class="diagram-wrap">
-    <div class="diagram-title">💳 Credit Cost by Model</div>
-    <svg viewBox="0 0 680 210" xmlns="http://www.w3.org/2000/svg" style="max-width:660px;width:100%;">
-      <rect x="50" y="20" width="580" height="28" rx="4" fill="#1a7a44" opacity="0.15"/>
-      <rect x="50" y="20" width="22" height="28" rx="4" fill="#1a7a44"/>
-      <text x="84" y="32" fill="#1a7a44" font-size="12" font-weight="bold" font-family="Arial">Auto · Premium · Composer 2 / 1.5</text>
-      <text x="84" y="42" fill="#1a7a44" font-size="10" font-family="Arial">Free / does not touch your credit pool — use freely all day</text>
-      <text x="618" y="37" text-anchor="middle" fill="#1a7a44" font-size="13" font-weight="bold" font-family="Arial">∞</text>
-
-      <rect x="50" y="62" width="580" height="26" rx="4" fill="#e0e0e0"/>
-      <rect x="50" y="62" width="240" height="26" rx="4" fill="#1a4e8a"/>
-      <text x="300" y="79" fill="#1a4e8a" font-size="12" font-family="Arial">Codex 5.3 · Sonnet 4.6 · GPT-5.5</text>
-      <text x="618" y="79" text-anchor="middle" fill="#1a4e8a" font-size="11" font-weight="bold" font-family="Arial">Medium</text>
-
-      <rect x="50" y="100" width="580" height="26" rx="4" fill="#e0e0e0"/>
-      <rect x="50" y="100" width="540" height="26" rx="4" fill="#BA0C2F"/>
-      <text x="400" y="117" fill="#fff" font-size="12" font-family="Arial">Opus 4.7 (Extra High) · MAX Mode</text>
-      <text x="618" y="117" text-anchor="middle" fill="#BA0C2F" font-size="11" font-weight="bold" font-family="Arial">High</text>
-
-      <text x="50" y="148" fill="#555" font-size="10" font-family="Arial" font-weight="bold">Tab Autocomplete:</text>
-      <rect x="160" y="137" width="300" height="18" rx="4" fill="#1a7a44" opacity="0.2"/>
-      <text x="200" y="149" fill="#1a7a44" font-size="10" font-family="Arial">Always free regardless of model</text>
-
-      <text x="50" y="175" fill="#888" font-size="10" font-family="Arial">Low cost →</text>
-      <text x="590" y="175" text-anchor="end" fill="#888" font-size="10" font-family="Arial">→ Higher cost</text>
-    </svg>
-  </div>
-
-  <h3 class="sub">Checking Your Usage</h3>
-  <div class="callout note">
-    <div class="callout-icon">📊</div>
-    <div class="callout-body">
-      <strong>How to see how much credit you've used</strong>
-      Go to <strong>Settings → Account → Usage</strong> (or visit <strong>cursor.com/settings</strong> in your browser). You'll see your current month's credit consumption broken down by model. Team admins can see usage across all seats from the admin dashboard.
-    </div>
-  </div>
-
-  <div class="callout note">
-    <div class="callout-icon">✅</div>
-    <div class="callout-body">
-      <strong>Your account does not have overage enabled</strong>
-      The UGA Online team's Cursor accounts have overages <strong>disabled</strong>. This means you will never be unexpectedly charged beyond your $40/seat plan. If you exhaust your monthly credit pool, Cursor automatically falls back to Auto mode (still fully functional and unlimited) for the rest of the month. You cannot accidentally run up a large bill.
-    </div>
-  </div>
-
-  <h3 class="sub">Token Optimization Strategies</h3>
-  <table class="token-table">
-    <thead><tr><th>Strategy</th><th>Why It Helps</th><th>Impact</th></tr></thead>
+  <h3 class="sub">Rules — standing policies</h3>
+  <table class="data">
+    <thead><tr><th>Rule file</th><th>When it applies</th></tr></thead>
     <tbody>
-      <tr>
-        <td><strong>Stay on Auto by default</strong><br><small>Let Cursor pick the model</small></td>
-        <td>Auto doesn't draw from your credit pool. It intelligently selects a cost-effective model per task. You can run Auto all day without affecting your $40 balance.</td>
-        <td><span class="badge save">BIG SAVE</span></td>
-      </tr>
-      <tr>
-        <td><strong>Be specific with @ references</strong><br><small>Use @filename, not @codebase</small></td>
-        <td>Pointing to one file sends ~10× less context than a full codebase search. Use @codebase only when you genuinely need project-wide search.</td>
-        <td><span class="badge save">HIGH SAVE</span></td>
-      </tr>
-      <tr>
-        <td><strong>Start fresh chats for new tasks</strong><br><small>Watch the context wheel</small></td>
-        <td>Every message is re-sent as context each turn. Long chats inflate token use. When the context wheel is nearing full — or you see 100% — start a new chat.</td>
-        <td><span class="badge save">MEDIUM SAVE</span></td>
-      </tr>
-      <tr>
-        <td><strong>Plan in Ask, execute in Agent</strong><br><small>Don't run Agent speculatively</small></td>
-        <td>Ask mode is free to explore. Running Agent without a clear goal wastes credits on edits you may reject. Scope first, then act.</td>
-        <td><span class="badge save">MEDIUM SAVE</span></td>
-      </tr>
-      <tr>
-        <td><strong>Use inline edit (⌘K) for small changes</strong><br><small>Selected text only</small></td>
-        <td>Pressing ⌘K / Ctrl+K on selected text sends only that selection as context — not the whole file. For a one-paragraph rewrite, it's far more efficient than running Agent.</td>
-        <td><span class="badge save">MEDIUM SAVE</span></td>
-      </tr>
-      <tr>
-        <td><strong>Reserve Opus 4.7 for genuinely complex work</strong><br><small>Extra High cost tier</small></td>
-        <td>Opus draws credits significantly faster than Sonnet. Save it for architecture decisions or deep multi-file analysis where its extra capability actually matters.</td>
-        <td><span class="badge cost">AVOID WASTE</span></td>
-      </tr>
+      <tr><td><code>upstream-reference-repos.mdc</code></td><td><strong>Always on.</strong> Don’t edit template/framework clones during app work; new React apps go under <code>UGA-Brightspace-React-Apps/apps/</code>.</td></tr>
+      <tr><td><code>ool-secrets-and-ferpa.mdc</code></td><td><strong>Always on.</strong> No API keys in git; no student PII in prompts or commits.</td></tr>
+      <tr><td><code>uga-ool-github.mdc</code></td><td>When editing markdown/config — org practices, PR hygiene.</td></tr>
+      <tr><td><code>uga-brightspace-react-template.mdc</code></td><td>When editing <code>**/src/**/*.{ts,tsx}</code> — course-file React patterns.</td></tr>
+      <tr><td><code>elc-d2l-design-system.mdc</code></td><td>HTML/React shells — UGA Online Design System CDN.</td></tr>
+      <tr><td><code>elc-ai-agent-tool.mdc</code></td><td>Agent plugin code under <code>frontend/src/agents/</code>.</td></tr>
     </tbody>
   </table>
 
-</section>
+  <h3 class="sub">Skills — how-to playbooks</h3>
+  <table class="data">
+    <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
+    <tbody>
+      <tr><td><code>scaffold-from-ool-template</code></td><td>Creating a new course-file React app from the Brightspace template into the Apps monorepo.</td></tr>
+      <tr><td><code>ool-pr-and-code-review</code></td><td>Opening or reviewing a PR; drafting descriptions or review comments.</td></tr>
+    </tbody>
+  </table>
 
-<!-- SECTION 7 -->
-<section class="section" id="teams">
-  <div class="section-number">7</div>
-  <h2>Cursor Teams — Your Plan &amp; How to Collaborate</h2>
-  <p class="section-intro">Everyone on the UGA Online team has a Cursor Teams account. Here's exactly what's included and how to use the collaboration features effectively.</p>
-
-  <h3 class="sub">What's Included in Your Teams Plan</h3>
-  <div class="plan-box">
-    <div class="plan-header">
-      <h4>Cursor Teams Plan — $40 / user / month</h4>
-      <div class="price">Pro-equivalent AI access for every seat, plus organization-wide collaboration features</div>
-    </div>
-    <div class="plan-features">
-      <div class="plan-col">
-        <h5>🤖 AI Features (per seat)</h5>
-        <ul>
-          <li>Unlimited Tab autocomplete</li>
-          <li>Full Agent, Ask &amp; Manual mode access</li>
-          <li>$40 monthly credit pool per user (no overage charges)</li>
-          <li>Auto mode (unlimited — does not draw from credit pool)</li>
-          <li>All AI models: Claude, GPT, Gemini, DeepSeek</li>
-          <li>Background (cloud) agents — async tasks</li>
-          <li>Full @codebase project indexing</li>
-          <li>Plan Mode before Agent executes</li>
-        </ul>
-      </div>
-      <div class="plan-col">
-        <h5>👥 Team &amp; Admin Features</h5>
-        <ul>
-          <li>Shared Cursor Rules — org-wide AI standards</li>
-          <li>Shared slash commands across the team</li>
-          <li>Centralized billing — one invoice total</li>
-          <li>Admin dashboard — seat &amp; credit management</li>
-          <li>SSO (Google Workspace, Okta, Azure AD)</li>
-          <li>Privacy Mode — code never stored or trained on</li>
-          <li>Per-member usage analytics</li>
-          <li>Policy enforcement via admin controls</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <h3 class="sub">How Team Collaboration Works</h3>
-  <div class="card-grid">
-    <div class="feature-card">
-      <div class="card-icon">📋</div><h4>Shared Cursor Rules</h4>
-      <p>Your admin can define team-wide AI rules from the cloud dashboard. Rules can enforce content standards, tone, Bloom's requirements, or accessibility conventions — automatically applied for every member.</p>
-    </div>
-    <div class="feature-card">
-      <div class="card-icon">📁</div><h4>Project-Level Rules (in Git)</h4>
-      <p>Add a <code>.cursor/rules/</code> folder to any project and commit it. Every team member who opens that project inherits the same AI instructions automatically — no extra setup.</p>
-    </div>
-    <div class="feature-card">
-      <div class="card-icon">⚡</div><h4>Shared Slash Commands</h4>
-      <p>Save your best prompts as <code>.cursor/commands/*.md</code> files — standard rubric reviews, accessibility audits, Bloom's checks. Share them via version control so the whole team uses the same proven prompts.</p>
-    </div>
-    <div class="feature-card">
-      <div class="card-icon">📊</div><h4>Admin Dashboard</h4>
-      <p>Team leads see credit usage per member, track which models are most used, add or remove seats, and enforce privacy policies — all from a single web dashboard without touching individual accounts.</p>
-    </div>
-    <div class="feature-card">
-      <div class="card-icon">🔐</div><h4>Privacy Mode</h4>
-      <p>With Privacy Mode on, none of your prompts or file content are stored by Cursor's AI providers or used for model training. Admins can enforce this across the whole team.</p>
-    </div>
-    <div class="feature-card">
-      <div class="card-icon">🌐</div><h4>Background Agents</h4>
-      <p>Start a long-running task (review 20 modules for consistency) and step away. Background agents work in the cloud and send you a notification when done — no need to stay in the editor.</p>
-    </div>
-  </div>
+  <h3 class="sub">Commands — run from Cursor</h3>
+  <p class="body-text">Open the command palette (<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>), search for the command name, or type <kbd>/</kbd> in chat where supported:</p>
+  <table class="data">
+    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>ool-pre-pr-check</code></td><td><strong>Before you open a PR</strong> — repo path, secrets scan, build reminder, draft PR text.</td></tr>
+      <tr><td><code>ool-pr-review</code></td><td><strong>Reviewing someone’s PR</strong> — checklist and suggested GitHub comments.</td></tr>
+      <tr><td><code>uga-react-template</code></td><td>Course-file React / Vite / CourseContext help.</td></tr>
+      <tr><td><code>elc-design-system</code></td><td>Design system CDN and HTML patterns.</td></tr>
+      <tr><td><code>elc-ai-agent</code></td><td>Brightspace agent framework plugins.</td></tr>
+      <tr><td><code>uga-ool-github</code></td><td>General OOL GitHub / org practices.</td></tr>
+    </tbody>
+  </table>
 
   <div class="diagram-wrap">
-    <div class="diagram-title">👥 How Shared Rules Flow Across the Team</div>
-    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" style="max-width:680px;width:100%;">
-      <defs><marker id="a6" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#BA0C2F"/></marker></defs>
-      <rect x="20" y="80" width="150" height="110" rx="8" fill="#BA0C2F"/>
-      <text x="95" y="110" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Arial">👩‍💼 Team Lead /</text>
-      <text x="95" y="126" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Arial">Admin</text>
-      <text x="95" y="148" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">Sets rules in</text>
-      <text x="95" y="162" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">dashboard &amp;</text>
-      <text x="95" y="176" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="11" font-family="Arial">.cursor/rules/</text>
-      <line x1="170" y1="135" x2="218" y2="135" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a6)"/>
-      <rect x="220" y="88" width="160" height="94" rx="8" fill="#1a1a1a"/>
-      <text x="300" y="115" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold" font-family="Arial">🗂️ Shared Repo</text>
-      <text x="300" y="133" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="Arial">.cursor/rules/*.md</text>
-      <text x="300" y="149" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="Arial">.cursor/commands/*.md</text>
-      <text x="300" y="165" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-family="Arial">(version controlled)</text>
-      <line x1="380" y1="135" x2="428" y2="88" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a6)"/>
-      <line x1="380" y1="135" x2="428" y2="135" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a6)"/>
-      <line x1="380" y1="135" x2="428" y2="182" stroke="#BA0C2F" stroke-width="2" marker-end="url(#a6)"/>
-      <rect x="430" y="62" width="135" height="52" rx="8" fill="#1a4e8a"/>
-      <text x="497" y="84" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">ID Team Member</text>
-      <text x="497" y="100" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="Arial">AI rules auto-applied</text>
-      <rect x="430" y="112" width="135" height="52" rx="8" fill="#1a7a44"/>
-      <text x="497" y="134" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">Q&amp;A Member</text>
-      <text x="497" y="150" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="Arial">Same prompts available</text>
-      <rect x="430" y="162" width="135" height="52" rx="8" fill="#d45d00"/>
-      <text x="497" y="184" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">Analytics Member</text>
-      <text x="497" y="200" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="Arial">Same standards enforced</text>
-      <text x="350" y="248" text-anchor="middle" fill="#888" font-size="11" font-family="Arial">git pull → Everyone's Cursor picks up new rules automatically on next project open</text>
+    <div class="diagram-title">How team config reaches your editor</div>
+    <svg viewBox="0 0 640 120" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;">
+      <rect x="10" y="35" width="120" height="50" rx="6" fill="#BA0C2F"/>
+      <text x="70" y="58" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">git pull</text>
+      <text x="70" y="72" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="10" font-family="Arial">cursor-docs</text>
+      <line x1="130" y1="60" x2="165" y2="60" stroke="#BA0C2F" stroke-width="2"/>
+      <polygon points="165,60 175,55 175,65" fill="#BA0C2F"/>
+      <rect x="178" y="35" width="130" height="50" rx="6" fill="#1a1a1a"/>
+      <text x="243" y="58" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">.cursor/rules</text>
+      <text x="243" y="72" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="Arial">skills · commands</text>
+      <line x1="308" y1="60" x2="343" y2="60" stroke="#BA0C2F" stroke-width="2"/>
+      <polygon points="343,60 353,55 353,65" fill="#BA0C2F"/>
+      <rect x="356" y="35" width="130" height="50" rx="6" fill="#1a4e8a"/>
+      <text x="421" y="65" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">Your Cursor</text>
+      <text x="421" y="78" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Arial">Agent + Ask</text>
+      <line x1="486" y1="60" x2="521" y2="60" stroke="#BA0C2F" stroke-width="2"/>
+      <polygon points="521,60 531,55 531,65" fill="#BA0C2F"/>
+      <rect x="534" y="35" width="96" height="50" rx="6" fill="#1a7a44"/>
+      <text x="582" y="65" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">App repos</text>
     </svg>
+  </div>
+</section>
+
+<section class="section" id="daily-workflow">
+  <div class="section-number">6</div>
+  <h2>Daily workflow for OOL developers</h2>
+  <p class="section-intro">A sane default day — adjust with your lead for your role (ID, dev, analytics).</p>
+
+  <ol class="steps">
+    <li><div class="step-num">1</div><div class="step-body"><strong>Open the right repos</strong> — Prefer a workspace that includes <code>uga-online-cursor-docs</code> plus the app you’re editing. Avoid having <code>UGA-Brightspace-React-Template</code> in the tree when using <strong>Agent</strong> mode for feature work (easy to edit the wrong repo).</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong>Pull latest</strong> — <code>git pull</code> on <code>main</code> in each repo you touch, then create your feature branch.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong>Ask before Agent</strong> — For unfamiliar code or large tasks, use <strong>Ask</strong> mode to explore; switch to <strong>Agent</strong> for implementation.</div></li>
+    <li><div class="step-num">4</div><div class="step-body"><strong>New React course-file app?</strong> — Create under <code>UGA-Brightspace-React-Apps/apps/your-app-name/</code>; ask Cursor to follow <code>scaffold-from-ool-template</code>. Do not build inside the template repo.</div></li>
+    <li><div class="step-num">5</div><div class="step-body"><strong>Review every AI diff</strong> — Green/red diff in the editor; reject wrong changes.</div></li>
+    <li><div class="step-num">6</div><div class="step-body"><strong>Before PR</strong> — Run command <code>ool-pre-pr-check</code>; fix flags; run <code>npm run build</code> per app README.</div></li>
+  </ol>
+
+  <table class="data">
+    <thead><tr><th>Workspace idea</th><th>Repos included</th><th>Best mode</th></tr></thead>
+    <tbody>
+      <tr><td>Develop-focused</td><td>cursor-docs + Apps + your app repos (no template)</td><td>Agent for coding</td></tr>
+      <tr><td>Reference-focused</td><td>cursor-docs + Template + framework + lit</td><td>Ask for reading only</td></tr>
+      <tr><td>See <code>workspaces/examples/</code></td><td>Optional JSON examples — copy &amp; edit paths</td><td>Your choice</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="section" id="prs">
+  <div class="section-number">7</div>
+  <h2>Pull requests &amp; code review</h2>
+  <p class="section-intro">Full checklist for newcomers: <a href="docs/cursor/pr-and-code-review.md"><strong>docs/cursor/pr-and-code-review.md</strong></a> (markdown, good for printing or sharing).</p>
+
+  <h3 class="sub">Authors — before you push</h3>
+  <ul class="steps">
+    <li><div class="step-num">✓</div><div class="step-body">Changes are in the <strong>correct repo</strong> (apps under <code>UGA-Brightspace-React-Apps/apps/</code>).</div></li>
+    <li><div class="step-num">✓</div><div class="step-body">No <code>.env</code>, keys, or student identifiers in the diff.</div></li>
+    <li><div class="step-num">✓</div><div class="step-body">Run <strong><code>ool-pre-pr-check</code></strong> in Cursor.</div></li>
+    <li><div class="step-num">✓</div><div class="step-body">PR description includes <strong>summary</strong>, <strong>test plan</strong>, and <strong>eLC notes</strong> (course/OU, role, Manage Files path) when LMS-related.</div></li>
+  </ul>
+
+  <h3 class="sub">Reviewers</h3>
+  <p class="body-text">On GitHub: read description → Files changed → comment or approve. In Cursor: run <strong><code>ool-pr-review</code></strong> with the PR link; use <strong>Ask</strong> mode to understand unfamiliar files.</p>
+
+  <div class="code-block">
+<span class="cm">## Summary (PR template excerpt)</span>
+<span class="hi">- What changed and why</span>
+
+<span class="cm">## Test plan</span>
+<span class="hi">- [ ] npm run build</span>
+<span class="hi">- [ ] Tested in eLC (OU: ___; role: ___; path: ___)</span>
+  </div>
+</section>
+
+<!-- PART B -->
+
+<section class="section" id="vscode">
+  <div class="section-number">8</div>
+  <h2>VS Code vs Cursor</h2>
+  <p class="section-intro">Cursor is a fork of VS Code. Your editor layout, extensions, and shortcuts mostly carry over. What’s new is deep AI integration.</p>
+
+  <table class="data">
+    <thead><tr><th>Feature</th><th>VS Code</th><th>Cursor</th></tr></thead>
+    <tbody>
+      <tr><td>Editor, terminal, git sidebar</td><td>Yes</td><td>Same</td></tr>
+      <tr><td>AI chat that edits files</td><td>Limited extensions</td><td>Built in (Agent, Ask)</td></tr>
+      <tr><td>Project-wide AI context</td><td>Varies</td><td>Indexes workspace</td></tr>
+      <tr><td>Team rules in <code>.cursor/rules/</code></td><td>No</td><td>Yes — we use this in cursor-docs</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout vscode" style="background:#e8f0fb;border-left:4px solid #0078d4;">
+    <div class="callout-icon">🔵</div>
+    <div class="callout-body">
+      <strong>Same as VS Code</strong>
+      <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>P</kbd> quick open, <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> command palette, <kbd>⌘</kbd>+<kbd>`</kbd> terminal, save, undo, search across files.
+    </div>
+  </div>
+</section>
+
+<section class="section section-wide" id="modes">
+  <div class="section-number">9</div>
+  <h2>Agent modes (Ask, Agent, Plan…)</h2>
+  <p class="section-intro">Pick the mode in the chat panel before you prompt. When unsure, start with <strong>Ask</strong>.</p>
+
+  <div class="mode-grid">
+    <div class="mode-card">
+      <div class="mode-header" style="background:#444"><h4>Ask — read-only</h4></div>
+      <div class="mode-body">Explains code; does not edit files. Safe for learning and PR review prep.</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-header" style="background:#BA0C2F"><h4>Agent — autonomous</h4></div>
+      <div class="mode-body">Edits files, runs commands. <strong>Always review diffs.</strong> Default for implementation.</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-header" style="background:#1a4e8a"><h4>Plan — approve first</h4></div>
+      <div class="mode-body">Writes a plan before changing code. Good for large or risky tasks.</div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-header" style="background:#1a7a44"><h4>Debug</h4></div>
+      <div class="mode-body">Runtime investigation for bugs. Use when something fails in browser or Node.</div>
+    </div>
   </div>
 
   <div class="callout tip">
-    <div class="callout-icon">💡</div>
+    <div class="callout-icon">🔁</div>
     <div class="callout-body">
-      <strong>Getting Started with Team Rules Today</strong>
-      Create a <code>.cursor/rules/</code> folder in your main course repo. Add a file like <code>uga-content-standards.md</code> with your team's standards written in plain English: "Learning objectives should use measurable Bloom's action verbs," "Always write at a 10th-grade reading level," "Flag any accessibility issues you encounter." Commit it — every team member benefits immediately.
+      <strong>Recommended pattern:</strong> Ask (scope) → Plan (optional, big tasks) → Agent (execute) → inline <kbd>⌘</kbd>/<kbd>Ctrl</kbd>+<kbd>K</kbd> for small text tweaks.
     </div>
   </div>
 </section>
 
-<!-- SECTION 8 -->
-<section class="section" id="use-cases">
-  <div class="section-number">8</div>
-  <h2>Use Cases for ID &amp; Q&amp;A Teams</h2>
-  <p class="section-intro">Practical workflows you can start using this week.</p>
+<section class="section" id="ai-chat">
+  <div class="section-number">10</div>
+  <h2>@ references in chat</h2>
+  <p class="section-intro">Type <kbd>@</kbd> in chat to focus the AI and save context.</p>
 
-  <h3 class="sub">📐 Instructional Designers</h3>
-  <div class="card-grid">
-    <div class="feature-card"><div class="card-icon">🎯</div><h4>Learning Objective Audit</h4><p>Use Ask mode to assess Bloom's alignment, then Agent mode to rewrite flagged objectives across all modules. Review the diff before accepting.</p></div>
-    <div class="feature-card"><div class="card-icon">🔄</div><h4>Cross-Module Consistency</h4><p>Use @folder to point to your modules directory. Ask "Are tone, reading level, and structure consistent? Flag the top 5 inconsistencies."</p></div>
-    <div class="feature-card"><div class="card-icon">✍️</div><h4>Plain-Language Rewriting</h4><p>Select dense academic text, press ⌘K (Manual mode), type "Rewrite at a 10th-grade level, keep all key concepts." Inline diff shows every change.</p></div>
-    <div class="feature-card"><div class="card-icon">📋</div><h4>Rubric Generation</h4><p>Describe an assignment and ask for a 4-point rubric in CSV format. AI outputs a clean file ready to paste into your LMS.</p></div>
-  </div>
-
-  <h3 class="sub">🔍 Quality &amp; Analytics</h3>
-  <div class="card-grid">
-    <div class="feature-card"><div class="card-icon">🐛</div><h4>HTML QA Sweep</h4><p>Agent mode across a full course folder: "Find broken image tags, missing alt text, unclosed tags, and WCAG 2.2 issues. Return a numbered list with filename and line number."</p></div>
-    <div class="feature-card"><div class="card-icon">📊</div><h4>Quiz Data Analysis</h4><p>Open your exported CSV in Cursor. Ask for mean, median, pass rates, and hardest questions. Use Manual mode to format the output exactly as needed for your report.</p></div>
-    <div class="feature-card"><div class="card-icon">📝</div><h4>Stakeholder Report Drafting</h4><p>Give Cursor a data file and a bullet-point outline. Agent mode drafts the narrative. Manual mode polishes individual paragraphs.</p></div>
-    <div class="feature-card"><div class="card-icon">🔗</div><h4>Link &amp; Reference Audit</h4><p>Ask AI to extract all external URLs from your HTML files and flag any that point to outdated or non-UGA resources.</p></div>
-  </div>
-</section>
-
-<!-- SECTION 9 -->
-<section class="section" id="shortcuts">
-  <div class="section-number">9</div>
-  <h2>Essential Shortcuts</h2>
-  <p class="section-intro">Everything marked "Same as VS Code" already works exactly as you know it — these are the only new ones to learn.</p>
-
-  <table class="shortcuts">
-    <thead><tr><th>Action</th><th>Mac</th><th>Windows / Linux</th><th>Status</th></tr></thead>
+  <table class="data">
+    <thead><tr><th>Reference</th><th>Use for</th></tr></thead>
     <tbody>
-      <tr><td>Open AI Chat panel</td><td><kbd>⌘ L</kbd></td><td><kbd>Ctrl+L</kbd></td><td>✨ New</td></tr>
-      <tr><td>Inline AI edit (Manual mode)</td><td><kbd>⌘ K</kbd></td><td><kbd>Ctrl+K</kbd></td><td>✨ New</td></tr>
-      <tr><td>Open Composer / Agentic chat</td><td><kbd>⌘ I</kbd></td><td><kbd>Ctrl+I</kbd></td><td>✨ New</td></tr>
-      <tr><td>Cycle Agent / Ask / Manual</td><td><kbd>⌘ .</kbd></td><td><kbd>Ctrl+.</kbd></td><td>✨ New</td></tr>
-      <tr><td>Accept AI Tab suggestion</td><td><kbd>Tab</kbd></td><td><kbd>Tab</kbd></td><td>✨ New behavior</td></tr>
-      <tr><td>Command Palette</td><td><kbd>⌘ ⇧ P</kbd></td><td><kbd>Ctrl+Shift+P</kbd></td><td>🔵 Same as VS Code</td></tr>
-      <tr><td>Quick file open</td><td><kbd>⌘ P</kbd></td><td><kbd>Ctrl+P</kbd></td><td>🔵 Same as VS Code</td></tr>
-      <tr><td>Search across all files</td><td><kbd>⌘ ⇧ F</kbd></td><td><kbd>Ctrl+Shift+F</kbd></td><td>🔵 Same as VS Code</td></tr>
-      <tr><td>Toggle sidebar</td><td><kbd>⌘ B</kbd></td><td><kbd>Ctrl+B</kbd></td><td>🔵 Same as VS Code</td></tr>
-      <tr><td>Open terminal</td><td><kbd>⌘ `</kbd></td><td><kbd>Ctrl+`</kbd></td><td>🔵 Same as VS Code</td></tr>
-      <tr><td>Undo</td><td><kbd>⌘ Z</kbd></td><td><kbd>Ctrl+Z</kbd></td><td>🔵 Same as VS Code</td></tr>
-      <tr><td>Save file</td><td><kbd>⌘ S</kbd></td><td><kbd>Ctrl+S</kbd></td><td>🔵 Same as VS Code</td></tr>
+      <tr><td><kbd>@filename</kbd></td><td>One file you care about</td></tr>
+      <tr><td><kbd>@folder</kbd></td><td>Everything in a directory</td></tr>
+      <tr><td><kbd>@codebase</kbd></td><td>Search the whole project (uses more context)</td></tr>
+      <tr><td><kbd>@cursor-rules</kbd></td><td>Team rules — e.g. “what are our OOL PR standards?”</td></tr>
+      <tr><td><kbd>@Branch</kbd></td><td>Your current git changes</td></tr>
     </tbody>
   </table>
 </section>
 
-<!-- SECTION 10 -->
-<section class="section" id="tips">
-  <div class="section-number">10</div>
-  <h2>Tips, Tricks &amp; Gotchas</h2>
+<section class="section" id="security">
+  <div class="section-number">11</div>
+  <h2>Security &amp; FERPA</h2>
+  <p class="section-intro">Rules in <code>ool-secrets-and-ferpa.mdc</code> apply in every chat. Human judgment still required.</p>
 
-  <h3 class="sub">✅ Best Practices</h3>
-  <ol class="steps">
-    <li><div class="step-num">✔</div><div class="step-body"><strong>Plan in Ask, execute in Agent</strong> Don't jump straight to Agent for complex tasks. Spend two minutes in Ask mode scoping the work — it produces cleaner results and avoids wasted credits on misdirected runs.</div></li>
-    <li><div class="step-num">✔</div><div class="step-body"><strong>Always review AI edits before accepting</strong> Cursor shows a diff. Read it. AI can produce confident errors. A 30-second review catches 90% of issues before anything is saved.</div></li>
-    <li><div class="step-num">✔</div><div class="step-body"><strong>Commit your .cursor/ folder to version control</strong> This is how the whole team shares rules and commands. Treat it like any other config file — it belongs in Git alongside your project files.</div></li>
-    <li><div class="step-num">✔</div><div class="step-body"><strong>Start fresh chats for unrelated tasks</strong> Long chats accumulate noise that can cause the agent to lose focus. New task = new chat. Use <kbd>/summarize</kbd> if you need to carry context forward from a long session.</div></li>
-    <li><div class="step-num">✔</div><div class="step-body"><strong>Stay on Auto mode by default</strong> Auto mode is effectively unlimited and Cursor selects the appropriate model per task. Only manually switch to Opus when you have a genuine need for its extra power on a complex task.</div></li>
-  </ol>
+  <div class="card-grid">
+    <div class="feature-card"><h4>Never commit secrets</h4><p>No API keys, OAuth secrets, or <code>.env</code> files. Use gitignored env files and institutional secret stores.</p></div>
+    <div class="feature-card"><h4>FERPA</h4><p>Do not put student names, UGA IDs, or identifiable grades in prompts or committed files. Use aggregated anonymized data when appropriate.</p></div>
+    <div class="feature-card"><h4>Privacy Mode</h4><p>Your org may require Cursor Privacy Mode — prompts not used for model training. Confirm with your admin.</p></div>
+  </div>
+</section>
 
-  <h3 class="sub">⚠️ Common Gotchas</h3>
+<section class="section" id="shortcuts">
+  <div class="section-number">12</div>
+  <h2>Shortcuts &amp; tips</h2>
 
-  <div class="callout warn">
-    <div class="callout-icon">⚠️</div>
-    <div class="callout-body">
-      <strong>AI Can Be Wrong — Confidently</strong>
-      If the AI reports "no issues found" or "all changes complete," verify it. AI models can miss things or introduce subtle new problems. Human review remains essential, especially for content going to students.
-    </div>
+  <table class="data">
+    <thead><tr><th>Action</th><th>Mac</th><th>Windows</th></tr></thead>
+    <tbody>
+      <tr><td>Open AI chat</td><td><kbd>⌘ L</kbd></td><td><kbd>Ctrl L</kbd></td></tr>
+      <tr><td>Agent / Composer</td><td><kbd>⌘ I</kbd></td><td><kbd>Ctrl I</kbd></td></tr>
+      <tr><td>Inline edit selection</td><td><kbd>⌘ K</kbd></td><td><kbd>Ctrl K</kbd></td></tr>
+      <tr><td>Command palette</td><td><kbd>⌘ ⇧ P</kbd></td><td><kbd>Ctrl Shift P</kbd></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Gotchas</h3>
+  <ul class="steps">
+    <li><div class="step-num">!</div><div class="step-body"><strong>AI can be wrong</strong> — Verify “done” messages and test in eLC when applicable.</div></li>
+    <li><div class="step-num">!</div><div class="step-body"><strong>Long chats drift</strong> — Start a new chat for a new task; watch “context used” hitting 100%.</div></li>
+    <li><div class="step-num">!</div><div class="step-body"><strong>Agent + template repo</strong> — Easy to edit the wrong clone; use Develop-style workspace or explicit @ paths.</div></li>
+  </ul>
+</section>
+
+<section class="section" id="topic-docs">
+  <div class="section-number">13</div>
+  <h2>Find technical documentation</h2>
+  <p class="section-intro">This HTML page is onboarding. Deep reference material lives under <code>docs/</code>.</p>
+
+  <div class="card-grid">
+    <div class="feature-card"><h4><a href="docs/INDEX.md">docs/INDEX.md</a></h4><p>Master index by job: D2L APIs, deploy, agents, React apps, Lit library, video, captions, PDF.</p></div>
+    <div class="feature-card"><h4><a href="docs/cursor/pr-and-code-review.md">PR &amp; code review</a></h4><p>Step-by-step PR workflow for GitHub beginners.</p></div>
+    <div class="feature-card"><h4><a href="docs/ai-agents-brightspace/">AI agents</a></h4><p>Framework guides, TODOs, example prompts.</p></div>
+    <div class="feature-card"><h4><a href="https://design.online.uga.edu/getting-started/installation/" target="_blank" rel="noopener">Design system</a></h4><p>UGA Online CDN for course-file HTML and shells.</p></div>
   </div>
 
-  <div class="callout warn">
-    <div class="callout-icon">⚠️</div>
+  <div class="callout tip">
+    <div class="callout-icon">🆘</div>
     <div class="callout-body">
-      <strong>Long Agent Sessions Degrade Quality</strong>
-      After many back-and-forth turns, agents can lose focus and start contradicting earlier work. For long projects, break the task into chunks and start a new chat session for each one.
-    </div>
-  </div>
-
-  <div class="callout warn">
-    <div class="callout-icon">⚠️</div>
-    <div class="callout-body">
-      <strong>Watch the Context Wheel — "100% Context Used"</strong>
-      The circle icon in the chat input bar fills as your session accumulates files, references, and messages. When you see <strong>"100% context used"</strong>, start a new chat immediately. The AI cannot reliably use additional information and may start silently ignoring earlier parts of the conversation, producing inconsistent results.
-    </div>
-  </div>
-
-  <div class="callout note">
-    <div class="callout-icon">🔄</div>
-    <div class="callout-body">
-      <strong>Cursor Updates Frequently</strong>
-      Cursor ships new releases nearly weekly. Features here reflect May 2026. Mode names, UI details, and feature availability can change. Bookmark <strong>cursor.com/changelog</strong> for the latest.
+      <strong>Stuck?</strong>
+      Ask in team chat; open <strong>Ask</strong> mode in Cursor with <kbd>@docs/INDEX.md</kbd>; run <code>ool-pre-pr-check</code> or <code>ool-pr-review</code> when the task is PR-related.
     </div>
   </div>
 </section>
 
 <footer class="doc-footer">
-  <strong>UGA Online · Instructional Design · Quality &amp; Analytics</strong><br>
-  Cursor 101 · May 2026 · Teams Plan Reference Guide · For internal use<br>
-  <span style="font-size:11px;opacity:0.6;margin-top:6px;display:block">cursor.com/docs &nbsp;·&nbsp; cursor.com/changelog &nbsp;·&nbsp; cursor.com/pricing</span>
+  <strong>UGA Online · uga-online-cursor-docs</strong><br>
+  Open this file in a browser: <code>cursor-demo.html</code> · Maintained with team rules in <code>.cursor/</code><br>
+  <span style="font-size:11px;opacity:0.65;margin-top:8px;display:block">
+    <a href="README.md">README</a> ·
+    <a href="docs/INDEX.md">docs/INDEX.md</a> ·
+    <a href="https://github.com/orgs/uga-ool/repositories" target="_blank" rel="noopener">uga-ool repos</a> ·
+    <a href="https://cursor.com/docs" target="_blank" rel="noopener">cursor.com/docs</a>
+  </span>
 </footer>
 
 </body>

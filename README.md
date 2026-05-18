@@ -9,6 +9,7 @@ Central reference for **eLC (Brightspace)**, **OOL templates**, **AI agents**, *
 | [`docs/INDEX.md`](docs/INDEX.md) | **Start here** — documentation grouped by **job** (D2L APIs, deploy, agents, React apps, Lit library, video, captions, PDF). |
 | [`docs/`](docs/) | All markdown and HTML reference material, organized **by topic** (no per-repo mirror folder). |
 | [`docs/_meta/manifest.md`](docs/_meta/manifest.md) | Which upstream repo each topic area came from, for updates. |
+| [`cursor-demo.html`](cursor-demo.html) | **Onboarding** — VS Code, Cursor, GitHub, and how to use this repo (open in a browser). |
 | [`docs/cursor/`](docs/cursor/) | Cursor workflows (PR and code review for newcomers). |
 | [`workspaces/examples/`](workspaces/examples/) | Optional example multi-root workspaces (copy and adjust paths; not required). |
 | [`.cursor/rules/`](.cursor/rules/) | Cursor rules (MDC): upstream reference, secrets/FERPA, OOL GitHub, Brightspace React, design system, eLC AI agents. |
