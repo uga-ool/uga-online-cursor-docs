@@ -9,7 +9,8 @@ Central reference for **eLC (Brightspace)**, **OOL templates**, **AI agents**, *
 | [`docs/INDEX.md`](docs/INDEX.md) | **Start here** — documentation grouped by **job** (D2L APIs, deploy, agents, React apps, Lit library, video, captions, PDF). |
 | [`docs/`](docs/) | All markdown and HTML reference material, organized **by topic** (no per-repo mirror folder). |
 | [`docs/_meta/manifest.md`](docs/_meta/manifest.md) | Which upstream repo each topic area came from, for updates. |
-| [`.cursor/rules/`](.cursor/rules/) | Cursor rules (MDC): OOL GitHub practices, Brightspace React course files, design system, eLC AI agent plugins. |
+| [`.cursor/rules/`](.cursor/rules/) | Cursor rules (MDC): upstream reference preservation, OOL GitHub practices, Brightspace React course files, design system, eLC AI agent plugins. |
+| [`.cursor/skills/`](.cursor/skills/) | Agent skills (e.g. scaffold from OOL template). |
 | [`.cursor/commands/`](.cursor/commands/) | Short command prompts aligned with those rules. |
 
 ## Agent framework forks

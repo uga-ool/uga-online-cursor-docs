@@ -51,6 +51,8 @@ Use this page first. All material lives under topic folders in [`docs/`](.)—th
 ## Cursor editor (repo-level)
 
 - **Rules and commands for this workspace:** [`.cursor/rules/`](../.cursor/rules/), [`.cursor/commands/`](../.cursor/commands/)
+- **Upstream reference policy:** [`upstream-reference-repos.mdc`](../.cursor/rules/upstream-reference-repos.mdc) (always on)
+- **Scaffold course-file apps:** [`.cursor/skills/scaffold-from-ool-template/`](../.cursor/skills/scaffold-from-ool-template/)
 
 ## Provenance and refreshing
 
