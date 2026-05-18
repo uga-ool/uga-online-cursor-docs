@@ -22,3 +22,5 @@ Org repository list: **https://github.com/orgs/uga-ool/repositories**
 
 - Use small, reviewable PRs; link eLC test plans or courses when behavior is LMS-specific.
 - Keep **CHANGELOG** / release notes when shipping assets instructors rely on (bundles, zip layouts, Manage Files paths).
+- PR playbook: `docs/cursor/pr-and-code-review.md`
+- Cursor: skill `ool-pr-and-code-review`; commands `ool-pr-review`, `ool-pre-pr-check`

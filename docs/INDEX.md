@@ -50,9 +50,12 @@ Use this page first. All material lives under topic folders in [`docs/`](.)—th
 
 ## Cursor editor (repo-level)
 
-- **Rules and commands for this workspace:** [`.cursor/rules/`](../.cursor/rules/), [`.cursor/commands/`](../.cursor/commands/)
-- **Upstream reference policy:** [`upstream-reference-repos.mdc`](../.cursor/rules/upstream-reference-repos.mdc) (always on)
-- **Scaffold course-file apps:** [`.cursor/skills/scaffold-from-ool-template/`](../.cursor/skills/scaffold-from-ool-template/)
+- **PR and code review (newcomers):** [`cursor/pr-and-code-review.md`](cursor/pr-and-code-review.md)
+- **Workspace examples (optional, copy and adjust paths):** [`workspaces/examples/`](../workspaces/examples/)
+- **Rules and commands:** [`.cursor/rules/`](../.cursor/rules/), [`.cursor/commands/`](../.cursor/commands/)
+- **Always on:** [`upstream-reference-repos.mdc`](../.cursor/rules/upstream-reference-repos.mdc), [`ool-secrets-and-ferpa.mdc`](../.cursor/rules/ool-secrets-and-ferpa.mdc)
+- **Skills:** [`scaffold-from-ool-template`](../.cursor/skills/scaffold-from-ool-template/), [`ool-pr-and-code-review`](../.cursor/skills/ool-pr-and-code-review/)
+- **Commands:** `ool-pre-pr-check`, `ool-pr-review` (see `.cursor/commands/`)
 
 ## Provenance and refreshing
 

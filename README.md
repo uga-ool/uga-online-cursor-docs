@@ -9,9 +9,11 @@ Central reference for **eLC (Brightspace)**, **OOL templates**, **AI agents**, *
 | [`docs/INDEX.md`](docs/INDEX.md) | **Start here** — documentation grouped by **job** (D2L APIs, deploy, agents, React apps, Lit library, video, captions, PDF). |
 | [`docs/`](docs/) | All markdown and HTML reference material, organized **by topic** (no per-repo mirror folder). |
 | [`docs/_meta/manifest.md`](docs/_meta/manifest.md) | Which upstream repo each topic area came from, for updates. |
-| [`.cursor/rules/`](.cursor/rules/) | Cursor rules (MDC): upstream reference preservation, OOL GitHub practices, Brightspace React course files, design system, eLC AI agent plugins. |
-| [`.cursor/skills/`](.cursor/skills/) | Agent skills (e.g. scaffold from OOL template). |
-| [`.cursor/commands/`](.cursor/commands/) | Short command prompts aligned with those rules. |
+| [`docs/cursor/`](docs/cursor/) | Cursor workflows (PR and code review for newcomers). |
+| [`workspaces/examples/`](workspaces/examples/) | Optional example multi-root workspaces (copy and adjust paths; not required). |
+| [`.cursor/rules/`](.cursor/rules/) | Cursor rules (MDC): upstream reference, secrets/FERPA, OOL GitHub, Brightspace React, design system, eLC AI agents. |
+| [`.cursor/skills/`](.cursor/skills/) | Agent skills (scaffold from template, PR and code review). |
+| [`.cursor/commands/`](.cursor/commands/) | Commands including `ool-pre-pr-check`, `ool-pr-review`, and topic prompts. |
 
 ## Agent framework forks
 

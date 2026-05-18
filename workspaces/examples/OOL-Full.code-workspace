@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"name": "uga-online-cursor-docs",
+			"path": "../../../uga-online-cursor-docs"
+		},
+		{
+			"name": "uga-online-brightspace-agent-framework",
+			"path": "../../../uga-online-brightspace-agent-framework"
+		},
+		{
+			"name": "UGA-Brightspace-React-Template",
+			"path": "../../../UGA-Brightspace-React-Template"
+		},
+		{
+			"name": "UGA-Brightspace-React-Apps",
+			"path": "../../../UGA-Brightspace-React-Apps"
+		},
+		{
+			"name": "uga-lit-components",
+			"path": "../../../uga-lit-components"
+		},
+		{
+			"name": "uga-drive-elc-sync",
+			"path": "../../../uga-drive-elc-sync"
+		},
+		{
+			"name": "uga-timeline-js-aws",
+			"path": "../../../uga-timeline-js-aws"
+		},
+		{
+			"name": "agent-todd",
+			"path": "../../../agent-todd"
+		},
+		{
+			"name": "uga-elc-kaltura-caption-import",
+			"path": "../../../uga-elc-kaltura-caption-import"
+		}
+	]
+}

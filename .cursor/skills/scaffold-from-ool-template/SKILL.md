@@ -56,7 +56,11 @@ Load UGA Online Design System CDN in HTML shells per `elc-d2l-design-system` rul
 
 When the app is complete or the user asks, add a row to the `apps/` table in `UGA-Brightspace-React-Apps/README.md`.
 
-## 8. PR note
+## 8. Before first PR
+
+Run Cursor command **`ool-pre-pr-check`** (or skill `ool-pr-and-code-review` author track) before opening the PR.
+
+## 9. PR note
 
 Document intentional diffs from the public template in the PR description only when non-obvious.
 

@@ -40,4 +40,4 @@ Do not scaffold by editing `UGA-Brightspace-React-Template` in place. Read the t
 
 ## Limits
 
-Rules are advisory. Run `git status` on reference clones before committing. Prefer a work-focused workspace when using Agent mode on app tasks.
+Rules are advisory. Run `git status` on reference clones before committing. Prefer a **develop-focused** multi-root workspace (see `workspaces/examples/OOL-Develop.code-workspace` and `docs/cursor/pr-and-code-review.md`).

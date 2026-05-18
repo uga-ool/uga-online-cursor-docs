@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"name": "uga-online-cursor-docs",
+			"path": "../../../uga-online-cursor-docs"
+		},
+		{
+			"name": "UGA-Brightspace-React-Template",
+			"path": "../../../UGA-Brightspace-React-Template"
+		},
+		{
+			"name": "uga-online-brightspace-agent-framework",
+			"path": "../../../uga-online-brightspace-agent-framework"
+		},
+		{
+			"name": "uga-lit-components",
+			"path": "../../../uga-lit-components"
+		}
+	]
+}
