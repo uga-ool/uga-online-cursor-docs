@@ -26,7 +26,8 @@
   .toc li { margin-bottom: 8px; font-weight: 500; }
   .toc a { color: var(--blue); text-decoration: none; }
   .toc a:hover { text-decoration: underline; }
-  .toc .part { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 14px; margin-bottom: 4px; list-style: none; margin-left: -20px; font-weight: 700; }
+  .toc .part { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin: 16px 0 8px; font-weight: 700; }
+  .toc .part:first-child { margin-top: 0; }
   .section { padding: 48px 60px; border-bottom: 1px solid var(--mid-gray); max-width: 960px; }
   .section-wide { max-width: none; }
   .section-number { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--red); color: #fff; border-radius: 50%; font-weight: 800; font-size: 16px; margin-bottom: 12px; }
@@ -100,8 +101,8 @@
 
 <nav class="toc">
   <h3>Table of contents</h3>
+  <p class="part">Part A — Team repo &amp; GitHub</p>
   <ol>
-    <li class="part">Part A — Team repo &amp; GitHub</li>
     <li><a href="#start">What is uga-online-cursor-docs?</a></li>
     <li><a href="#github-basics">GitHub basics (plain language)</a></li>
     <li><a href="#setup">One-time setup on your computer</a></li>
@@ -109,7 +110,9 @@
     <li><a href="#cursor-config">Rules, skills &amp; commands (.cursor/)</a></li>
     <li><a href="#daily-workflow">Daily workflow for OOL developers</a></li>
     <li><a href="#prs">Pull requests &amp; code review</a></li>
-    <li class="part">Part B — Cursor editor</li>
+  </ol>
+  <p class="part">Part B — Cursor editor</p>
+  <ol>
     <li><a href="#vscode">VS Code vs Cursor</a></li>
     <li><a href="#modes">Agent modes (Ask, Agent, Plan…)</a></li>
     <li><a href="#ai-chat">@ references in chat</a></li>
@@ -223,18 +226,47 @@
   </div>
 
   <h3 class="sub">3. Clone this docs repo</h3>
+  <p class="body-text">Use <strong>Terminal</strong> (below) or ask <strong>Cursor Agent</strong> to run the commands for you — review what it does before approving.</p>
   <div class="code-block">
 <span class="cm"># HTTPS example (replace with your path)</span>
 <span class="hi">cd ~/local_dev</span>
 <span class="hi">git clone https://github.com/uga-ool/uga-online-cursor-docs.git</span>
   </div>
+  <div class="prompt-example">
+    <div class="prompt-label">CURSOR AGENT</div>
+    <p>"Clone the uga-ool repo uga-online-cursor-docs into ~/local_dev using HTTPS. Show me each command before you run it."</p>
+  </div>
+  <div class="callout tip">
+    <div class="callout-icon">💡</div>
+    <div class="callout-body">
+      <strong>Using Agent to clone</strong>
+      Open Cursor first (even on an empty folder), switch to <strong>Agent</strong> mode, and paste a prompt like the one above. The agent can <code>cd</code>, run <code>git clone</code>, and tell you when it is done. You still need Git installed and GitHub access to the <code>uga-ool</code> org.
+    </div>
+  </div>
 
   <h3 class="sub">4. Open in Cursor</h3>
+  <div class="callout note">
+    <div class="callout-icon">✓</div>
+    <div class="callout-body">
+      <strong>Best practice</strong>
+      Keep <code>uga-online-cursor-docs</code> in the same Cursor window as the app repos you edit (a <strong>multi-root workspace</strong>). That loads team <code>.cursor/rules</code>, skills, and commands while you work on code.
+    </div>
+  </div>
   <ol class="steps">
-    <li><div class="step-num">1</div><div class="step-body"><strong>File → Open Folder</strong> — Select <code>uga-online-cursor-docs</code> to read docs and pick up team rules.</div></li>
-    <li><div class="step-num">2</div><div class="step-body"><strong>For app work</strong> — Either open the app repo folder alone, or use a <strong>multi-root workspace</strong> (several repos in one window). Optional examples: <code>workspaces/examples/OOL-Develop.code-workspace</code> — copy to your machine and fix paths; not required if you use your own workspace file.</div></li>
-    <li><div class="step-num">3</div><div class="step-body"><strong>Pull updates weekly</strong> — In the docs repo: <code>git pull</code> so new rules and guides appear for Cursor automatically.</div></li>
+    <li><div class="step-num">1</div><div class="step-body"><strong>Bring in this repo first</strong> — After cloning (step 3), open the folder so Cursor indexes it: <strong>File → Open Folder…</strong> → choose <code>uga-online-cursor-docs</code>. Read <a href="docs/INDEX.md">docs/INDEX.md</a> or this page in a browser anytime; Cursor applies <code>.cursor/</code> config when this repo is in the workspace.</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong>Use a multi-root workspace (best practice)</strong> — Keep <code>uga-online-cursor-docs</code> in the same window as app repos (e.g. <code>UGA-Brightspace-React-Apps</code>). <strong>File → Open Workspace from File…</strong> → open a <code>.code-workspace</code> file. Copy <code>workspaces/examples/OOL-Develop.code-workspace</code> to your machine and fix each <code>path</code>, or use your own workspace file.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong>Or ask Cursor Agent</strong> — e.g. "Help me set up a multi-root workspace with uga-online-cursor-docs and UGA-Brightspace-React-Apps under ~/local_dev." Review paths before saving.</div></li>
+    <li><div class="step-num">4</div><div class="step-body"><strong>Stay current</strong> — Run <code>git pull</code> in <code>uga-online-cursor-docs</code> regularly (or ask Agent) so new rules and docs apply the next time you open the workspace.</div></li>
   </ol>
+
+  <table class="data">
+    <thead><tr><th>Example workspace</th><th>Includes cursor-docs?</th><th>Use when</th></tr></thead>
+    <tbody>
+      <tr><td><code>workspaces/examples/OOL-Develop.code-workspace</code></td><td>Yes</td><td>Daily app work (recommended)</td></tr>
+      <tr><td><code>workspaces/examples/OOL-Reference.code-workspace</code></td><td>Yes</td><td>Reading templates — prefer Ask mode</td></tr>
+      <tr><td>App repo folder only</td><td>No</td><td>Quick fix only; team rules may not load until cursor-docs is in the workspace</td></tr>
+    </tbody>
+  </table>
 </section>
 
 <section class="section" id="repo-map">
@@ -269,6 +301,29 @@
   <div class="section-number">5</div>
   <h2>Rules, skills &amp; commands (<code>.cursor/</code>)</h2>
   <p class="section-intro">These files shape how Cursor’s AI behaves for OOL work. They load when <code>uga-online-cursor-docs</code> is in your workspace (or when you open an app repo that also has its own <code>.cursor/</code> folder).</p>
+
+  <h3 class="sub" id="workspace-scope">One window, all repos</h3>
+  <p class="body-text">You do <strong>not</strong> copy <code>.cursor/</code> into every app repo. Add <code>uga-online-cursor-docs</code> to a <strong>multi-root workspace</strong> (see setup §4) and Cursor applies this repo’s team config to the <strong>whole window</strong> while you edit files in any included folder.</p>
+
+  <table class="data">
+    <thead><tr><th>Team config</th><th>In other repos in the same workspace?</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Commands</strong> (e.g. <code>ool-pre-pr-check</code>)</td><td><strong>Yes</strong> — available from the command palette and chat for that window, even when your open file is in <code>UGA-Brightspace-React-Apps</code> or another root.</td></tr>
+      <tr><td><strong>Skills</strong> (scaffold, PR help)</td><td><strong>Yes</strong> — the agent can use them for work in any included repo; naming the skill in a prompt helps.</td></tr>
+      <tr><td><strong>Rules</strong> — always on (upstream paths, secrets/FERPA)</td><td><strong>Yes</strong> — apply to all AI activity in that workspace.</td></tr>
+      <tr><td><strong>Rules</strong> — file-type (React <code>src/</code>, design system, agents)</td><td><strong>When the file matches</strong> — same globs apply to matching paths in any workspace folder, not only inside cursor-docs.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <div class="callout-icon">⚠</div>
+    <div class="callout-body">
+      <strong>App repo only?</strong>
+      If you open just <code>UGA-Brightspace-React-Apps</code> (no cursor-docs in the window), team rules and commands from this repo <strong>may not load</strong>. Another repo’s own <code>.cursor/</code> folder, if any, adds to — but does not replace — cursor-docs when both are in the workspace.
+    </div>
+  </div>
+
+  <p class="body-text">Stay current: <code>git pull</code> in <code>uga-online-cursor-docs</code>, then reopen the workspace. No separate “train Cursor” step — having this repo in the window is enough.</p>
 
   <h3 class="sub">Rules — standing policies</h3>
   <table class="data">
