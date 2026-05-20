@@ -6,7 +6,6 @@ Use this list when refreshing content from upstream repositories. Paths are rela
 |--------------------------|----------------------------|--------|
 | `d2l-brightspace/` | `uga-lit-components` | Originally `docs/D2L_*.md`, quiz JSON, course template spike. |
 | `content-markdown-and-drive-sync/` | `uga-drive-elc-sync`, `uga-lit-components` | Drive sync READMEs, `ELC_GOOGLE_SYNC_*` from lit `docs/`, `ELC_DEPLOY_FUTURE.md`. |
-| `video-kaltura/` | `uga-kaltura-djinn`, `uga-lit-components` | Kaltura Djinn `README` + `docs/*`; `KALTURA_DJINN_D2L.md` from lit. |
 | `deployment-checklists-and-hosting/` | `gamification-widget`, `uga-timeline-js-aws` | LTI, smoke tests, SAM, rollout, migration. |
 | `timeline-aws/` | `uga-timeline-js-aws` | API contract, Parquet, archived demo notes (not vendored TimelineJS). |
 | `ai-agents-brightspace/` | `uga-online-brightspace-agent-framework-main` | Guides, TODOs, example prompts, pipeline READMEs. |

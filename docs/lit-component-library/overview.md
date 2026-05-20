@@ -239,8 +239,6 @@ const kalturaPlayer = KalturaPlayer.setup({
 </uga-video>
 ```
 
-**Kaltura Djinn (caption Q&A):** Enable AI Q&A against captions by deploying the [Kaltura Djinn](https://github.com/uga-ool/uga-kaltura-djinn) API and setting **`enable-djinn`** + **`djinn-api-base`**. See **[docs/KALTURA_DJINN_D2L.md](./docs/KALTURA_DJINN_D2L.md)** for attributes and eLC checklist.
-
 **Multiple Videos:**
 
 ```html

@@ -12,6 +12,17 @@ Guide for teammates who are **new to GitHub PRs** or using **Cursor** on UGA Onl
 | **Review** | A teammate reads the PR and approves or requests changes. |
 | **Merge** | Accepting the PR so changes land on `main` (follow your repo’s policy). |
 
+## Suggested cadence
+
+Team defaults (guidance only—not enforced). Full detail: [`commit-rhythm.md`](commit-rhythm.md).
+
+| Activity | Suggested cadence |
+|----------|-------------------|
+| Local commits | Every 30–90 minutes of meaningful progress (run **`pre-commit-review`** in the template repo each time) |
+| Push to remote branch | 1–3 times per day |
+| Pull request | Every 1–2 days |
+| Merge to main | Daily or every few days (follow your lead and reviewers) |
+
 ## Which Cursor workspace to open
 
 Optional **example** workspace files live in [`workspaces/examples/`](../../workspaces/examples/). Copy them to your machine and fix `path` entries — not required. If you already use a personal workspace (e.g. at your repo root), keep that.
@@ -26,11 +37,12 @@ See also [`upstream-reference-repos.mdc`](../../.cursor/rules/upstream-reference
 
 ## Before you open a PR
 
-1. **Correct repo** — New course-file React apps go under `UGA-Brightspace-React-Apps/apps/<kebab-case-name>/`. Do not commit feature work to `UGA-Brightspace-React-Template`.
-2. **Small scope** — One feature or fix per PR when possible.
-3. **`git status`** — No `.env` or API keys staged; no accidental edits in reference repos.
-4. **Local checks** — Run what the app README says (usually `npm run build` from the app folder).
-5. **Pre-PR command** — In Cursor, run the **`ool-pre-pr-check`** command (or ask the agent to follow the `ool-pr-and-code-review` skill author track).
+1. **Pre-commit on each commit** — In the **template repo** you edited, stage files and run **`pre-commit-review`** before every commit (see that repo’s `docs/cursor/how-to-commit.md`). Commits on your branch should already have passed path, secrets, and build checks.
+2. **Correct repo** — New course-file React apps go under `UGA-Brightspace-React-Apps/apps/<kebab-case-name>/`. Do not commit feature work to `UGA-Brightspace-React-Template`.
+3. **Small scope** — One feature or fix per PR when possible.
+4. **`git status`** — No `.env` or API keys staged; no accidental edits in reference repos.
+5. **Local checks** — Run what the app README says (usually `npm run build` from the app folder) if not already run via `pre-commit-review`.
+6. **Pre-PR command** — In the **hub** repo or any window with hub rules, run **`ool-pre-pr-check`** (or ask the agent to follow the `ool-pr-and-code-review` skill author track) to draft the PR description and re-scan the branch diff.
 
 ## Opening a PR (author checklist)
 
