@@ -5,7 +5,7 @@ Use this document to start a **new Cursor chat / plan** for a **smaller, separat
 **Explicit non-goals**
 
 - No LLM, no Q&A, no RAG, no learner-facing chat.
-- Not extending **Kaltura Djinn**’s `/v1/ask` path; this is a **different product** (could be a script, small service, or Brightspace integration).
+- No learner-facing caption Q&A; this is a **different product** (script, small service, or Brightspace integration).
 
 ---
 
@@ -17,15 +17,13 @@ Instructors or admins want **accessible, searchable text** of what was said in e
 
 ## Technical anchors (existing code to reuse as reference)
 
-Local repo **uga-kaltura-djinn** already implements **server-side** Kaltura admin session + caption retrieval (good reference for API shapes only):
+Repo **uga-elc-kaltura-caption-import** (or a new worker) should implement **server-side** Kaltura admin session + caption retrieval. Use Kaltura API docs for:
 
-| Concern | Reference |
-|--------|-----------|
-| List caption assets for an entry | `caption_captionasset` `list` — [`listCaptionAssets`](../src/kaltura/captions.ts) (admin KS from [`src/kaltura/session.ts`](../src/kaltura/session.ts)) |
-| Download caption file (WebVTT/SRT/etc.) | `caption_captionasset` `serve` — [`serveCaptionAsset`](../src/kaltura/captions.ts) |
-| Env pattern | `KALTURA_PARTNER_ID`, `KALTURA_ADMIN_SECRET`, optional `KALTURA_SERVICE_URL` — see [`.env.example`](../.env.example) |
-
-**Important:** The new project should **not** depend on Djinn’s HTTP API unless you deliberately choose to; copying or extracting **caption-fetch logic** into a thin CLI/worker is usually cleaner.
+| Concern | API |
+|--------|-----|
+| List caption assets for an entry | `caption_captionasset` `list` |
+| Download caption file (WebVTT/SRT/etc.) | `caption_captionasset` `serve` |
+| Env pattern | `KALTURA_PARTNER_ID`, `KALTURA_ADMIN_SECRET`, optional `KALTURA_SERVICE_URL` |
 
 ---
 
@@ -72,7 +70,7 @@ Local repo **uga-kaltura-djinn** already implements **server-side** Kaltura admi
 
 ## Related repos (UGA local paths — adjust if cloned elsewhere)
 
-- **Kaltura caption reference:** `uga-kaltura-djinn` (`src/kaltura/captions.ts`, `src/kaltura/session.ts`).
+- **Kaltura captions:** `uga-elc-kaltura-caption-import`.
 - **Brightspace agents / LMS context:** `uga-online-brightspace-agent-framework` (may have OAuth/tool patterns; **not required** if using standalone REST).
 - **Lit embeds:** `uga-lit-components` (`uga-video`) — useful for **HTML patterns** of how videos appear in content, not for transcript pipeline logic.
 

@@ -75,6 +75,8 @@
   .flow-arrow { color: var(--red); font-weight: 700; }
   .doc-footer { background: var(--black); color: rgba(255,255,255,0.7); text-align: center; padding: 28px 40px; font-size: 13px; margin-top: 0; }
   .doc-footer a { color: rgba(255,255,255,0.9); }
+  .prompt-example { background: #f0f4f8; border-left: 4px solid var(--blue); padding: 14px 18px; margin: 14px 0; border-radius: 0 8px 8px 0; max-width: 820px; font-size: 14px; }
+  .prompt-example .prompt-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--blue); margin-bottom: 6px; }
   @media (max-width: 700px) {
     .section, .toc { padding: 28px 24px; margin-left: 0; margin-right: 0; }
     .header-content { padding: 32px 24px; }
@@ -106,8 +108,11 @@
     <li><a href="#start">What is uga-online-cursor-docs?</a></li>
     <li><a href="#github-basics">GitHub basics (plain language)</a></li>
     <li><a href="#setup">One-time setup on your computer</a></li>
-    <li><a href="#repo-map">What’s in this repository</a></li>
-    <li><a href="#cursor-config">Rules, skills &amp; commands (.cursor/)</a></li>
+    <li><a href="#template-repos">Which template repo to clone</a></li>
+    <li><a href="#repo-map">What’s in this repository (doc hub)</a></li>
+    <li><a href="#cursor-config">Rules, skills &amp; commands (in each repo)</a></li>
+    <li><a href="#how-to-commit">How to commit (beginners)</a></li>
+    <li><a href="#secrets-local">Secrets stay on your computer</a></li>
     <li><a href="#daily-workflow">Daily workflow for OOL developers</a></li>
     <li><a href="#prs">Pull requests &amp; code review</a></li>
   </ol>
@@ -127,39 +132,39 @@
 <section class="section" id="start">
   <div class="section-number">1</div>
   <h2>What is uga-online-cursor-docs?</h2>
-  <p class="section-intro">This repository is the <strong>shared home</strong> for UGA Online (OOL) team documentation and Cursor AI configuration. It does not replace the code repos where apps actually live — it sits beside them and tells you (and Cursor) how to work.</p>
+  <p class="section-intro">This repository is the <strong>documentation hub</strong> for UGA Online (OOL): onboarding (this page), topic guides under <code>docs/</code>, and links to template repos. <strong>Cursor rules, commands, and skills live in each template repo</strong> — not here.</p>
 
   <div class="card-grid">
     <div class="feature-card">
       <h4>Documentation hub</h4>
-      <p>Markdown guides for eLC, React course-file apps, AI agents, Lit components, video/Kaltura, deploy checklists — organized by <strong>job</strong>, not by mirroring every repo.</p>
+      <p>Markdown guides for eLC, React apps, AI agents, Lit, video/Kaltura — by <strong>job</strong>. Index: <a href="docs/INDEX.md">docs/INDEX.md</a>.</p>
     </div>
     <div class="feature-card">
-      <h4>Cursor team brain</h4>
-      <p><code>.cursor/rules/</code>, <code>.cursor/skills/</code>, and <code>.cursor/commands/</code> apply when this repo (or a multi-root workspace that includes it) is open in Cursor.</p>
+      <h4>Cursor config in template repos</h4>
+      <p>Clone the repo you work in (<code>uga-lit-components</code>, agent framework, React Apps, …). Open <strong>that folder</strong> in Cursor to load <code>.cursor/</code> and <code>.github/COMMIT_TEMPLATE</code>.</p>
     </div>
     <div class="feature-card">
-      <h4>Not application code</h4>
-      <p>You generally <strong>do not</strong> deploy this repo to Brightspace. You edit app code in repos like <code>UGA-Brightspace-React-Apps</code> or <code>uga-lit-components</code>.</p>
+      <h4>Not where you commit app code</h4>
+      <p>New Lit components, agents, and React apps are committed in their <strong>template/work repos</strong>, in the correct subfolder — see <a href="#template-repos">Which template repo to clone</a>.</p>
     </div>
   </div>
 
   <div class="callout tip">
     <div class="callout-icon">💡</div>
     <div class="callout-body">
-      <strong>Who should clone this?</strong>
-      Anyone on the OOL dev/ID team using Cursor on <code>uga-ool</code> GitHub repos. Clone it once next to your other project folders, open it in Cursor, and pull updates when the team adds new rules or docs.
+      <strong>New to the team?</strong>
+      Clone the <strong>one repo</strong> you were assigned, open it in Cursor, read that repo’s <code>docs/cursor/README.md</code>. Clone <code>uga-online-cursor-docs</code> only if you want extra topic guides in one place.
     </div>
   </div>
 
   <div class="flow-horizontal">
-    <span class="flow-box">uga-online-cursor-docs</span>
+    <span class="flow-box">Clone template repo</span>
     <span class="flow-arrow">→</span>
-    <span class="flow-box">docs + .cursor config</span>
+    <span class="flow-box">Open folder in Cursor</span>
     <span class="flow-arrow">→</span>
-    <span class="flow-box">UGA-Brightspace-React-Apps, lit-components, …</span>
+    <span class="flow-box">Add work in correct path</span>
     <span class="flow-arrow">→</span>
-    <span class="flow-box">eLC / production</span>
+    <span class="flow-box">Commit → PR → eLC</span>
   </div>
 </section>
 
@@ -214,59 +219,65 @@
   </ul>
 
   <h3 class="sub">2. Folder layout (recommended)</h3>
-  <p class="body-text">Keep sibling folders under one parent (many of us use <code>local_dev/</code>). Example:</p>
+  <p class="body-text">Keep sibling folders under one parent (many of us use <code>local_dev/</code>). Clone the <strong>template repo you work in</strong> first:</p>
   <div class="code-block">
 <span class="cm">local_dev/</span>
-  <span class="hi">uga-online-cursor-docs/</span>      <span class="cm">← this repo (rules + docs)</span>
-  <span class="hi">UGA-Brightspace-React-Apps/</span>   <span class="cm">← course-file React monorepo</span>
-  <span class="hi">UGA-Brightspace-React-Template/</span> <span class="cm">← read-only reference</span>
-  <span class="hi">uga-lit-components/</span>
-  <span class="hi">uga-online-brightspace-agent-framework/</span>
-  <span class="cm">… other repos you work on</span>
+  <span class="hi">uga-lit-components/</span>                    <span class="cm">← Lit library (Cursor + commits here)</span>
+  <span class="hi">uga-online-brightspace-agent-framework/</span>  <span class="cm">← AI agents</span>
+  <span class="hi">UGA-Brightspace-React-Apps/</span>             <span class="cm">← React course-file apps</span>
+  <span class="hi">uga-online-cursor-docs/</span>                  <span class="cm">← optional: topic docs + this page</span>
+  <span class="cm">UGA-Brightspace-React-Template/</span>         <span class="cm">← read-only reference (do not build new apps here)</span>
   </div>
 
-  <h3 class="sub">3. Clone this docs repo</h3>
-  <p class="body-text">Use <strong>Terminal</strong> (below) or ask <strong>Cursor Agent</strong> to run the commands for you — review what it does before approving.</p>
+  <h3 class="sub">3. Clone your template repo</h3>
+  <p class="body-text">Your lead will tell you which repo. Example (Lit library):</p>
   <div class="code-block">
-<span class="cm"># HTTPS example (replace with your path)</span>
 <span class="hi">cd ~/local_dev</span>
+<span class="hi">git clone https://github.com/uga-ool/uga-lit-components.git</span>
+  </div>
+  <p class="body-text">Optional — topic documentation hub:</p>
+  <div class="code-block">
 <span class="hi">git clone https://github.com/uga-ool/uga-online-cursor-docs.git</span>
   </div>
-  <div class="prompt-example">
-    <div class="prompt-label">CURSOR AGENT</div>
-    <p>"Clone the uga-ool repo uga-online-cursor-docs into ~/local_dev using HTTPS. Show me each command before you run it."</p>
-  </div>
-  <div class="callout tip">
-    <div class="callout-icon">💡</div>
-    <div class="callout-body">
-      <strong>Using Agent to clone</strong>
-      Open Cursor first (even on an empty folder), switch to <strong>Agent</strong> mode, and paste a prompt like the one above. The agent can <code>cd</code>, run <code>git clone</code>, and tell you when it is done. You still need Git installed and GitHub access to the <code>uga-ool</code> org.
-    </div>
-  </div>
 
-  <h3 class="sub">4. Open in Cursor</h3>
+  <h3 class="sub">4. Open in Cursor (simplest)</h3>
   <div class="callout note">
     <div class="callout-icon">✓</div>
     <div class="callout-body">
-      <strong>Best practice</strong>
-      Keep <code>uga-online-cursor-docs</code> in the same Cursor window as the app repos you edit (a <strong>multi-root workspace</strong>). That loads team <code>.cursor/rules</code>, skills, and commands while you work on code.
+      <strong>Recommended for beginners</strong>
+      <strong>File → Open Folder…</strong> → select the <strong>template repo</strong> you cloned (e.g. <code>uga-lit-components</code>). Cursor loads that repo’s <code>.cursor/</code> rules and commands automatically.
     </div>
   </div>
   <ol class="steps">
-    <li><div class="step-num">1</div><div class="step-body"><strong>Bring in this repo first</strong> — After cloning (step 3), open the folder so Cursor indexes it: <strong>File → Open Folder…</strong> → choose <code>uga-online-cursor-docs</code>. Read <a href="docs/INDEX.md">docs/INDEX.md</a> or this page in a browser anytime; Cursor applies <code>.cursor/</code> config when this repo is in the workspace.</div></li>
-    <li><div class="step-num">2</div><div class="step-body"><strong>Use a multi-root workspace (best practice)</strong> — Keep <code>uga-online-cursor-docs</code> in the same window as app repos (e.g. <code>UGA-Brightspace-React-Apps</code>). <strong>File → Open Workspace from File…</strong> → open a <code>.code-workspace</code> file. Copy <code>workspaces/examples/OOL-Develop.code-workspace</code> to your machine and fix each <code>path</code>, or use your own workspace file.</div></li>
-    <li><div class="step-num">3</div><div class="step-body"><strong>Or ask Cursor Agent</strong> — e.g. "Help me set up a multi-root workspace with uga-online-cursor-docs and UGA-Brightspace-React-Apps under ~/local_dev." Review paths before saving.</div></li>
-    <li><div class="step-num">4</div><div class="step-body"><strong>Stay current</strong> — Run <code>git pull</code> in <code>uga-online-cursor-docs</code> regularly (or ask Agent) so new rules and docs apply the next time you open the workspace.</div></li>
+    <li><div class="step-num">1</div><div class="step-body"><strong>Open one repo folder</strong> — The repo you commit to (Lit, agent framework, or React Apps).</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong>Read that repo’s guide</strong> — <code>docs/cursor/README.md</code> on GitHub or in your clone.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong>Stay current</strong> — <code>git pull</code> in that repo when the team announces updates.</div></li>
   </ol>
 
+  <div class="callout info">
+    <div class="callout-icon">i</div>
+    <div class="callout-body">
+      <strong>Multi-root workspace (optional)</strong>
+      Advanced users may open several repos in one window via a <code>.code-workspace</code> file (<code>workspaces/examples/</code> in cursor-docs). If two repos both have <code>.cursor/</code>, Cursor <strong>merges</strong> rules — prefer <strong>one repo</strong> when learning.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="template-repos">
+  <div class="section-number">3b</div>
+  <h2>Which template repo to clone</h2>
+  <p class="section-intro">Each repo has its own <code>.cursor/</code>, commit template, and <code>docs/cursor/</code> guides. Add new work only in the folders below — do not rewrite template files unless that is your task.</p>
+
   <table class="data">
-    <thead><tr><th>Example workspace</th><th>Includes cursor-docs?</th><th>Use when</th></tr></thead>
+    <thead><tr><th>Repo</th><th>You build…</th><th>Add new work here</th><th>Cursor docs in repo</th></tr></thead>
     <tbody>
-      <tr><td><code>workspaces/examples/OOL-Develop.code-workspace</code></td><td>Yes</td><td>Daily app work (recommended)</td></tr>
-      <tr><td><code>workspaces/examples/OOL-Reference.code-workspace</code></td><td>Yes</td><td>Reading templates — prefer Ask mode</td></tr>
-      <tr><td>App repo folder only</td><td>No</td><td>Quick fix only; team rules may not load until cursor-docs is in the workspace</td></tr>
+      <tr><td><code>uga-lit-components</code></td><td>Lit web components for eLC</td><td><code>src/components/uga-*.ts</code>, <code>demo/*.html</code></td><td><code>docs/cursor/README.md</code></td></tr>
+      <tr><td><code>uga-online-brightspace-agent-framework</code></td><td>Custom AI agent plugins</td><td><code>frontend/src/agents/&lt;name&gt;/</code></td><td><code>docs/cursor/README.md</code></td></tr>
+      <tr><td><code>UGA-Brightspace-React-Apps</code></td><td>Course-file React apps</td><td><code>apps/&lt;kebab-name&gt;/</code></td><td><code>docs/cursor/README.md</code></td></tr>
     </tbody>
   </table>
+
+  <p class="body-text">Registry for maintainers: <a href="docs/cursor/template-repos.md">docs/cursor/template-repos.md</a>.</p>
 </section>
 
 <section class="section" id="repo-map">
@@ -280,9 +291,7 @@
       <tr><td><code>docs/INDEX.md</code></td><td><strong>Start here</strong> for technical topics (D2L APIs, deploy, agents, React apps, Lit, video, captions).</td></tr>
       <tr><td><code>docs/cursor/</code></td><td>Cursor-specific workflows — e.g. <a href="docs/cursor/pr-and-code-review.md">PR and code review</a>.</td></tr>
       <tr><td><code>docs/_meta/manifest.md</code></td><td>Which upstream repo each doc section came from (for maintainers refreshing content).</td></tr>
-      <tr><td><code>.cursor/rules/</code></td><td>AI rules (always-on policies + file-type conventions). Applied automatically in Cursor.</td></tr>
-      <tr><td><code>.cursor/skills/</code></td><td>Multi-step playbooks the agent can follow (scaffold app, PR help).</td></tr>
-      <tr><td><code>.cursor/commands/</code></td><td>One-click prompts in the command palette (pre-PR check, PR review, design system).</td></tr>
+      <tr><td><code>docs/cursor/template-repos.md</code></td><td>Which template repos include <code>.cursor/</code> (config lives there, not in this hub).</td></tr>
       <tr><td><code>workspaces/examples/</code></td><td><strong>Optional</strong> sample multi-root workspaces — copy and adjust; not mandatory.</td></tr>
       <tr><td><code>cursor-demo.html</code></td><td>This page — open in a browser for onboarding.</td></tr>
     </tbody>
@@ -299,90 +308,112 @@
 
 <section class="section" id="cursor-config">
   <div class="section-number">5</div>
-  <h2>Rules, skills &amp; commands (<code>.cursor/</code>)</h2>
-  <p class="section-intro">These files shape how Cursor’s AI behaves for OOL work. They load when <code>uga-online-cursor-docs</code> is in your workspace (or when you open an app repo that also has its own <code>.cursor/</code> folder).</p>
+  <h2>Rules, skills &amp; commands (in each template repo)</h2>
+  <p class="section-intro">Cursor reads <code>.cursor/</code> from the repo you have open. Each template repo ships its <strong>own</strong> rules, commands, and skills — scoped to Lit, agents, or React apps.</p>
 
-  <h3 class="sub" id="workspace-scope">One window, all repos</h3>
-  <p class="body-text">You do <strong>not</strong> copy <code>.cursor/</code> into every app repo. Add <code>uga-online-cursor-docs</code> to a <strong>multi-root workspace</strong> (see setup §4) and Cursor applies this repo’s team config to the <strong>whole window</strong> while you edit files in any included folder.</p>
+  <h3 class="sub">Simplest approach: one repo</h3>
+  <p class="body-text"><strong>File → Open Folder…</strong> → your template repo. No extra setup. Pull <code>git pull</code> when the team updates that repo.</p>
 
+  <h3 class="sub">Commands by repo</h3>
   <table class="data">
-    <thead><tr><th>Team config</th><th>In other repos in the same workspace?</th></tr></thead>
+    <thead><tr><th>Repo</th><th>Example commands</th><th>Example skills</th></tr></thead>
     <tbody>
-      <tr><td><strong>Commands</strong> (e.g. <code>ool-pre-pr-check</code>)</td><td><strong>Yes</strong> — available from the command palette and chat for that window, even when your open file is in <code>UGA-Brightspace-React-Apps</code> or another root.</td></tr>
-      <tr><td><strong>Skills</strong> (scaffold, PR help)</td><td><strong>Yes</strong> — the agent can use them for work in any included repo; naming the skill in a prompt helps.</td></tr>
-      <tr><td><strong>Rules</strong> — always on (upstream paths, secrets/FERPA)</td><td><strong>Yes</strong> — apply to all AI activity in that workspace.</td></tr>
-      <tr><td><strong>Rules</strong> — file-type (React <code>src/</code>, design system, agents)</td><td><strong>When the file matches</strong> — same globs apply to matching paths in any workspace folder, not only inside cursor-docs.</td></tr>
+      <tr><td><code>uga-lit-components</code></td><td><code>lit-new-component</code>, <code>api-help</code></td><td><code>add-lit-component</code>, <code>elc-valence-api</code>, <code>kaltura-api</code></td></tr>
+      <tr><td><code>uga-online-brightspace-agent-framework</code></td><td><code>agent-new-plugin</code>, <code>api-help</code></td><td><code>add-agent-plugin</code>, <code>elc-valence-api</code></td></tr>
+      <tr><td><code>UGA-Brightspace-React-Apps</code></td><td><code>apps-new-app</code>, <code>api-help</code></td><td><code>elc-valence-api</code>, <code>kaltura-api</code>, <code>timeline-aws-api</code></td></tr>
     </tbody>
   </table>
+  <p class="body-text">Palette: <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows) — search the command name.</p>
+
+  <h3 class="sub">API documentation (D2L and Kaltura)</h3>
+  <p class="body-text">For Brightspace or Kaltura work, use skill <code>elc-valence-api</code> or <code>kaltura-api</code> (or command <code>api-help</code>). Official references:</p>
+  <ul class="steps" style="list-style:disc;padding-left:24px;max-width:780px;">
+    <li style="display:list-item;margin-bottom:8px;"><strong>D2L / eLC (Valence):</strong> <a href="https://docs.valence.desire2learn.com/reference.html" target="_blank" rel="noopener">docs.valence.desire2learn.com/reference.html</a></li>
+    <li style="display:list-item;margin-bottom:8px;"><strong>Kaltura:</strong> <a href="https://developer.kaltura.com/api-docs/" target="_blank" rel="noopener">developer.kaltura.com/api-docs/</a></li>
+    <li style="display:list-item;margin-bottom:8px;"><strong>Timeline AWS</strong> (timeline-js app only): see repo <code>docs/cursor/api-references.md</code> and hub <a href="docs/timeline-aws/API_CONTRACT.md">timeline API contract</a></li>
+  </ul>
+  <p class="body-text">Full link table per repo: <code>docs/cursor/api-references.md</code> · Hub registry: <a href="docs/cursor/template-repos.md">template-repos.md</a></p>
 
   <div class="callout warn">
     <div class="callout-icon">⚠</div>
     <div class="callout-body">
-      <strong>App repo only?</strong>
-      If you open just <code>UGA-Brightspace-React-Apps</code> (no cursor-docs in the window), team rules and commands from this repo <strong>may not load</strong>. Another repo’s own <code>.cursor/</code> folder, if any, adds to — but does not replace — cursor-docs when both are in the workspace.
+      <strong>Several repos in one window?</strong>
+      If your workspace includes multiple folders that each have <code>.cursor/</code>, Cursor <strong>combines</strong> rules and commands. That can confuse beginners — open <strong>only the repo you are committing to</strong> when possible.
     </div>
   </div>
 
-  <p class="body-text">Stay current: <code>git pull</code> in <code>uga-online-cursor-docs</code>, then reopen the workspace. No separate “train Cursor” step — having this repo in the window is enough.</p>
-
-  <h3 class="sub">Rules — standing policies</h3>
-  <table class="data">
-    <thead><tr><th>Rule file</th><th>When it applies</th></tr></thead>
-    <tbody>
-      <tr><td><code>upstream-reference-repos.mdc</code></td><td><strong>Always on.</strong> Don’t edit template/framework clones during app work; new React apps go under <code>UGA-Brightspace-React-Apps/apps/</code>.</td></tr>
-      <tr><td><code>ool-secrets-and-ferpa.mdc</code></td><td><strong>Always on.</strong> No API keys in git; no student PII in prompts or commits.</td></tr>
-      <tr><td><code>uga-ool-github.mdc</code></td><td>When editing markdown/config — org practices, PR hygiene.</td></tr>
-      <tr><td><code>uga-brightspace-react-template.mdc</code></td><td>When editing <code>**/src/**/*.{ts,tsx}</code> — course-file React patterns.</td></tr>
-      <tr><td><code>elc-d2l-design-system.mdc</code></td><td>HTML/React shells — UGA Online Design System CDN.</td></tr>
-      <tr><td><code>elc-ai-agent-tool.mdc</code></td><td>Agent plugin code under <code>frontend/src/agents/</code>.</td></tr>
-    </tbody>
-  </table>
-
-  <h3 class="sub">Skills — how-to playbooks</h3>
-  <table class="data">
-    <thead><tr><th>Skill</th><th>Use when</th></tr></thead>
-    <tbody>
-      <tr><td><code>scaffold-from-ool-template</code></td><td>Creating a new course-file React app from the Brightspace template into the Apps monorepo.</td></tr>
-      <tr><td><code>ool-pr-and-code-review</code></td><td>Opening or reviewing a PR; drafting descriptions or review comments.</td></tr>
-    </tbody>
-  </table>
-
-  <h3 class="sub">Commands — run from Cursor</h3>
-  <p class="body-text">Open the command palette (<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>), search for the command name, or type <kbd>/</kbd> in chat where supported:</p>
-  <table class="data">
-    <thead><tr><th>Command</th><th>Purpose</th></tr></thead>
-    <tbody>
-      <tr><td><code>ool-pre-pr-check</code></td><td><strong>Before you open a PR</strong> — repo path, secrets scan, build reminder, draft PR text.</td></tr>
-      <tr><td><code>ool-pr-review</code></td><td><strong>Reviewing someone’s PR</strong> — checklist and suggested GitHub comments.</td></tr>
-      <tr><td><code>uga-react-template</code></td><td>Course-file React / Vite / CourseContext help.</td></tr>
-      <tr><td><code>elc-design-system</code></td><td>Design system CDN and HTML patterns.</td></tr>
-      <tr><td><code>elc-ai-agent</code></td><td>Brightspace agent framework plugins.</td></tr>
-      <tr><td><code>uga-ool-github</code></td><td>General OOL GitHub / org practices.</td></tr>
-    </tbody>
-  </table>
-
   <div class="diagram-wrap">
-    <div class="diagram-title">How team config reaches your editor</div>
+    <div class="diagram-title">How config reaches Cursor</div>
     <svg viewBox="0 0 640 120" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%;">
       <rect x="10" y="35" width="120" height="50" rx="6" fill="#BA0C2F"/>
       <text x="70" y="58" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">git pull</text>
-      <text x="70" y="72" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="10" font-family="Arial">cursor-docs</text>
+      <text x="70" y="72" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="10" font-family="Arial">template repo</text>
       <line x1="130" y1="60" x2="165" y2="60" stroke="#BA0C2F" stroke-width="2"/>
       <polygon points="165,60 175,55 175,65" fill="#BA0C2F"/>
       <rect x="178" y="35" width="130" height="50" rx="6" fill="#1a1a1a"/>
-      <text x="243" y="58" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">.cursor/rules</text>
-      <text x="243" y="72" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="Arial">skills · commands</text>
+      <text x="243" y="58" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">.cursor/</text>
+      <text x="243" y="72" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="Arial">rules · skills</text>
       <line x1="308" y1="60" x2="343" y2="60" stroke="#BA0C2F" stroke-width="2"/>
       <polygon points="343,60 353,55 353,65" fill="#BA0C2F"/>
       <rect x="356" y="35" width="130" height="50" rx="6" fill="#1a4e8a"/>
       <text x="421" y="65" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold" font-family="Arial">Your Cursor</text>
-      <text x="421" y="78" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Arial">Agent + Ask</text>
+      <text x="421" y="78" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Arial">Open Folder</text>
       <line x1="486" y1="60" x2="521" y2="60" stroke="#BA0C2F" stroke-width="2"/>
       <polygon points="521,60 531,55 531,65" fill="#BA0C2F"/>
       <rect x="534" y="35" width="96" height="50" rx="6" fill="#1a7a44"/>
-      <text x="582" y="65" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">App repos</text>
+      <text x="582" y="65" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold" font-family="Arial">Your work</text>
     </svg>
   </div>
+</section>
+
+<section class="section" id="how-to-commit">
+  <div class="section-number">5b</div>
+  <h2>How to commit (beginners)</h2>
+  <p class="section-intro">A <strong>commit</strong> saves your changes on <strong>your branch</strong> with a short note. Each template repo includes <code>.github/COMMIT_TEMPLATE</code> with hints.</p>
+
+  <ol class="steps">
+    <li><div class="step-num">1</div><div class="step-body"><strong>Save</strong> all files (<kbd>⌘</kbd>/<kbd>Ctrl</kbd>+S).</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong>Source Control</strong> — Click the branch icon on the left in Cursor.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong>Stage</strong> the files you intend to commit — uncheck mistakes.</div></li>
+    <li><div class="step-num">4</div><div class="step-body"><strong>Pre-commit review</strong> — Command Palette → <code>pre-commit-review</code> (in that template repo). Fix anything flagged; run again if needed.</div></li>
+    <li><div class="step-num">5</div><div class="step-body"><strong>One short line</strong> in the message box (use the suggestion from the review) — examples:
+      <ul style="margin-top:8px;padding-left:20px;font-size:14px;">
+        <li><code>Add uga-banner Lit component and demo</code></li>
+        <li><code>Add my-agent under frontend/src/agents/my-agent</code></li>
+        <li><code>Add my-tool under apps/my-tool</code></li>
+      </ul>
+    </div></li>
+    <li><div class="step-num">6</div><div class="step-body"><strong>Commit</strong> → then <strong>Push</strong> (upload to GitHub). Ask your lead the first time.</div></li>
+    <li><div class="step-num">7</div><div class="step-body"><strong>Pull request</strong> on github.com when ready for review — see <a href="#prs">Pull requests</a>. Before the PR, run hub command <code>ool-pre-pr-check</code> if your team uses this docs repo.</div></li>
+  </ol>
+
+  <p class="body-text">Full steps in your repo: <code>docs/cursor/how-to-commit.md</code>. After clone, run <strong><code>scripts/setup-git-hooks.sh</code></strong> once so commits use <code>.github/COMMIT_TEMPLATE</code>. Then run <strong><code>pre-commit-review</code></strong> before every commit.</p>
+
+  <h3 style="margin-top:24px;font-size:18px;">How often? (team suggestion)</h3>
+  <table class="data">
+    <thead><tr><th>Activity</th><th>Suggested cadence</th></tr></thead>
+    <tbody>
+      <tr><td>Local commits</td><td>Every 30–90 minutes of meaningful progress</td></tr>
+      <tr><td>Push to remote branch</td><td>1–3 times per day</td></tr>
+      <tr><td>Pull request</td><td>Every 1–2 days</td></tr>
+      <tr><td>Merge to main</td><td>Daily or every few days (follow your lead)</td></tr>
+    </tbody>
+  </table>
+  <p class="body-text">Detail: <a href="docs/cursor/commit-rhythm.md"><code>docs/cursor/commit-rhythm.md</code></a></p>
+</section>
+
+<section class="section" id="secrets-local">
+  <div class="section-number">5c</div>
+  <h2>Secrets stay on your computer</h2>
+  <p class="section-intro">Passwords, API keys, and <code>.env</code> files stay on <strong>your machine</strong> — instructional designers and developers do not commit them to GitHub.</p>
+
+  <div class="card-grid">
+    <div class="feature-card"><h4>Do</h4><p>Use <code>.env.example</code> as a blank form; copy to <code>.env</code> locally and fill in real values there.</p></div>
+    <div class="feature-card"><h4>Do not</h4><p>Commit <code>.env</code>, tokens, Kaltura admin keys, or LLM API keys. Do not paste them into Cursor chat.</p></div>
+    <div class="feature-card"><h4>FERPA</h4><p>No student names, UGA IDs, or grades in commits or AI messages.</p></div>
+  </div>
+
+  <p class="body-text">Each template repo: <code>docs/cursor/secrets.md</code>. Cursor rules <code>ool-local-secrets.mdc</code> remind the AI automatically.</p>
 </section>
 
 <section class="section" id="daily-workflow">
@@ -391,20 +422,30 @@
   <p class="section-intro">A sane default day — adjust with your lead for your role (ID, dev, analytics).</p>
 
   <ol class="steps">
-    <li><div class="step-num">1</div><div class="step-body"><strong>Open the right repos</strong> — Prefer a workspace that includes <code>uga-online-cursor-docs</code> plus the app you’re editing. Avoid having <code>UGA-Brightspace-React-Template</code> in the tree when using <strong>Agent</strong> mode for feature work (easy to edit the wrong repo).</div></li>
-    <li><div class="step-num">2</div><div class="step-body"><strong>Pull latest</strong> — <code>git pull</code> on <code>main</code> in each repo you touch, then create your feature branch.</div></li>
-    <li><div class="step-num">3</div><div class="step-body"><strong>Ask before Agent</strong> — For unfamiliar code or large tasks, use <strong>Ask</strong> mode to explore; switch to <strong>Agent</strong> for implementation.</div></li>
-    <li><div class="step-num">4</div><div class="step-body"><strong>New React course-file app?</strong> — Create under <code>UGA-Brightspace-React-Apps/apps/your-app-name/</code>; ask Cursor to follow <code>scaffold-from-ool-template</code>. Do not build inside the template repo.</div></li>
-    <li><div class="step-num">5</div><div class="step-body"><strong>Review every AI diff</strong> — Green/red diff in the editor; reject wrong changes.</div></li>
-    <li><div class="step-num">6</div><div class="step-body"><strong>Before PR</strong> — Run command <code>ool-pre-pr-check</code>; fix flags; run <code>npm run build</code> per app README.</div></li>
+    <li><div class="step-num">1</div><div class="step-body"><strong>Open the repo you commit to</strong> — One template repo folder in Cursor (see <a href="#template-repos">Which template repo</a>).</div></li>
+    <li><div class="step-num">2</div><div class="step-body"><strong>Branch</strong> — <code>git pull</code> on <code>main</code>, then create a feature branch.</div></li>
+    <li><div class="step-num">3</div><div class="step-body"><strong>Edit in the right folder</strong> — Lit: <code>src/components/</code>; agents: <code>frontend/src/agents/</code>; React: <code>apps/&lt;name&gt;/</code>.</div></li>
+    <li><div class="step-num">4</div><div class="step-body"><strong>Ask before Agent</strong> — Use <strong>Ask</strong> to explore; <strong>Agent</strong> to implement; review every diff.</div></li>
+    <li><div class="step-num">5</div><div class="step-body"><strong>Commit</strong> — Stage → <code>pre-commit-review</code> → one-line message; see <a href="#how-to-commit">How to commit</a>.</div></li>
+    <li><div class="step-num">6</div><div class="step-body"><strong>Before PR</strong> — Hub <code>ool-pre-pr-check</code> (if using cursor-docs); open PR on GitHub.</div></li>
   </ol>
 
   <table class="data">
-    <thead><tr><th>Workspace idea</th><th>Repos included</th><th>Best mode</th></tr></thead>
+    <thead><tr><th>Workspace</th><th>When</th></tr></thead>
     <tbody>
-      <tr><td>Develop-focused</td><td>cursor-docs + Apps + your app repos (no template)</td><td>Agent for coding</td></tr>
-      <tr><td>Reference-focused</td><td>cursor-docs + Template + framework + lit</td><td>Ask for reading only</td></tr>
-      <tr><td>See <code>workspaces/examples/</code></td><td>Optional JSON examples — copy &amp; edit paths</td><td>Your choice</td></tr>
+      <tr><td><strong>One repo folder</strong> (recommended)</td><td>Daily work — clearest rules and commands</td></tr>
+      <tr><td><code>workspaces/examples/</code> multi-root</td><td>Optional — reading cursor-docs + a template repo together</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin-top:24px;font-size:18px;">Suggested cadence</h3>
+  <table class="data">
+    <thead><tr><th>Activity</th><th>Suggested cadence</th></tr></thead>
+    <tbody>
+      <tr><td>Local commits</td><td>Every 30–90 min — stage → <code>pre-commit-review</code> → commit</td></tr>
+      <tr><td>Push to GitHub</td><td>1–3 times per day</td></tr>
+      <tr><td>Pull request</td><td>Every 1–2 days</td></tr>
+      <tr><td>Merge to main</td><td>Daily or every few days</td></tr>
     </tbody>
   </table>
 </section>
@@ -540,7 +581,7 @@
   <ul class="steps">
     <li><div class="step-num">!</div><div class="step-body"><strong>AI can be wrong</strong> — Verify “done” messages and test in eLC when applicable.</div></li>
     <li><div class="step-num">!</div><div class="step-body"><strong>Long chats drift</strong> — Start a new chat for a new task; watch “context used” hitting 100%.</div></li>
-    <li><div class="step-num">!</div><div class="step-body"><strong>Agent + template repo</strong> — Easy to edit the wrong clone; use Develop-style workspace or explicit @ paths.</div></li>
+    <li><div class="step-num">!</div><div class="step-body"><strong>Agent + wrong folder</strong> — Say which repo and path in your prompt; use <code>@folder</code> to scope. Do not edit <code>UGA-Brightspace-React-Template</code> for new apps — use <code>UGA-Brightspace-React-Apps/apps/</code>.</div></li>
   </ul>
 </section>
 

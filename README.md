@@ -10,7 +10,7 @@ Central reference for **eLC (Brightspace)**, **OOL templates**, **AI agents**, *
 | [`docs/`](docs/) | All markdown and HTML reference material, organized **by topic** (no per-repo mirror folder). |
 | [`docs/_meta/manifest.md`](docs/_meta/manifest.md) | Which upstream repo each topic area came from, for updates. |
 | [`cursor-demo.html`](cursor-demo.html) | **Onboarding** — VS Code, Cursor, GitHub, and how to use this repo (open in a browser). |
-| [`docs/cursor/`](docs/cursor/) | Cursor workflows (PR and code review for newcomers). |
+| [`docs/cursor/`](docs/cursor/) | Cursor workflows (PR and code review, commit template hooks). |
 | [`workspaces/examples/`](workspaces/examples/) | Optional example multi-root workspaces (copy and adjust paths; not required). |
 | [`.cursor/rules/`](.cursor/rules/) | Cursor rules (MDC): upstream reference, secrets/FERPA, OOL GitHub, Brightspace React, design system, eLC AI agents. |
 | [`.cursor/skills/`](.cursor/skills/) | Agent skills (scaffold from template, PR and code review). |
@@ -23,6 +23,8 @@ Repos such as `agent-todd` and `thestater-agent` follow the same patterns as **`
 ## Security
 
 Do not commit API keys, OAuth secrets, or LLM keys. Keep credentials in gitignored env files or your institutional secret store.
+
+After clone, run [`scripts/setup-git-hooks.sh`](scripts/setup-git-hooks.sh) so commits follow [`.github/COMMIT_TEMPLATE`](.github/COMMIT_TEMPLATE).
 
 ## Keeping docs current
 
