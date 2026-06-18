@@ -1,0 +1,13 @@
+# === Write your message on the line below (then delete everything above) ===
+# 
+
+# === Examples for uga-online-cursor-docs (then delete this section) ===
+# Document template repos and commit cadence for UGA Online developers
+# Update cursor-demo onboarding for pre-commit-review
+# Add commit-rhythm and template-repos guides
+
+# === Before you commit — check these (then delete) ===
+# [ ] I only edited docs/cursor/, cursor-demo.html, or related hub docs
+# [ ] I did NOT add .env, passwords, or API keys
+# [ ] I did NOT paste student names or UGA IDs into committed files
+# [ ] Links to template repos use uga-ool GitHub paths where applicable

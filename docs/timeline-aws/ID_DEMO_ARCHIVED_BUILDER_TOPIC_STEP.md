@@ -58,7 +58,7 @@ The maintained package assumes **direct `index.html`** topics instead. Treat ifr
 
 **Removed** from `app/public/id-demo.html` (April 2026). The page still loads the same assets; this copy was dropped from the visible intro only.
 
-**Paragraph 1 (Design System + Lit components):** The instructional designer guide stated that the page used the same UGA Office of Online Learning Design System and UGA Lit Components (`<uga-toc>`, `<uga-code>`, `<uga-return-to-top>`) as other Online Learning demos, with a link to https://design.online.uga.edu/ .
+**Paragraph 1 (Design System + Lit components):** The instructional designer guide stated that the page used the same UGA Online Design System and UGA Lit Components (`<uga-toc>`, `<uga-code>`, `<uga-return-to-top>`) as other UGA Online demos, with a link to https://design.online.uga.edu/ .
 
 **Paragraph 2 (Prism + bundle + build):** Code samples require Prism (loaded at the bottom of the page) plus `./js/uga-components.js` from the uga-lit-components bundle. Developers run `npm run build` in this app after building uga-lit-components so the bundle is copied into `app/public/js/` (see `app/scripts/copy-uga-components.mjs`). The builder `index.html` loads the same file from the app entry so `<uga-return-to-top>` upgrades after the module runs. In eLC the bundle may be hosted at `/shared/ugaonline/js/uga-components.js` instead; the script URL in `id-demo.html` or the loader in `app/src/main.tsx` would need updating for that path.
 

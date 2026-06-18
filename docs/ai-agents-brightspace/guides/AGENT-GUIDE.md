@@ -490,7 +490,7 @@ For a flex column that scrolls its list while keeping a fixed header, use:
 
 ## 11. Design System Rules
 
-All agent UI must use the **UGA Office of Online Learning Design System**.
+All agent UI must use the **UGA Online Design System**.
 
 ### Class prefixes
 

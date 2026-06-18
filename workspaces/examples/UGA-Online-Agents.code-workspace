@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "uga-online-cursor-docs",
+			"path": "../../../uga-online-cursor-docs"
+		},
+		{
+			"name": "agent-todd",
+			"path": "../../../agent-todd"
+		},
+		{
+			"name": "uga-online-brightspace-agent-framework (reference)",
+			"path": "../../../uga-online-brightspace-agent-framework"
+		}
+	]
+}

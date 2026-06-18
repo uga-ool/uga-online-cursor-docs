@@ -1,9 +1,9 @@
 ---
-description: Keep OOL upstream/template repos read-only during app work
+description: Keep UGA Online upstream/template repos read-only during app work
 alwaysApply: true
 ---
 
-# OOL upstream reference repos
+# UGA Online upstream reference repos
 
 Multi-root workspace folder names below match the team layout (sibling repos, e.g. under `local_dev/`).
 
@@ -20,11 +20,11 @@ Multi-root workspace folder names below match the team layout (sibling repos, e.
 
 1. Check the path or workspace folder name against the table above.
 2. If the user asks to build or change an **app feature**, implement in a **work repo**. For **new** course-file React apps, you **must** use `UGA-Brightspace-React-Apps/apps/<kebab-case-name>/`.
-3. If the change belongs only in a reference or canonical upstream repo, **stop** and tell the user to open an upstream PR to `uga-ool`, or use the **scaffold-from-ool-template** skill to copy patterns into a work repo.
+3. If the change belongs only in a reference or canonical upstream repo, **stop** and tell the user to open an upstream PR to `uga-ool`, or use the **scaffold-from-uga-online-template** skill to copy patterns into a work repo.
 
 ## Scaffolding new apps
 
-Do not scaffold by editing `UGA-Brightspace-React-Template` in place. Read the template; write the app under a work repo. Follow the **scaffold-from-ool-template** skill.
+Do not scaffold by editing `UGA-Brightspace-React-Template` in place. Read the template; write the app under a work repo. Follow the **scaffold-from-uga-online-template** skill.
 
 ## New course-file React apps
 
@@ -36,8 +36,8 @@ Do not scaffold by editing `UGA-Brightspace-React-Template` in place. Read the t
 
 - Course-file React conventions: `uga-brightspace-react-template.mdc`
 - eLC AI agent plugins: `elc-ai-agent-tool.mdc`
-- OOL GitHub practices: `uga-ool-github.mdc`
+- UGA Online GitHub practices: `uga-ool-github.mdc`
 
 ## Limits
 
-Rules are advisory. Run `git status` on reference clones before committing. Prefer a **develop-focused** multi-root workspace (see `workspaces/examples/OOL-Develop.code-workspace` and `docs/cursor/pr-and-code-review.md`).
+Rules are advisory. Run `git status` on reference clones before committing. Prefer a **develop-focused** multi-root workspace (see `workspaces/examples/UGA-Online-Develop.code-workspace` and `docs/cursor/pr-and-code-review.md`).
