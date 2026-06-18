@@ -44,17 +44,22 @@ Use this page first. All material lives under topic folders in [`docs/`](.)—th
 
 - **PDF remediation (designer HTML):** [`pdf-accessibility/`](pdf-accessibility/)
 
-## Cursor editor (repo-level)
+## Cursor editor (team resources)
 
+- **Shared resources catalog (start here):** [`cursor/shared-resources-catalog.md`](cursor/shared-resources-catalog.md)
+- **Role quick-starts:** [`cursor/roles/`](cursor/roles/) — instructional designer, QA, AI developer, sysadmin
+- **Chat and transcript practices:** [`cursor/chat-and-transcript-practices.md`](cursor/chat-and-transcript-practices.md)
+- **Cursor chat prompt starters:** [`cursor/prompts/`](cursor/prompts/)
+- **Team Rules dashboard setup (admins):** [`cursor/team-rules-dashboard-setup.md`](cursor/team-rules-dashboard-setup.md)
 - **Starter guide (HTML):** [`cursor-demo.html`](../cursor-demo.html) — VS Code, Cursor, GitHub, and this repo for newcomers
 - **PR and code review (newcomers):** [`cursor/pr-and-code-review.md`](cursor/pr-and-code-review.md)
 - **Commit / push / PR cadence (suggested):** [`cursor/commit-rhythm.md`](cursor/commit-rhythm.md)
 - **Commit template and hooks:** [`cursor/how-to-commit.md`](cursor/how-to-commit.md), [`cursor/template-repos.md`](cursor/template-repos.md)
 - **Workspace examples (optional, copy and adjust paths):** [`workspaces/examples/`](../workspaces/examples/)
-- **Rules and commands:** [`.cursor/rules/`](../.cursor/rules/), [`.cursor/commands/`](../.cursor/commands/)
-- **Always on:** [`upstream-reference-repos.mdc`](../.cursor/rules/upstream-reference-repos.mdc), [`ool-secrets-and-ferpa.mdc`](../.cursor/rules/ool-secrets-and-ferpa.mdc)
-- **Skills:** [`scaffold-from-ool-template`](../.cursor/skills/scaffold-from-ool-template/), [`ool-pr-and-code-review`](../.cursor/skills/ool-pr-and-code-review/)
-- **Commands:** `ool-pre-pr-check`, `ool-pr-review` (see `.cursor/commands/`)
+- **Hub rules and commands:** [`.cursor/rules/`](../.cursor/rules/), [`.cursor/commands/`](../.cursor/commands/), [`.cursor/agents/`](../.cursor/agents/)
+- **Always on:** [`upstream-reference-repos.mdc`](../.cursor/rules/upstream-reference-repos.mdc), [`uga-online-secrets-and-ferpa.mdc`](../.cursor/rules/uga-online-secrets-and-ferpa.mdc)
+- **Skills:** [`scaffold-from-uga-online-template`](../.cursor/skills/scaffold-from-uga-online-template/), [`uga-online-pr-and-code-review`](../.cursor/skills/uga-online-pr-and-code-review/)
+- **Commands:** `uga-online-pre-pr-check`, `uga-online-pr-review`, `elc-smoke-test`, `html-cleanup`, `agent-request` (see `.cursor/commands/`)
 
 ## Provenance and refreshing
 

@@ -149,7 +149,7 @@ Avoid deep imports into `frontend/src/core/*` from agent code. The framework exp
 
 ## Design System
 
-All agent UIs must use the **UGA Office of Online Learning Design System**: https://design.online.uga.edu
+All agent UIs must use the **UGA Online Design System**: https://design.online.uga.edu
 
 - **CSS**: Load `https://design.online.uga.edu/css/base.css` (included in agent entry HTML)
 - **JS**: Load `https://design.online.uga.edu/js/scripts.js` for tabs, accordions, etc.

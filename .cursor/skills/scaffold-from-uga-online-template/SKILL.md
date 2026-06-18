@@ -1,9 +1,9 @@
 ---
-name: scaffold-from-ool-template
+name: scaffold-from-uga-online-template
 description: Scaffold a new Brightspace course-file React app under UGA-Brightspace-React-Apps/apps/ by copying from UGA-Brightspace-React-Template. Use when creating a new app, rebasing on the template, or the user mentions template snapshot or course-file starter.
 ---
 
-# Scaffold from OOL React template
+# Scaffold from UGA Online React template
 
 Copy patterns from the **read-only** template into **`UGA-Brightspace-React-Apps/apps/<app-name>/`**. Never scaffold by editing `UGA-Brightspace-React-Template` in place.
 
@@ -45,7 +45,7 @@ From `UGA-Brightspace-React-Template`, or an in-repo frozen folder such as `UGA-
 
 ## 5. Design system
 
-Load UGA Online Design System CDN in HTML shells per `elc-d2l-design-system` rule (`base.css`, `scripts.js`, documented Google Fonts).
+Load UGA Online Design System CDN in HTML shells per `uga-online-design-system` rule (`base.css`, `scripts.js`, documented Google Fonts).
 
 ## 6. Verify
 
@@ -58,7 +58,7 @@ When the app is complete or the user asks, add a row to the `apps/` table in `UG
 
 ## 8. Before first PR
 
-Run Cursor command **`ool-pre-pr-check`** (or skill `ool-pr-and-code-review` author track) before opening the PR.
+Run Cursor command **`uga-online-pre-pr-check`** (or skill `uga-online-pr-and-code-review` author track) before opening the PR.
 
 ## 9. PR note
 

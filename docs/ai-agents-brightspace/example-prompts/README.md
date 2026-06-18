@@ -71,7 +71,7 @@ The value must end with a trailing slash and point to the Shared folder containi
 
 ## Design system
 
-All agent UIs must use the **UGA Office of Online Learning Design System**: https://design.online.uga.edu
+All agent UIs must use the **UGA Online Design System**: https://design.online.uga.edu
 
 - Use `cmp-*` (components), `obj-*` (layout), `util-*` (utilities) classes
 - Use `agent-*` classes only for framework-specific UI (spinner, modal, progress bar)

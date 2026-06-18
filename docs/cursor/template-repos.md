@@ -1,6 +1,10 @@
 # Template repos with Cursor config
 
-Cursor **rules**, **commands**, **skills**, and **commit templates** live in each template repo — not in `uga-online-cursor-docs`.
+Cursor config is split across three tiers (see [`shared-resources-catalog.md`](shared-resources-catalog.md)):
+
+- **Cursor Teams dashboard** — enforced Team Rules (FERPA, repo tiers)
+- **`uga-online-cursor-docs` (this hub)** — org-wide rules, cross-repo commands/skills/subagents
+- **Each template repo below** — repo-scoped rules, `pre-commit-review`, API skills, commit templates
 
 ## Registry
 
@@ -17,7 +21,7 @@ After you **stage** files in Source Control, run command **`pre-commit-review`**
 | When | Command | Where |
 |------|---------|--------|
 | **Before each commit** | `pre-commit-review` | Template repo you are editing (Lit, agent framework, React Apps) |
-| **Before opening a PR** | `ool-pre-pr-check` | `uga-online-cursor-docs` hub (or follow `ool-pr-and-code-review` skill) |
+| **Before opening a PR** | `uga-online-pre-pr-check` | `uga-online-cursor-docs` hub (or follow `uga-online-pr-and-code-review` skill) |
 
 Skills `lit-before-commit`, `apps-before-commit`, and `agent-before-commit` contain the same checklist if you prefer to ask the agent by skill name.
 

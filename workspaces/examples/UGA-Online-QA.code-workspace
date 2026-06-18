@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "uga-online-cursor-docs",
+			"path": "../../../uga-online-cursor-docs"
+		},
+		{
+			"name": "deployment-checklists (docs)",
+			"path": "../../../uga-online-cursor-docs/docs/deployment-checklists-and-hosting"
+		},
+		{
+			"name": "UGA-Brightspace-React-Apps",
+			"path": "../../../UGA-Brightspace-React-Apps"
+		}
+	]
+}

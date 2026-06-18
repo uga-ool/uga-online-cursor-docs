@@ -1,4 +1,4 @@
-# Pull requests and code review (OOL + Cursor)
+# Pull requests and code review (UGA Online + Cursor)
 
 Guide for teammates who are **new to GitHub PRs** or using **Cursor** on UGA Online (`uga-ool`) repositories.
 
@@ -29,9 +29,9 @@ Optional **example** workspace files live in [`workspaces/examples/`](../../work
 
 | Workspace | Use when |
 |-----------|----------|
-| **OOL-Develop** | Daily app work — Agent mode; no template repo in the tree |
-| **OOL-Reference** | Reading templates, framework, or lit library — prefer **Ask** mode |
-| **OOL-Full** | All repos at once — use sparingly; easy to edit the wrong clone |
+| **UGA-Online-Develop** | Daily app work — Agent mode; no template repo in the tree |
+| **UGA-Online-Reference** | Reading templates, framework, or lit library — prefer **Ask** mode |
+| **UGA-Online-Full** | All repos at once — use sparingly; easy to edit the wrong clone |
 
 See also [`upstream-reference-repos.mdc`](../../.cursor/rules/upstream-reference-repos.mdc).
 
@@ -42,7 +42,7 @@ See also [`upstream-reference-repos.mdc`](../../.cursor/rules/upstream-reference
 3. **Small scope** — One feature or fix per PR when possible.
 4. **`git status`** — No `.env` or API keys staged; no accidental edits in reference repos.
 5. **Local checks** — Run what the app README says (usually `npm run build` from the app folder) if not already run via `pre-commit-review`.
-6. **Pre-PR command** — In the **hub** repo or any window with hub rules, run **`ool-pre-pr-check`** (or ask the agent to follow the `ool-pr-and-code-review` skill author track) to draft the PR description and re-scan the branch diff.
+6. **Pre-PR command** — In the **hub** repo or any window with hub rules, run **`uga-online-pre-pr-check`** (or ask the agent to follow the `uga-online-pr-and-code-review` skill author track) to draft the PR description and re-scan the branch diff.
 7. **Commit messages** — Each commit must follow [`.github/COMMIT_TEMPLATE`](../../.github/COMMIT_TEMPLATE) (one imperative subject, no template comment lines left in). Run `./scripts/setup-git-hooks.sh` locally; PRs run the **Validate commit message** workflow.
 
 ## Branch protection (org admins)
@@ -89,8 +89,8 @@ For **student-facing** or **instructor** tools, always include eLC validation de
 - **Plan mode** — Large or risky tasks: agree on steps before Agent edits files.
 - **Agent mode** — Implementation; **review every diff** before Accept (AI can be wrong).
 - **Ask mode** — Draft PR summary from your changes: e.g. “Summarize `git diff main...HEAD` for a PR description.”
-- **Never** commit `.env`, tokens, or student identifiers (see [`ool-secrets-and-ferpa.mdc`](../../.cursor/rules/ool-secrets-and-ferpa.mdc)).
-- Do not ask Agent to push or open the PR unless you intend to — review `ool-pre-pr-check` output first.
+- **Never** commit `.env`, tokens, or student identifiers (see [`uga-online-secrets-and-ferpa.mdc`](../../.cursor/rules/uga-online-secrets-and-ferpa.mdc)).
+- Do not ask Agent to push or open the PR unless you intend to — review `uga-online-pre-pr-check` output first.
 
 ## Reviewing a PR (reviewer checklist)
 
@@ -101,7 +101,7 @@ For **student-facing** or **instructor** tools, always include eLC validation de
    - Edits under `UGA-Brightspace-React-Template` for app features
    - Unrelated refactors (“drive-by” changes)
    - Missing eLC test plan for LMS-facing UI
-4. **OOL checks**
+4. **UGA Online checks**
    - New React apps under `UGA-Brightspace-React-Apps/apps/`
    - Client env vars are `VITE_*` only; no secrets in bundles
    - UI uses [UGA Online Design System](https://design.online.uga.edu/getting-started/installation/) where applicable
@@ -113,7 +113,7 @@ For **student-facing** or **instructor** tools, always include eLC validation de
 ### Using Cursor as reviewer
 
 - Prefer **Ask mode** (read-only) when exploring unfamiliar code.
-- Run the **`ool-pr-review`** command and paste the PR URL or number.
+- Run the **`uga-online-pr-review`** command and paste the PR URL or number.
 - Sample prompts:
   - “Summarize this PR and risks for eLC deployment.”
   - “Does this diff introduce secrets or hard-coded org unit IDs?”
@@ -146,5 +146,5 @@ Rules and skills **do not block** bad commits. Stronger safeguards (when your or
 
 - [Cursor demo (modes, diffs, FERPA)](../../cursor-demo.html)
 - [`.cursor/rules/uga-ool-github.mdc`](../../.cursor/rules/uga-ool-github.mdc)
-- [`.cursor/skills/ool-pr-and-code-review/`](../../.cursor/skills/ool-pr-and-code-review/)
+- [`.cursor/skills/uga-online-pr-and-code-review/`](../../.cursor/skills/uga-online-pr-and-code-review/)
 - [uga-ool repositories](https://github.com/orgs/uga-ool/repositories)

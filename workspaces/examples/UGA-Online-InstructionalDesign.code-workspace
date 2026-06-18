@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "uga-online-cursor-docs",
+			"path": "../../../uga-online-cursor-docs"
+		},
+		{
+			"name": "pdf-accessibility (docs)",
+			"path": "../../../uga-online-cursor-docs/docs/pdf-accessibility"
+		},
+		{
+			"name": "uga-lit-components (reference)",
+			"path": "../../../uga-lit-components"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.html": "html"
+		}
+	}
+}

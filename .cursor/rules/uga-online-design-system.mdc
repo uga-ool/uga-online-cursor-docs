@@ -1,10 +1,11 @@
 ---
-description: eLC (UGA D2L Brightspace) + UGA Online Design System for course-file HTML and React shells
-globs: "**/*.{tsx,jsx,html,css}"
-alwaysApply: false
+description: UGA Online Design System for all eLC course-file HTML, CSS, and React shells — always apply
+alwaysApply: true
 ---
 
 # eLC and UGA Online Design System
+
+**Always use the UGA Online Design System** for course content, HTML shells, and UI in eLC (Brightspace) tools unless the user explicitly targets a legacy file that cannot be migrated yet.
 
 **eLC** is UGA’s name for **D2L Brightspace**. Treat Valence paths, session cookies, and Manage Files / Content hosting constraints as first-class.
 
@@ -26,4 +27,4 @@ Official docs: [Installation](https://design.online.uga.edu/getting-started/inst
 ## Brightspace integration
 
 - Respect **`VITE_API_BASE_URL`**, **`VITE_LP_VERSION`**, and **`VITE_LE_VERSION`** (and any app-specific `VITE_*` from the project README).
-- Do not assume shadow DOM for OOL course-file tools unless the project already does; match existing patterns in the repo.
+- Do not assume shadow DOM for UGA Online course-file tools unless the project already does; match existing patterns in the repo.

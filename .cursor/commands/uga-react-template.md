@@ -2,7 +2,7 @@
 description: Scaffold or extend a course-file React app (UGA-Brightspace-React-Template)
 ---
 
-You are helping with a **Brightspace course-file** React app based on the UGA OOL template.
+You are helping with a **Brightspace course-file** React app based on the UGA Online template.
 
 **Upstream reference:** https://github.com/uga-ool/UGA-Brightspace-React-Template
 

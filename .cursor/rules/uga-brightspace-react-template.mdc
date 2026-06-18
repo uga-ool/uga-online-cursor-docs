@@ -1,5 +1,5 @@
 ---
-description: New course-file React apps from the UGA OOL Brightspace React template (Vite + TypeScript)
+description: New course-file React apps from the UGA Online Brightspace React template (Vite + TypeScript)
 globs: "**/src/**/*.{tsx,ts}"
 alwaysApply: false
 ---
@@ -20,7 +20,7 @@ Use it when scaffolding **static** React apps deployed to **Brightspace Manage F
 ## UGA Online Design System
 
 - For HTML shells or static wrappers, load **base.css** and **scripts.js** from **https://design.online.uga.edu/** per [installation](https://design.online.uga.edu/getting-started/installation/) (and Google Fonts as documented there).
-- Keep styling consistent with OOL patterns: prefer design-system classes over one-off inline styles when building new UI.
+- Keep styling consistent with UGA Online patterns: prefer design-system classes over one-off inline styles when building new UI.
 
 ## This monorepo
 

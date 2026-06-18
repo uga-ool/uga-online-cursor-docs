@@ -430,7 +430,7 @@ The `uga-toc` component now scans **h2 and h3 headings only** (changed from h1-h
 
 ## 📄 License
 
-This project is maintained by the University of Georgia Online Learning (UGA OOL) team.
+This project is maintained by the UGA Online team.
 
 ---
 

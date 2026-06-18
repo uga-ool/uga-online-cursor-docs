@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Validates commit messages match .github/COMMIT_TEMPLATE rules (OOL).
+# Validates commit messages match .github/COMMIT_TEMPLATE rules (UGA Online).
 set -euo pipefail
 
 VAGUE_PATTERN='^(updates?|fix(es)?|fixed|stuff|wip|asdf|test|changes?|misc|todo)\.?$'

@@ -1,4 +1,4 @@
-# Suggested commit rhythm (OOL)
+# Suggested commit rhythm (UGA Online)
 
 Team guidance for **how often** to commit, push, open pull requests, and merge. These are **suggestions** for developers and leads—not enforced by Git hooks or CI.
 
@@ -29,7 +29,7 @@ Frequent local commits give you checkpoints on your branch and make diffs easier
 
 Open a **PR** when you have something reviewable—even if the feature is not finished. Small, frequent PRs are easier to review than one huge diff at the end of the week.
 
-Before opening a PR, run hub command **`ool-pre-pr-check`** (or follow the [`ool-pr-and-code-review`](ool-pr-and-code-review.md) skill). See [`pr-and-code-review.md`](pr-and-code-review.md).
+Before opening a PR, run hub command **`uga-online-pre-pr-check`** (or follow the [`uga-online-pr-and-code-review`](uga-online-pr-and-code-review.md) skill). See [`pr-and-code-review.md`](pr-and-code-review.md).
 
 ### Merge to main (daily or every few days)
 

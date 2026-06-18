@@ -92,7 +92,7 @@
   <div class="header-content">
     <div class="uga-badge">UGA Online · uga-online-cursor-docs</div>
     <h1>Cursor &amp; Team Docs Starter Guide</h1>
-    <p class="subtitle">For teammates new to <strong>VS Code</strong>, <strong>Cursor</strong>, and <strong>GitHub</strong> — how to use this repository, work safely on OOL code, and get help from AI without breaking upstream templates.</p>
+    <p class="subtitle">For teammates new to <strong>VS Code</strong>, <strong>Cursor</strong>, and <strong>GitHub</strong> — how to use this repository, work safely on UGA Online code, and get help from AI without breaking upstream templates.</p>
     <div class="header-meta">
       <span>Updated May 2026</span>
       <span>Repo: <strong>uga-ool/uga-online-cursor-docs</strong></span>
@@ -106,14 +106,16 @@
   <p class="part">Part A — Team repo &amp; GitHub</p>
   <ol>
     <li><a href="#start">What is uga-online-cursor-docs?</a></li>
+    <li><a href="#roles">Quick-start by role</a></li>
     <li><a href="#github-basics">GitHub basics (plain language)</a></li>
     <li><a href="#setup">One-time setup on your computer</a></li>
     <li><a href="#template-repos">Which template repo to clone</a></li>
     <li><a href="#repo-map">What’s in this repository (doc hub)</a></li>
-    <li><a href="#cursor-config">Rules, skills &amp; commands (in each repo)</a></li>
+    <li><a href="#cursor-config">Three-tier Cursor resources</a></li>
+    <li><a href="#cursor-teams">Cursor Teams (org-wide)</a></li>
     <li><a href="#how-to-commit">How to commit (beginners)</a></li>
     <li><a href="#secrets-local">Secrets stay on your computer</a></li>
-    <li><a href="#daily-workflow">Daily workflow for OOL developers</a></li>
+    <li><a href="#daily-workflow">Daily workflow for UGA Online developers</a></li>
     <li><a href="#prs">Pull requests &amp; code review</a></li>
   </ol>
   <p class="part">Part B — Cursor editor</p>
@@ -121,6 +123,7 @@
     <li><a href="#vscode">VS Code vs Cursor</a></li>
     <li><a href="#modes">Agent modes (Ask, Agent, Plan…)</a></li>
     <li><a href="#ai-chat">@ references in chat</a></li>
+    <li><a href="#chat-transcripts">Chat &amp; handoff practices</a></li>
     <li><a href="#security">Security &amp; FERPA</a></li>
     <li><a href="#shortcuts">Shortcuts &amp; tips</a></li>
     <li><a href="#topic-docs">Find technical documentation</a></li>
@@ -132,7 +135,7 @@
 <section class="section" id="start">
   <div class="section-number">1</div>
   <h2>What is uga-online-cursor-docs?</h2>
-  <p class="section-intro">This repository is the <strong>documentation hub</strong> for UGA Online (OOL): onboarding (this page), topic guides under <code>docs/</code>, and links to template repos. <strong>Cursor rules, commands, and skills live in each template repo</strong> — not here.</p>
+  <p class="section-intro">This repository is the <strong>documentation hub</strong> for <strong>UGA Online</strong>: onboarding (this page), topic guides under <code>docs/</code>, and <strong>org-wide Cursor resources</strong> in <code>.cursor/</code>. Template repos carry <strong>repo-scoped</strong> config (<code>pre-commit-review</code>, API skills). <strong>Cursor Teams dashboard</strong> rules apply automatically to all members.</p>
 
   <div class="card-grid">
     <div class="feature-card">
@@ -140,12 +143,12 @@
       <p>Markdown guides for eLC, React apps, AI agents, Lit, video/Kaltura — by <strong>job</strong>. Index: <a href="docs/INDEX.md">docs/INDEX.md</a>.</p>
     </div>
     <div class="feature-card">
-      <h4>Cursor config in template repos</h4>
-      <p>Clone the repo you work in (<code>uga-lit-components</code>, agent framework, React Apps, …). Open <strong>that folder</strong> in Cursor to load <code>.cursor/</code> and <code>.github/COMMIT_TEMPLATE</code>.</p>
+      <h4>Hub Cursor config</h4>
+      <p>Cross-repo rules, commands, skills, and subagents in <code>.cursor/</code>. Catalog: <a href="docs/cursor/shared-resources-catalog.md">shared-resources-catalog.md</a>.</p>
     </div>
     <div class="feature-card">
-      <h4>Not where you commit app code</h4>
-      <p>New Lit components, agents, and React apps are committed in their <strong>template/work repos</strong>, in the correct subfolder — see <a href="#template-repos">Which template repo to clone</a>.</p>
+      <h4>Template repo config</h4>
+      <p>Clone the repo you work in and open <strong>that folder</strong> for <code>pre-commit-review</code> and repo-specific skills — see <a href="#template-repos">Which template repo to clone</a>.</p>
     </div>
   </div>
 
@@ -153,19 +156,46 @@
     <div class="callout-icon">💡</div>
     <div class="callout-body">
       <strong>New to the team?</strong>
-      Clone the <strong>one repo</strong> you were assigned, open it in Cursor, read that repo’s <code>docs/cursor/README.md</code>. Clone <code>uga-online-cursor-docs</code> only if you want extra topic guides in one place.
+      Join the <strong>UGA Online Cursor Teams org</strong>, clone <code>uga-online-cursor-docs</code>, pick your <a href="#roles">role quick-start</a>, and copy a workspace from <code>workspaces/examples/</code>.
     </div>
   </div>
 
   <div class="flow-horizontal">
-    <span class="flow-box">Clone template repo</span>
+    <span class="flow-box">Join Cursor Teams</span>
     <span class="flow-arrow">→</span>
-    <span class="flow-box">Open folder in Cursor</span>
+    <span class="flow-box">Clone hub + work repo</span>
     <span class="flow-arrow">→</span>
-    <span class="flow-box">Add work in correct path</span>
+    <span class="flow-box">Role workspace</span>
     <span class="flow-arrow">→</span>
     <span class="flow-box">Commit → PR → eLC</span>
   </div>
+</section>
+
+<section class="section" id="roles">
+  <div class="section-number">1b</div>
+  <h2>Quick-start by role</h2>
+  <p class="section-intro">~15 min each. Pick your role — workspace, first command, and key docs.</p>
+
+  <div class="card-grid">
+    <div class="feature-card">
+      <h4><a href="docs/cursor/roles/instructional-designer.md">Instructional designer</a></h4>
+      <p>Workspace: <code>UGA-Online-InstructionalDesign</code> · Command: <code>html-cleanup</code> · HTML remediation, agent requests, design system.</p>
+    </div>
+    <div class="feature-card">
+      <h4><a href="docs/cursor/roles/qa-analytics.md">QA / analytics</a></h4>
+      <p>Workspace: <code>UGA-Online-QA</code> · Command: <code>elc-smoke-test</code> · Smoke tests, course review, PR test plans.</p>
+    </div>
+    <div class="feature-card">
+      <h4><a href="docs/cursor/roles/ai-developer.md">AI developer</a></h4>
+      <p>Workspace: <code>UGA-Online-Develop</code> or <code>UGA-Online-Agents</code> · Command: <code>pre-commit-review</code> · Agents, React apps, Lit.</p>
+    </div>
+    <div class="feature-card">
+      <h4><a href="docs/cursor/roles/sysadmin.md">Sysadmin</a></h4>
+      <p>Dashboard Team Rules · Deploy, OAuth/LTI, branch protection · <a href="docs/cursor/team-rules-dashboard-setup.md">dashboard setup</a>.</p>
+    </div>
+  </div>
+
+  <p class="body-text">Full mapping: <a href="docs/cursor/shared-resources-catalog.md">shared-resources-catalog.md</a> · Pilot rollout: <a href="docs/cursor/pilot-rollout.md">pilot-rollout.md</a>.</p>
 </section>
 
 <section class="section" id="github-basics">
@@ -174,9 +204,9 @@
   <p class="section-intro">If GitHub is new to you, these terms appear everywhere in our workflow. You do not need to memorize Git commands on day one — the Cursor agent can help — but you should understand the ideas.</p>
 
   <table class="data">
-    <thead><tr><th>Term</th><th>What it means for OOL</th></tr></thead>
+    <thead><tr><th>Term</th><th>What it means for UGA Online</th></tr></thead>
     <tbody>
-      <tr><td><strong>Repository (repo)</strong></td><td>A project folder on GitHub. OOL code lives under the <a href="https://github.com/orgs/uga-ool/repositories" target="_blank" rel="noopener">uga-ool organization</a>.</td></tr>
+      <tr><td><strong>Repository (repo)</strong></td><td>A project folder on GitHub. UGA Online code lives under the <a href="https://github.com/orgs/uga-ool/repositories" target="_blank" rel="noopener">uga-ool organization</a>.</td></tr>
       <tr><td><strong>Clone</strong></td><td>Copy a repo from GitHub to your computer so you can edit files. You do this once per repo (or when you get a new machine).</td></tr>
       <tr><td><strong><code>main</code> branch</strong></td><td>The primary, shared version of the project. Do not commit directly to <code>main</code> for team code — use a branch and pull request.</td></tr>
       <tr><td><strong>Branch</strong></td><td>Your own line of work (e.g. <code>feature/quiz-export</code>). Safe place to experiment until review.</td></tr>
@@ -289,9 +319,12 @@
     <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
     <tbody>
       <tr><td><code>docs/INDEX.md</code></td><td><strong>Start here</strong> for technical topics (D2L APIs, deploy, agents, React apps, Lit, video, captions).</td></tr>
-      <tr><td><code>docs/cursor/</code></td><td>Cursor-specific workflows — e.g. <a href="docs/cursor/pr-and-code-review.md">PR and code review</a>.</td></tr>
+      <tr><td><code>docs/cursor/shared-resources-catalog.md</code></td><td><strong>Cursor catalog</strong> — Team Rules, hub commands, role mapping.</td></tr>
+      <tr><td><code>docs/cursor/roles/</code></td><td>Role quick-starts (ID, QA, AI dev, sysadmin).</td></tr>
+      <tr><td><code>docs/cursor/</code></td><td>Cursor workflows — PR review, chat practices, prompt starters.</td></tr>
       <tr><td><code>docs/_meta/manifest.md</code></td><td>Which upstream repo each doc section came from (for maintainers refreshing content).</td></tr>
-      <tr><td><code>docs/cursor/template-repos.md</code></td><td>Which template repos include <code>.cursor/</code> (config lives there, not in this hub).</td></tr>
+      <tr><td><code>docs/cursor/template-repos.md</code></td><td>Template repos with repo-scoped <code>.cursor/</code> config.</td></tr>
+      <tr><td><code>.cursor/</code></td><td>Hub rules, commands, skills, subagents (version-controlled).</td></tr>
       <tr><td><code>workspaces/examples/</code></td><td><strong>Optional</strong> sample multi-root workspaces — copy and adjust; not mandatory.</td></tr>
       <tr><td><code>cursor-demo.html</code></td><td>This page — open in a browser for onboarding.</td></tr>
     </tbody>
@@ -308,19 +341,39 @@
 
 <section class="section" id="cursor-config">
   <div class="section-number">5</div>
-  <h2>Rules, skills &amp; commands (in each template repo)</h2>
-  <p class="section-intro">Cursor reads <code>.cursor/</code> from the repo you have open. Each template repo ships its <strong>own</strong> rules, commands, and skills — scoped to Lit, agents, or React apps.</p>
+  <h2>Three-tier Cursor resources</h2>
+  <p class="section-intro">UGA Online uses three layers. <strong>Team Rules</strong> (dashboard) apply everywhere. <strong>Hub</strong> rules/commands apply when this repo is open or imported. <strong>Template repos</strong> add repo-scoped config.</p>
 
-  <h3 class="sub">Simplest approach: one repo</h3>
-  <p class="body-text"><strong>File → Open Folder…</strong> → your template repo. No extra setup. Pull <code>git pull</code> when the team updates that repo.</p>
+  <table class="data">
+    <thead><tr><th>Tier</th><th>Where</th><th>Examples</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 — Cursor Teams dashboard</strong></td><td><a href="https://cursor.com/dashboard" target="_blank" rel="noopener">cursor.com/dashboard</a></td><td>Enforced FERPA/secrets, repo tiers; optional design system, HTML cleanup globs</td></tr>
+      <tr><td><strong>2 — Hub repo</strong></td><td><code>uga-online-cursor-docs/.cursor/</code></td><td><code>uga-online-pre-pr-check</code>, <code>html-cleanup</code>, <code>elc-smoke-test</code>, subagents</td></tr>
+      <tr><td><strong>3 — Template repos</strong></td><td>Lit, agent framework, React Apps</td><td><code>pre-commit-review</code>, <code>elc-valence-api</code>, <code>kaltura-api</code></td></tr>
+    </tbody>
+  </table>
 
-  <h3 class="sub">Commands by repo</h3>
+  <p class="body-text">Canonical index: <a href="docs/cursor/shared-resources-catalog.md"><strong>shared-resources-catalog.md</strong></a> · Admin setup: <a href="docs/cursor/team-rules-dashboard-setup.md">team-rules-dashboard-setup.md</a>.</p>
+
+  <h3 class="sub">Hub commands (cross-repo)</h3>
+  <table class="data">
+    <thead><tr><th>Command</th><th>Audience</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>uga-online-pre-pr-check</code></td><td>Authors</td><td>Self-check before opening a PR</td></tr>
+      <tr><td><code>uga-online-pr-review</code></td><td>Reviewers</td><td>PR reviewer checklist</td></tr>
+      <tr><td><code>html-cleanup</code></td><td>IDs, QA</td><td>HTML remediation for eLC content</td></tr>
+      <tr><td><code>elc-smoke-test</code></td><td>QA, devs</td><td>eLC smoke test walkthrough</td></tr>
+      <tr><td><code>agent-request</code></td><td>IDs</td><td>Request a new eLC AI agent</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub">Template-repo commands</h3>
   <table class="data">
     <thead><tr><th>Repo</th><th>Example commands</th><th>Example skills</th></tr></thead>
     <tbody>
-      <tr><td><code>uga-lit-components</code></td><td><code>lit-new-component</code>, <code>api-help</code></td><td><code>add-lit-component</code>, <code>elc-valence-api</code>, <code>kaltura-api</code></td></tr>
-      <tr><td><code>uga-online-brightspace-agent-framework</code></td><td><code>agent-new-plugin</code>, <code>api-help</code></td><td><code>add-agent-plugin</code>, <code>elc-valence-api</code></td></tr>
-      <tr><td><code>UGA-Brightspace-React-Apps</code></td><td><code>apps-new-app</code>, <code>api-help</code></td><td><code>elc-valence-api</code>, <code>kaltura-api</code>, <code>timeline-aws-api</code></td></tr>
+      <tr><td><code>uga-lit-components</code></td><td><code>pre-commit-review</code>, <code>api-help</code></td><td><code>lit-before-commit</code>, <code>elc-valence-api</code>, <code>kaltura-api</code></td></tr>
+      <tr><td><code>uga-online-brightspace-agent-framework</code></td><td><code>pre-commit-review</code>, <code>elc-ai-agent</code></td><td><code>agent-before-commit</code>, <code>elc-valence-api</code></td></tr>
+      <tr><td><code>UGA-Brightspace-React-Apps</code></td><td><code>pre-commit-review</code>, <code>api-help</code></td><td><code>apps-before-commit</code>, <code>elc-valence-api</code>, <code>kaltura-api</code></td></tr>
     </tbody>
   </table>
   <p class="body-text">Palette: <kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows) — search the command name.</p>
@@ -366,6 +419,23 @@
   </div>
 </section>
 
+<section class="section" id="cursor-teams">
+  <div class="section-number">5a</div>
+  <h2>Cursor Teams (org-wide)</h2>
+  <p class="section-intro">UGA Online uses <strong>Cursor Teams</strong>. Team administrators configure org-wide rules at <a href="https://cursor.com/dashboard" target="_blank" rel="noopener">cursor.com/dashboard</a>. Members receive rules automatically — no manual copy required.</p>
+
+  <table class="data">
+    <thead><tr><th>Feature</th><th>What it means for you</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Team Rules</strong></td><td>FERPA, secrets, and repo-tier guidance apply in every chat. Enforced rules cannot be disabled.</td></tr>
+      <tr><td><strong>Project rules</strong></td><td>Clone <code>uga-online-cursor-docs</code> or import remote rules from GitHub for hub commands.</td></tr>
+      <tr><td><strong>Privacy Mode</strong></td><td>Org-wide default — confirm with your admin.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="body-text">Admins: <a href="docs/cursor/team-rules-dashboard-setup.md">team-rules-dashboard-setup.md</a> · Precedence: Team Rules → Project Rules → User Rules.</p>
+</section>
+
 <section class="section" id="how-to-commit">
   <div class="section-number">5b</div>
   <h2>How to commit (beginners)</h2>
@@ -384,7 +454,7 @@
       </ul>
     </div></li>
     <li><div class="step-num">6</div><div class="step-body"><strong>Commit</strong> → then <strong>Push</strong> (upload to GitHub). Ask your lead the first time.</div></li>
-    <li><div class="step-num">7</div><div class="step-body"><strong>Pull request</strong> on github.com when ready for review — see <a href="#prs">Pull requests</a>. Before the PR, run hub command <code>ool-pre-pr-check</code> if your team uses this docs repo.</div></li>
+    <li><div class="step-num">7</div><div class="step-body"><strong>Pull request</strong> on github.com when ready for review — see <a href="#prs">Pull requests</a>. Before the PR, run hub command <code>uga-online-pre-pr-check</code> if your team uses this docs repo.</div></li>
   </ol>
 
   <p class="body-text">Full steps in your repo: <code>docs/cursor/how-to-commit.md</code>. After clone, run <strong><code>scripts/setup-git-hooks.sh</code></strong> once so commits use <code>.github/COMMIT_TEMPLATE</code>. Then run <strong><code>pre-commit-review</code></strong> before every commit.</p>
@@ -413,12 +483,12 @@
     <div class="feature-card"><h4>FERPA</h4><p>No student names, UGA IDs, or grades in commits or AI messages.</p></div>
   </div>
 
-  <p class="body-text">Each template repo: <code>docs/cursor/secrets.md</code>. Cursor rules <code>ool-local-secrets.mdc</code> remind the AI automatically.</p>
+  <p class="body-text">Team Rules and hub rules: <code>uga-online-secrets-and-ferpa</code>. Template repos may also include <code>docs/cursor/secrets.md</code>.</p>
 </section>
 
 <section class="section" id="daily-workflow">
   <div class="section-number">6</div>
-  <h2>Daily workflow for OOL developers</h2>
+  <h2>Daily workflow for UGA Online developers</h2>
   <p class="section-intro">A sane default day — adjust with your lead for your role (ID, dev, analytics).</p>
 
   <ol class="steps">
@@ -427,14 +497,17 @@
     <li><div class="step-num">3</div><div class="step-body"><strong>Edit in the right folder</strong> — Lit: <code>src/components/</code>; agents: <code>frontend/src/agents/</code>; React: <code>apps/&lt;name&gt;/</code>.</div></li>
     <li><div class="step-num">4</div><div class="step-body"><strong>Ask before Agent</strong> — Use <strong>Ask</strong> to explore; <strong>Agent</strong> to implement; review every diff.</div></li>
     <li><div class="step-num">5</div><div class="step-body"><strong>Commit</strong> — Stage → <code>pre-commit-review</code> → one-line message; see <a href="#how-to-commit">How to commit</a>.</div></li>
-    <li><div class="step-num">6</div><div class="step-body"><strong>Before PR</strong> — Hub <code>ool-pre-pr-check</code> (if using cursor-docs); open PR on GitHub.</div></li>
+    <li><div class="step-num">6</div><div class="step-body"><strong>Before PR</strong> — Hub <code>uga-online-pre-pr-check</code> (if using cursor-docs); open PR on GitHub.</div></li>
   </ol>
 
   <table class="data">
     <thead><tr><th>Workspace</th><th>When</th></tr></thead>
     <tbody>
-      <tr><td><strong>One repo folder</strong> (recommended)</td><td>Daily work — clearest rules and commands</td></tr>
-      <tr><td><code>workspaces/examples/</code> multi-root</td><td>Optional — reading cursor-docs + a template repo together</td></tr>
+      <tr><td><strong>One repo folder</strong> (recommended for commits)</td><td>Daily dev work — clearest rules and commands</td></tr>
+      <tr><td><code>UGA-Online-InstructionalDesign</code></td><td>ID — HTML remediation, accessibility</td></tr>
+      <tr><td><code>UGA-Online-QA</code></td><td>QA — smoke tests, deployment checklists</td></tr>
+      <tr><td><code>UGA-Online-Develop</code> / <code>UGA-Online-Agents</code></td><td>AI developers</td></tr>
+      <tr><td><code>workspaces/examples/</code></td><td>Copy and adjust paths — see <a href="workspaces/examples/README.md">README</a></td></tr>
     </tbody>
   </table>
 
@@ -459,12 +532,12 @@
   <ul class="steps">
     <li><div class="step-num">✓</div><div class="step-body">Changes are in the <strong>correct repo</strong> (apps under <code>UGA-Brightspace-React-Apps/apps/</code>).</div></li>
     <li><div class="step-num">✓</div><div class="step-body">No <code>.env</code>, keys, or student identifiers in the diff.</div></li>
-    <li><div class="step-num">✓</div><div class="step-body">Run <strong><code>ool-pre-pr-check</code></strong> in Cursor.</div></li>
+    <li><div class="step-num">✓</div><div class="step-body">Run <strong><code>uga-online-pre-pr-check</code></strong> in Cursor.</div></li>
     <li><div class="step-num">✓</div><div class="step-body">PR description includes <strong>summary</strong>, <strong>test plan</strong>, and <strong>eLC notes</strong> (course/OU, role, Manage Files path) when LMS-related.</div></li>
   </ul>
 
   <h3 class="sub">Reviewers</h3>
-  <p class="body-text">On GitHub: read description → Files changed → comment or approve. In Cursor: run <strong><code>ool-pr-review</code></strong> with the PR link; use <strong>Ask</strong> mode to understand unfamiliar files.</p>
+  <p class="body-text">On GitHub: read description → Files changed → comment or approve. In Cursor: run <strong><code>uga-online-pr-review</code></strong> with the PR link; use <strong>Ask</strong> mode to understand unfamiliar files.</p>
 
   <div class="code-block">
 <span class="cm">## Summary (PR template excerpt)</span>
@@ -545,16 +618,30 @@
       <tr><td><kbd>@filename</kbd></td><td>One file you care about</td></tr>
       <tr><td><kbd>@folder</kbd></td><td>Everything in a directory</td></tr>
       <tr><td><kbd>@codebase</kbd></td><td>Search the whole project (uses more context)</td></tr>
-      <tr><td><kbd>@cursor-rules</kbd></td><td>Team rules — e.g. “what are our OOL PR standards?”</td></tr>
+      <tr><td><kbd>@cursor-rules</kbd></td><td>Team rules — e.g. “what are our UGA Online PR standards?”</td></tr>
       <tr><td><kbd>@Branch</kbd></td><td>Your current git changes</td></tr>
     </tbody>
   </table>
 </section>
 
+<section class="section" id="chat-transcripts">
+  <div class="section-number">10b</div>
+  <h2>Chat &amp; handoff practices</h2>
+  <p class="section-intro">When to start a new chat, how to hand off between roles, and FERPA-safe sharing. Full guide: <a href="docs/cursor/chat-and-transcript-practices.md"><strong>chat-and-transcript-practices.md</strong></a>.</p>
+
+  <div class="card-grid">
+    <div class="feature-card"><h4>New chat when</h4><p>New feature/bug, ~30 min unrelated context, or role/repo handoff (ID → dev → QA).</p></div>
+    <div class="feature-card"><h4>Handoff</h4><p>Paste a <strong>Handoff Summary</strong> — not the full prior transcript. Template: <a href="docs/cursor/prompts/handoff-new-project.md">handoff-new-project.md</a>.</p></div>
+    <div class="feature-card"><h4>Archive outcomes</h4><p>Durable results → git commit or PR description. Ephemeral exploration → discard.</p></div>
+  </div>
+
+  <p class="body-text">Prompt starters: <a href="docs/cursor/prompts/">docs/cursor/prompts/</a></p>
+</section>
+
 <section class="section" id="security">
   <div class="section-number">11</div>
   <h2>Security &amp; FERPA</h2>
-  <p class="section-intro">Rules in <code>ool-secrets-and-ferpa.mdc</code> apply in every chat. Human judgment still required.</p>
+  <p class="section-intro">Rules in <code>uga-online-secrets-and-ferpa.mdc</code> apply in every chat. Human judgment still required.</p>
 
   <div class="card-grid">
     <div class="feature-card"><h4>Never commit secrets</h4><p>No API keys, OAuth secrets, or <code>.env</code> files. Use gitignored env files and institutional secret stores.</p></div>
@@ -592,23 +679,25 @@
 
   <div class="card-grid">
     <div class="feature-card"><h4><a href="docs/INDEX.md">docs/INDEX.md</a></h4><p>Master index by job: D2L APIs, deploy, agents, React apps, Lit library, video, captions, PDF.</p></div>
+    <div class="feature-card"><h4><a href="docs/cursor/shared-resources-catalog.md">Shared resources catalog</a></h4><p>Team Rules, hub commands, role mapping — start here for Cursor.</p></div>
     <div class="feature-card"><h4><a href="docs/cursor/pr-and-code-review.md">PR &amp; code review</a></h4><p>Step-by-step PR workflow for GitHub beginners.</p></div>
-    <div class="feature-card"><h4><a href="docs/ai-agents-brightspace/">AI agents</a></h4><p>Framework guides, TODOs, example prompts.</p></div>
+    <div class="feature-card"><h4><a href="docs/ai-agents-brightspace/">AI agents</a></h4><p>Framework guides, TODOs, example prompts (eLC in-course agents).</p></div>
     <div class="feature-card"><h4><a href="https://design.online.uga.edu/getting-started/installation/" target="_blank" rel="noopener">Design system</a></h4><p>UGA Online CDN for course-file HTML and shells.</p></div>
+    <div class="feature-card"><h4><a href="docs/cursor/pilot-rollout.md">Pilot rollout</a></h4><p>Two-week pilot checklist before full team adoption.</p></div>
   </div>
 
   <div class="callout tip">
     <div class="callout-icon">🆘</div>
     <div class="callout-body">
       <strong>Stuck?</strong>
-      Ask in team chat; open <strong>Ask</strong> mode in Cursor with <kbd>@docs/INDEX.md</kbd>; run <code>ool-pre-pr-check</code> or <code>ool-pr-review</code> when the task is PR-related.
+      Ask in team chat; open <strong>Ask</strong> mode in Cursor with <kbd>@docs/INDEX.md</kbd>; run <code>uga-online-pre-pr-check</code> or <code>uga-online-pr-review</code> when the task is PR-related.
     </div>
   </div>
 </section>
 
 <footer class="doc-footer">
   <strong>UGA Online · uga-online-cursor-docs</strong><br>
-  Open this file in a browser: <code>cursor-demo.html</code> · Maintained with team rules in <code>.cursor/</code><br>
+  Open this file in a browser: <code>cursor-demo.html</code> · Catalog: <a href="docs/cursor/shared-resources-catalog.md">shared-resources-catalog.md</a><br>
   <span style="font-size:11px;opacity:0.65;margin-top:8px;display:block">
     <a href="README.md">README</a> ·
     <a href="docs/INDEX.md">docs/INDEX.md</a> ·
